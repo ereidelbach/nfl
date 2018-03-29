@@ -6,10 +6,10 @@
 
 The overall goal of this project is to collect National Football League (NFL) data from a variety of sources including:
 
-*NFL Official Webpage
-*NFL Reddit page
-*ESPN
-*Mockdraftable
+* NFL Official Webpage
+* NFL Reddit page
+* ESPN
+* Mockdraftable
 
 The data should be continuously collected throughout a season (i.e. every week) and will be stored locally in CSV files in the DATA folder.
 
