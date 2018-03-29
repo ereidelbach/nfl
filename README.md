@@ -1,4 +1,4 @@
-![Project Logo](https://github.com/ereidelbach/Images/blob/master/nfl_logo.png?raw=true)
+![Project Logo](https://github.com/ereidelbach/nfl/blob/master/nfl_logo.png)
 
 ----
 
