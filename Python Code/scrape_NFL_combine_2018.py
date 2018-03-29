@@ -64,8 +64,6 @@ for link in urlList:
     r = requests.get(link, headers=headers)
     soup = BeautifulSoup(r.content,'lxml')
 
-    # Basic info is react_id = 153
-    #basicInfo = soup.find('div', {'data-reactid':'153'})
     basicInfo = soup.findAll('script')[5].text
     basicInfo = basicInfo.split('__INITIAL_DATA__ = ')[1]
     basicInfo = basicInfo.split(';\n  ')[0]
@@ -73,6 +71,8 @@ for link in urlList:
     basicInfo = basicInfo.replace('\\"','')
 
     temp = json.loads(basicInfo)
+    print(temp)
+    print('\n')
 
     player = {}
 
@@ -91,13 +91,13 @@ for link in urlList:
     player['lengthHand'] = temp['instance']['prospect']['handSize']                              # hand length
     player['grade'] = temp['instance']['prospect']['grade']                                      # prospect grade
     player['combineID'] = temp['instance']['prospect']['combineData']['combineNumber']           # combine ID
-    player['combine40'] = temp['instance']['prospect']['combineData']['fortyYardDashResult']     # 40 yard dash
+    player['combine40dash'] = temp['instance']['prospect']['combineData']['fortyYardDashResult']  # 40 yard dash
     player['combineBench'] = temp['instance']['prospect']['combineData']['benchResult']          # bench press
     player['combineVert'] = temp['instance']['prospect']['combineData']['verticalJumpResult']    # vertical jump
     player['combineBroad'] = temp['instance']['prospect']['combineData']['broadJumpResult']      # broad jump
     player['combineCone'] = temp['instance']['prospect']['combineData']['threeConeDrillResult']  # 3 Cone Drill
-    player['combine20'] = temp['instance']['prospect']['combineData']['twentyYardShuttleResult'] # 20 yard shuttle run
-    player['combine60'] = temp['instance']['prospect']['combineData']['sixtyYardShuttleResult']  # 60 yard shuttle run
+    player['combine20shuttle'] = temp['instance']['prospect']['combineData']['twentyYardShuttleResult'] # 20 yard shuttle run
+    player['combine60shuttle'] = temp['instance']['prospect']['combineData']['sixtyYardShuttleResult']  # 60 yard shuttle run
     player['overview'] = temp['instance']['prospect']['overview']                                # player Overview
     player['sources'] = temp['instance']['prospect']['sourcesTellUs']                            # info from sources
     player['strengths'] = temp['instance']['prospect']['strengths']                              # player strengths
