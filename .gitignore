@@ -1,0 +1,5 @@
+# ignore an entire directory
+/Python Code/.ipynb_checkpoints
+
+# ignore any files ending in .log
+*.log
