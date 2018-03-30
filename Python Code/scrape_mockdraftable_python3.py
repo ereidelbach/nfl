@@ -228,6 +228,10 @@ playerCount = 0
 for player in playerList:
     if (playerCount%100==0): print(playerCount)
     playerCount+=1  
+    try:
+        player['heightInches'].replace('"','')
+    except:
+        pass
     for var in player:
         if (type(player[var]) == bytes):
             player[var] = player[var].decode('utf-8')
