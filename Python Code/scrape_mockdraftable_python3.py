@@ -66,6 +66,7 @@ import json
 import pandas as pd
 import os
 from selenium import webdriver
+from selenium.webdriver.firefox.options import Options
 from bs4 import BeautifulSoup
 import requests
 import time
@@ -174,7 +175,8 @@ def retrievePlayerURL(soup,linkList):
 
 def soupifyURL(url):
     r = requests.get(url, headers=headers)
-    soup = BeautifulSoup(r.content,'lxml')
+#    soup = BeautifulSoup(r.content,'lxml')
+    soup = BeautifulSoup(r.content,'html5lib')
     return soup
 
 # establish default header information
@@ -185,13 +187,11 @@ headers = {"User-agent":
 positionList = ['QB','FB','HB','WR','TE','OT','OG','OC','ST','DT','DE','EDGE','ILB','OLB','SS','FS','CB']
 player_URL_List = []
 
-#  Use the instructions found here to install PhantomJS on Ubuntu:
-#       https://www.vultr.com/docs/how-to-install-phantomjs-on-ubuntu-16-04
-
 # Open a PhantomJS web browser and direct it to the DEA's dropbox search page
-#browser = webdriver.PhantomJS()
-#browser = webdriver.Firefox()
-browser = webdriver.Firefox(executable_path=r'E:\Projects\geckodriver.exe')
+options = Options()
+options.set_headless(headless=True)
+browser = webdriver.Firefox(firefox_options=options)
+#browser = webdriver.Firefox(executable_path=r'E:\Projects\geckodriver.exe')
 browser.implicitly_wait(100)
 
 # Iterate through every position we want to scrape
@@ -212,12 +212,12 @@ for position in positionList:
 
         # advance the page
         advancePage(browser)
-        time.sleep(3)
+        #time.sleep(3)
 
 # Now that we have all the player links, proceed to scrape each player's data
 playerList = []
 urlCount = 0
-for url in player_URL_List[3872:]:
+for url in player_URL_List:
     soup = soupifyURL(url)
     playerList.append(retrievePlayerInfo(soup,url))
     if (urlCount%100==0): print(urlCount)
@@ -238,6 +238,6 @@ for player in playerList:
                 pass
     
 # Write the contents of the playerList to a .json file
-filename = 'mockdraftable_data.json'
+filename = 'mockdraftable_data1.json'
 with open(filename, 'wt') as out:
     json.dump(playerList, out, sort_keys=True, indent=4, separators=(',', ': ')) 
