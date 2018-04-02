@@ -1,8 +1,24 @@
-# coding: utf-8
-#The goal of this notebook will be to scrape the combine data contained on (MockDraftable)[https://www.mockdraftable.com].
-#
-#Our first attempt at scraping the data will be to iterate through all position groups, grabbing player information as we go.  The way positions are stored on the site are very interesting.  They basic format is listed below:
-#
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Apr  2 14:26:57 2018
+
+@author: ejreidelbach
+
+:DESCRIPTION:
+    - The goal of this notebook will be to scrape the combine data 
+    contained on https://www.mockdraftable.com.
+ 
+    Our first attempt at scraping the data will be to iterate through all 
+    position groups, grabbing player information as we go.  The way positions 
+    are stored on the site are very interesting.  
+    
+    They basic format is listed below:
+    
+:REQUIRES:
+   
+:TODO:
+"""
 #ATH (Athlete)
 # |
 # |__ SKILL (Skill Position Player)
@@ -61,7 +77,9 @@
 #     |
 #     |__ CB (Cornerback)
 
-# Import necessary packages
+#==============================================================================
+# Package Import
+#==============================================================================
 import json
 import pandas as pd
 import os
@@ -70,6 +88,10 @@ from selenium.webdriver.firefox.options import Options
 from bs4 import BeautifulSoup
 import requests
 import time
+
+#==============================================================================
+# Function Definitions / Reference Variable Declaration
+#==============================================================================
 
 def advancePage(browser):
     # Extract the navigation bar at the bottom of the page for navigation
@@ -178,6 +200,10 @@ def soupifyURL(url):
 #    soup = BeautifulSoup(r.content,'lxml')
     soup = BeautifulSoup(r.content,'html5lib')
     return soup
+
+#==============================================================================
+# Working Code
+#==============================================================================
 
 # establish default header information
 headers = {"User-agent":
