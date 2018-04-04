@@ -1,0 +1,1332 @@
+[
+    {
+        "NAME": "THOMAS OWENS",
+        "REC. YARDS": "890",
+        "SNAPS IN ROUTE": "241",
+        "TARGETS": "86",
+        "TEAM": "FIU",
+        "YPRR": "3.69",
+        "nameFirst": "THOMAS",
+        "nameLast": "OWENS"
+    },
+    {
+        "NAME": "MARCELL ATEMAN",
+        "REC. YARDS": "1160",
+        "SNAPS IN ROUTE": "330",
+        "TARGETS": "90",
+        "TEAM": "Oklahoma St",
+        "YPRR": "3.52",
+        "nameFirst": "MARCELL",
+        "nameLast": "ATEMAN"
+    },
+    {
+        "NAME": "JAMES WASHINGTON",
+        "REC. YARDS": "1544",
+        "SNAPS IN ROUTE": "444",
+        "TARGETS": "120",
+        "TEAM": "Oklahoma St",
+        "YPRR": "3.48",
+        "nameFirst": "JAMES",
+        "nameLast": "WASHINGTON"
+    },
+    {
+        "NAME": "ANTHONY MILLER",
+        "REC. YARDS": "1459",
+        "SNAPS IN ROUTE": "421",
+        "TARGETS": "150",
+        "TEAM": "Memphis",
+        "YPRR": "3.47",
+        "nameFirst": "ANTHONY",
+        "nameLast": "MILLER"
+    },
+    {
+        "NAME": "KALIB WOODS",
+        "REC. YARDS": "619",
+        "SNAPS IN ROUTE": "179",
+        "TARGETS": "44",
+        "TEAM": "Florida Atlantic",
+        "YPRR": "3.46",
+        "nameFirst": "KALIB",
+        "nameLast": "WOODS"
+    },
+    {
+        "NAME": "CEDRICK WILSON",
+        "REC. YARDS": "1490",
+        "SNAPS IN ROUTE": "438",
+        "TARGETS": "129",
+        "TEAM": "Boise St",
+        "YPRR": "3.40",
+        "nameFirst": "CEDRICK",
+        "nameLast": "WILSON"
+    },
+    {
+        "NAME": "RICKY JEUNE",
+        "REC. YARDS": "545",
+        "SNAPS IN ROUTE": "161",
+        "TARGETS": "46",
+        "TEAM": "Georgia Tech",
+        "YPRR": "3.39",
+        "nameFirst": "RICKY",
+        "nameLast": "JEUNE"
+    },
+    {
+        "NAME": "MICHAEL GALLUP",
+        "REC. YARDS": "1413",
+        "SNAPS IN ROUTE": "444",
+        "TARGETS": "163",
+        "TEAM": "Colorado St",
+        "YPRR": "3.18",
+        "nameFirst": "MICHAEL",
+        "nameLast": "GALLUP"
+    },
+    {
+        "NAME": "JORDAN LASLEY",
+        "REC. YARDS": "1264",
+        "SNAPS IN ROUTE": "401",
+        "TARGETS": "104",
+        "TEAM": "UCLA",
+        "YPRR": "3.15",
+        "nameFirst": "JORDAN",
+        "nameLast": "LASLEY"
+    },
+    {
+        "NAME": "KEKE COUTEE",
+        "REC. YARDS": "1429",
+        "SNAPS IN ROUTE": "462",
+        "TARGETS": "121",
+        "TEAM": "Texas Tech",
+        "YPRR": "3.09",
+        "nameFirst": "KEKE",
+        "nameLast": "COUTEE"
+    },
+    {
+        "NAME": "CAM PHILLIPS",
+        "REC. YARDS": "964",
+        "SNAPS IN ROUTE": "324",
+        "TARGETS": "109",
+        "TEAM": "Virginia Tech",
+        "YPRR": "2.98",
+        "nameFirst": "CAM",
+        "nameLast": "PHILLIPS"
+    },
+    {
+        "NAME": "DJ CHARK",
+        "REC. YARDS": "873",
+        "SNAPS IN ROUTE": "299",
+        "TARGETS": "69",
+        "TEAM": "LSU",
+        "YPRR": "2.92",
+        "nameFirst": "DJ",
+        "nameLast": "CHARK"
+    },
+    {
+        "NAME": "J'MON MOORE",
+        "REC. YARDS": "1082",
+        "SNAPS IN ROUTE": "380",
+        "TARGETS": "97",
+        "TEAM": "Missouri",
+        "YPRR": "2.85",
+        "nameFirst": "J'MON",
+        "nameLast": "MOORE"
+    },
+    {
+        "NAME": "TRE'QUAN SMITH",
+        "REC. YARDS": "1171",
+        "SNAPS IN ROUTE": "417",
+        "TARGETS": "83",
+        "TEAM": "UCF",
+        "YPRR": "2.81",
+        "nameFirst": "TRE'QUAN",
+        "nameLast": "SMITH"
+    },
+    {
+        "NAME": "IKE LEWIS",
+        "REC. YARDS": "733",
+        "SNAPS IN ROUTE": "261",
+        "TARGETS": "77",
+        "TEAM": "Appalachian St",
+        "YPRR": "2.81",
+        "nameFirst": "IKE",
+        "nameLast": "LEWIS"
+    },
+    {
+        "NAME": "D.J. MOORE",
+        "REC. YARDS": "1014",
+        "SNAPS IN ROUTE": "365",
+        "TARGETS": "131",
+        "TEAM": "Maryland",
+        "YPRR": "2.78",
+        "nameFirst": "D.J.",
+        "nameLast": "MOORE"
+    },
+    {
+        "NAME": "CALVIN RIDLEY",
+        "REC. YARDS": "967",
+        "SNAPS IN ROUTE": "348",
+        "TARGETS": "98",
+        "TEAM": "Alabama",
+        "YPRR": "2.78",
+        "nameFirst": "CALVIN",
+        "nameLast": "RIDLEY"
+    },
+    {
+        "NAME": "BYRON PRINGLE",
+        "REC. YARDS": "701",
+        "SNAPS IN ROUTE": "254",
+        "TARGETS": "61",
+        "TEAM": "Kansas St",
+        "YPRR": "2.76",
+        "nameFirst": "BYRON",
+        "nameLast": "PRINGLE"
+    },
+    {
+        "NAME": "TREY QUINN",
+        "REC. YARDS": "1236",
+        "SNAPS IN ROUTE": "473",
+        "TARGETS": "154",
+        "TEAM": "SMU",
+        "YPRR": "2.61",
+        "nameFirst": "TREY",
+        "nameLast": "QUINN"
+    },
+    {
+        "NAME": "CHRIS JONES",
+        "REC. YARDS": "557",
+        "SNAPS IN ROUTE": "215",
+        "TARGETS": "55",
+        "TEAM": "Coastal Carolina",
+        "YPRR": "2.59",
+        "nameFirst": "CHRIS",
+        "nameLast": "JONES"
+    },
+    {
+        "NAME": "JAVON WIMS",
+        "REC. YARDS": "724",
+        "SNAPS IN ROUTE": "282",
+        "TARGETS": "74",
+        "TEAM": "Georgia",
+        "YPRR": "2.57",
+        "nameFirst": "JAVON",
+        "nameLast": "WIMS"
+    },
+    {
+        "NAME": "KOREY ROBERTSON",
+        "REC. YARDS": "1097",
+        "SNAPS IN ROUTE": "431",
+        "TARGETS": "117",
+        "TEAM": "Southern Miss",
+        "YPRR": "2.55",
+        "nameFirst": "KOREY",
+        "nameLast": "ROBERTSON"
+    },
+    {
+        "NAME": "DANTE PETTIS",
+        "REC. YARDS": "743",
+        "SNAPS IN ROUTE": "295",
+        "TARGETS": "98",
+        "TEAM": "Washington",
+        "YPRR": "2.52",
+        "nameFirst": "DANTE",
+        "nameLast": "PETTIS"
+    },
+    {
+        "NAME": "DARREN CARRINGTON II",
+        "REC. YARDS": "980",
+        "SNAPS IN ROUTE": "391",
+        "TARGETS": "99",
+        "TEAM": "Utah",
+        "YPRR": "2.51",
+        "nameFirst": "DARREN",
+        "nameLast": "CARRINGTON II"
+    },
+    {
+        "NAME": "MIKAH HOLDER",
+        "REC. YARDS": "595",
+        "SNAPS IN ROUTE": "242",
+        "TARGETS": "66",
+        "TEAM": "San Diego St",
+        "YPRR": "2.46",
+        "nameFirst": "MIKAH",
+        "nameLast": "HOLDER"
+    },
+    {
+        "NAME": "DEONTAY BURNETT",
+        "REC. YARDS": "1106",
+        "SNAPS IN ROUTE": "464",
+        "TARGETS": "130",
+        "TEAM": "USC",
+        "YPRR": "2.38",
+        "nameFirst": "DEONTAY",
+        "nameLast": "BURNETT"
+    },
+    {
+        "NAME": "DEVONTE BOYD",
+        "REC. YARDS": "614",
+        "SNAPS IN ROUTE": "259",
+        "TARGETS": "69",
+        "TEAM": "UNLV",
+        "YPRR": "2.37",
+        "nameFirst": "DEVONTE",
+        "nameLast": "BOYD"
+    },
+    {
+        "NAME": "LINELL BONNER",
+        "REC. YARDS": "896",
+        "SNAPS IN ROUTE": "382",
+        "TARGETS": "108",
+        "TEAM": "Houston",
+        "YPRR": "2.35",
+        "nameFirst": "LINELL",
+        "nameLast": "BONNER"
+    },
+    {
+        "NAME": "STEVEN DUNBAR",
+        "REC. YARDS": "1069",
+        "SNAPS IN ROUTE": "456",
+        "TARGETS": "113",
+        "TEAM": "Houston",
+        "YPRR": "2.34",
+        "nameFirst": "STEVEN",
+        "nameLast": "DUNBAR"
+    },
+    {
+        "NAME": "ALFONSO ONUNWOR",
+        "REC. YARDS": "782",
+        "SNAPS IN ROUTE": "336",
+        "TARGETS": "105",
+        "TEAM": "Idaho",
+        "YPRR": "2.33",
+        "nameFirst": "ALFONSO",
+        "nameLast": "ONUNWOR"
+    },
+    {
+        "NAME": "TRENT SHERFIELD",
+        "REC. YARDS": "729",
+        "SNAPS IN ROUTE": "314",
+        "TARGETS": "72",
+        "TEAM": "Vanderbilt",
+        "YPRR": "2.32",
+        "nameFirst": "TRENT",
+        "nameLast": "SHERFIELD"
+    },
+    {
+        "NAME": "MARQUEZ VALDES-SCANTLING",
+        "REC. YARDS": "875",
+        "SNAPS IN ROUTE": "379",
+        "TARGETS": "93",
+        "TEAM": "USF",
+        "YPRR": "2.31",
+        "nameFirst": "MARQUEZ",
+        "nameLast": "VALDES-SCANTLING"
+    },
+    {
+        "NAME": "CHRISTIAN KIRK",
+        "REC. YARDS": "919",
+        "SNAPS IN ROUTE": "399",
+        "TARGETS": "112",
+        "TEAM": "Texas A&M",
+        "YPRR": "2.30",
+        "nameFirst": "CHRISTIAN",
+        "nameLast": "KIRK"
+    },
+    {
+        "NAME": "CHAD BEEBE",
+        "REC. YARDS": "419",
+        "SNAPS IN ROUTE": "183",
+        "TARGETS": "43",
+        "TEAM": "Northern Illinois",
+        "YPRR": "2.29",
+        "nameFirst": "CHAD",
+        "nameLast": "BEEBE"
+    },
+    {
+        "NAME": "SERGIO BAILEY II",
+        "REC. YARDS": "878",
+        "SNAPS IN ROUTE": "384",
+        "TARGETS": "101",
+        "TEAM": "Eastern Michigan",
+        "YPRR": "2.29",
+        "nameFirst": "SERGIO",
+        "nameLast": "BAILEY II"
+    },
+    {
+        "NAME": "STEVE ISHMAEL",
+        "REC. YARDS": "1334",
+        "SNAPS IN ROUTE": "588",
+        "TARGETS": "163",
+        "TEAM": "Syracuse",
+        "YPRR": "2.27",
+        "nameFirst": "STEVE",
+        "nameLast": "ISHMAEL"
+    },
+    {
+        "NAME": "BRENDAN COPE",
+        "REC. YARDS": "498",
+        "SNAPS IN ROUTE": "221",
+        "TARGETS": "51",
+        "TEAM": "Ohio",
+        "YPRR": "2.25",
+        "nameFirst": "BRENDAN",
+        "nameLast": "COPE"
+    },
+    {
+        "NAME": "DAVON GRAYSON",
+        "REC. YARDS": "886",
+        "SNAPS IN ROUTE": "396",
+        "TARGETS": "90",
+        "TEAM": "East Carolina",
+        "YPRR": "2.24",
+        "nameFirst": "DAVON",
+        "nameLast": "GRAYSON"
+    },
+    {
+        "NAME": "ANDRE LEVRONE",
+        "REC. YARDS": "689",
+        "SNAPS IN ROUTE": "310",
+        "TARGETS": "70",
+        "TEAM": "Virginia",
+        "YPRR": "2.22",
+        "nameFirst": "ANDRE",
+        "nameLast": "LEVRONE"
+    },
+    {
+        "NAME": "COURTLAND SUTTON",
+        "REC. YARDS": "1085",
+        "SNAPS IN ROUTE": "491",
+        "TARGETS": "127",
+        "TEAM": "SMU",
+        "YPRR": "2.21",
+        "nameFirst": "COURTLAND",
+        "nameLast": "SUTTON"
+    },
+    {
+        "NAME": "STEVEN MITCHELL JR.",
+        "REC. YARDS": "644",
+        "SNAPS IN ROUTE": "298",
+        "TARGETS": "68",
+        "TEAM": "USC",
+        "YPRR": "2.16",
+        "nameFirst": "STEVEN",
+        "nameLast": "MITCHELL JR."
+    },
+    {
+        "NAME": "KEITH KIRKWOOD",
+        "REC. YARDS": "671",
+        "SNAPS IN ROUTE": "318",
+        "TARGETS": "72",
+        "TEAM": "Temple",
+        "YPRR": "2.11",
+        "nameFirst": "KEITH",
+        "nameLast": "KIRKWOOD"
+    },
+    {
+        "NAME": "ANTOINE PORTER",
+        "REC. YARDS": "548",
+        "SNAPS IN ROUTE": "260",
+        "TARGETS": "74",
+        "TEAM": "Eastern Michigan",
+        "YPRR": "2.11",
+        "nameFirst": "ANTOINE",
+        "nameLast": "PORTER"
+    },
+    {
+        "NAME": "DEON CAIN",
+        "REC. YARDS": "734",
+        "SNAPS IN ROUTE": "354",
+        "TARGETS": "90",
+        "TEAM": "Clemson",
+        "YPRR": "2.07",
+        "nameFirst": "DEON",
+        "nameLast": "CAIN"
+    },
+    {
+        "NAME": "DARREN ANDREWS",
+        "REC. YARDS": "773",
+        "SNAPS IN ROUTE": "379",
+        "TARGETS": "94",
+        "TEAM": "UCLA",
+        "YPRR": "2.04",
+        "nameFirst": "DARREN",
+        "nameLast": "ANDREWS"
+    },
+    {
+        "NAME": "TURNER SMILEY",
+        "REC. YARDS": "623",
+        "SNAPS IN ROUTE": "305",
+        "TARGETS": "53",
+        "TEAM": "North Texas",
+        "YPRR": "2.04",
+        "nameFirst": "TURNER",
+        "nameLast": "SMILEY"
+    },
+    {
+        "NAME": "CHARLES NELSON",
+        "REC. YARDS": "404",
+        "SNAPS IN ROUTE": "199",
+        "TARGETS": "45",
+        "TEAM": "Oregon",
+        "YPRR": "2.03",
+        "nameFirst": "CHARLES",
+        "nameLast": "NELSON"
+    },
+    {
+        "NAME": "KA'RAUN WHITE",
+        "REC. YARDS": "1004",
+        "SNAPS IN ROUTE": "494",
+        "TARGETS": "104",
+        "TEAM": "West Virginia",
+        "YPRR": "2.03",
+        "nameFirst": "KA'RAUN",
+        "nameLast": "WHITE"
+    },
+    {
+        "NAME": "ELIJAH KING",
+        "REC. YARDS": "751",
+        "SNAPS IN ROUTE": "370",
+        "TARGETS": "85",
+        "TEAM": "Texas St",
+        "YPRR": "2.03",
+        "nameFirst": "ELIJAH",
+        "nameLast": "KING"
+    },
+    {
+        "NAME": "GARRETT JOHNSON",
+        "REC. YARDS": "537",
+        "SNAPS IN ROUTE": "267",
+        "TARGETS": "69",
+        "TEAM": "Kentucky",
+        "YPRR": "2.01",
+        "nameFirst": "GARRETT",
+        "nameLast": "JOHNSON"
+    },
+    {
+        "NAME": "DAESEAN HAMILTON",
+        "REC. YARDS": "857",
+        "SNAPS IN ROUTE": "428",
+        "TARGETS": "82",
+        "TEAM": "Penn St",
+        "YPRR": "2.00",
+        "nameFirst": "DAESEAN",
+        "nameLast": "HAMILTON"
+    },
+    {
+        "NAME": "ADONIS JENNINGS",
+        "REC. YARDS": "745",
+        "SNAPS IN ROUTE": "372",
+        "TARGETS": "76",
+        "TEAM": "Temple",
+        "YPRR": "2.00",
+        "nameFirst": "ADONIS",
+        "nameLast": "JENNINGS"
+    },
+    {
+        "NAME": "TREVER RYEN",
+        "REC. YARDS": "469",
+        "SNAPS IN ROUTE": "235",
+        "TARGETS": "59",
+        "TEAM": "Iowa St",
+        "YPRR": "2.00",
+        "nameFirst": "TREVER",
+        "nameLast": "RYEN"
+    },
+    {
+        "NAME": "COREY WILLIS",
+        "REC. YARDS": "669",
+        "SNAPS IN ROUTE": "335",
+        "TARGETS": "75",
+        "TEAM": "Central Michigan",
+        "YPRR": "2.00",
+        "nameFirst": "COREY",
+        "nameLast": "WILLIS"
+    },
+    {
+        "NAME": "ALLEN LAZARD",
+        "REC. YARDS": "941",
+        "SNAPS IN ROUTE": "472",
+        "TARGETS": "126",
+        "TEAM": "Iowa St",
+        "YPRR": "1.99",
+        "nameFirst": "ALLEN",
+        "nameLast": "LAZARD"
+    },
+    {
+        "NAME": "ANTHONY MAHOUNGOU",
+        "REC. YARDS": "678",
+        "SNAPS IN ROUTE": "341",
+        "TARGETS": "61",
+        "TEAM": "Purdue",
+        "YPRR": "1.99",
+        "nameFirst": "ANTHONY",
+        "nameLast": "MAHOUNGOU"
+    },
+    {
+        "NAME": "WYATT DEMPS",
+        "REC. YARDS": "906",
+        "SNAPS IN ROUTE": "458",
+        "TARGETS": "109",
+        "TEAM": "Nevada",
+        "YPRR": "1.98",
+        "nameFirst": "WYATT",
+        "nameLast": "DEMPS"
+    },
+    {
+        "NAME": "KAMATHI HOLSEY",
+        "REC. YARDS": "532",
+        "SNAPS IN ROUTE": "271",
+        "TARGETS": "53",
+        "TEAM": "Buffalo",
+        "YPRR": "1.96",
+        "nameFirst": "KAMATHI",
+        "nameLast": "HOLSEY"
+    },
+    {
+        "NAME": "DE'MORNAY PIERSON-EL",
+        "REC. YARDS": "623",
+        "SNAPS IN ROUTE": "319",
+        "TARGETS": "66",
+        "TEAM": "Nebraska",
+        "YPRR": "1.95",
+        "nameFirst": "DE'MORNAY",
+        "nameLast": "PIERSON-EL"
+    },
+    {
+        "NAME": "EMANUEL THOMPSON",
+        "REC. YARDS": "420",
+        "SNAPS IN ROUTE": "216",
+        "TARGETS": "59",
+        "TEAM": "Troy",
+        "YPRR": "1.94",
+        "nameFirst": "EMANUEL",
+        "nameLast": "THOMPSON"
+    },
+    {
+        "NAME": "RICHIE JAMES",
+        "REC. YARDS": "290",
+        "SNAPS IN ROUTE": "150",
+        "TARGETS": "56",
+        "TEAM": "Middle Tennessee St",
+        "YPRR": "1.93",
+        "nameFirst": "RICHIE",
+        "nameLast": "JAMES"
+    },
+    {
+        "NAME": "KERRY THOMAS JR.",
+        "REC. YARDS": "441",
+        "SNAPS IN ROUTE": "230",
+        "TARGETS": "46",
+        "TEAM": "UTSA",
+        "YPRR": "1.92",
+        "nameFirst": "KERRY",
+        "nameLast": "THOMAS JR."
+    },
+    {
+        "NAME": "DAMION RATLEY",
+        "REC. YARDS": "694",
+        "SNAPS IN ROUTE": "362",
+        "TARGETS": "54",
+        "TEAM": "Texas A&M",
+        "YPRR": "1.92",
+        "nameFirst": "DAMION",
+        "nameLast": "RATLEY"
+    },
+    {
+        "NAME": "TAVARES MARTIN JR.",
+        "REC. YARDS": "831",
+        "SNAPS IN ROUTE": "436",
+        "TARGETS": "105",
+        "TEAM": "Washington St",
+        "YPRR": "1.91",
+        "nameFirst": "TAVARES",
+        "nameLast": "MARTIN JR."
+    },
+    {
+        "NAME": "JESTER WEAH",
+        "REC. YARDS": "698",
+        "SNAPS IN ROUTE": "366",
+        "TARGETS": "80",
+        "TEAM": "Pittsburgh",
+        "YPRR": "1.91",
+        "nameFirst": "JESTER",
+        "nameLast": "WEAH"
+    },
+    {
+        "NAME": "TEO REDDING",
+        "REC. YARDS": "624",
+        "SNAPS IN ROUTE": "335",
+        "TARGETS": "72",
+        "TEAM": "Bowling Green",
+        "YPRR": "1.86",
+        "nameFirst": "TEO",
+        "nameLast": "REDDING"
+    },
+    {
+        "NAME": "JALEEL SCOTT",
+        "REC. YARDS": "1078",
+        "SNAPS IN ROUTE": "579",
+        "TARGETS": "122",
+        "TEAM": "New Mexico St",
+        "YPRR": "1.86",
+        "nameFirst": "JALEEL",
+        "nameLast": "SCOTT"
+    },
+    {
+        "NAME": "DETRICH CLARK",
+        "REC. YARDS": "501",
+        "SNAPS IN ROUTE": "271",
+        "TARGETS": "56",
+        "TEAM": "Colorado St",
+        "YPRR": "1.85",
+        "nameFirst": "DETRICH",
+        "nameLast": "CLARK"
+    },
+    {
+        "NAME": "JORDAN THOMAS",
+        "REC. YARDS": "263",
+        "SNAPS IN ROUTE": "142",
+        "TARGETS": "42",
+        "TEAM": "Mississippi St",
+        "YPRR": "1.85",
+        "nameFirst": "JORDAN",
+        "nameLast": "THOMAS"
+    },
+    {
+        "NAME": "MARK CHAPMAN",
+        "REC. YARDS": "881",
+        "SNAPS IN ROUTE": "482",
+        "TARGETS": "101",
+        "TEAM": "Central Michigan",
+        "YPRR": "1.83",
+        "nameFirst": "MARK",
+        "nameLast": "CHAPMAN"
+    },
+    {
+        "NAME": "CHRIS MURRAY",
+        "REC. YARDS": "693",
+        "SNAPS IN ROUTE": "379",
+        "TARGETS": "82",
+        "TEAM": "Arkansas St",
+        "YPRR": "1.83",
+        "nameFirst": "CHRIS",
+        "nameLast": "MURRAY"
+    },
+    {
+        "NAME": "AUDEN TATE",
+        "REC. YARDS": "548",
+        "SNAPS IN ROUTE": "306",
+        "TARGETS": "67",
+        "TEAM": "Florida St",
+        "YPRR": "1.79",
+        "nameFirst": "AUDEN",
+        "nameLast": "TATE"
+    },
+    {
+        "NAME": "DONI DOWLING",
+        "REC. YARDS": "641",
+        "SNAPS IN ROUTE": "366",
+        "TARGETS": "105",
+        "TEAM": "Virginia",
+        "YPRR": "1.75",
+        "nameFirst": "DONI",
+        "nameLast": "DOWLING"
+    },
+    {
+        "NAME": "EQUANIMEOUS ST. BROWN",
+        "REC. YARDS": "515",
+        "SNAPS IN ROUTE": "303",
+        "TARGETS": "71",
+        "TEAM": "Notre Dame",
+        "YPRR": "1.70",
+        "nameFirst": "EQUANIMEOUS",
+        "nameLast": "ST. BROWN"
+    },
+    {
+        "NAME": "BRAXTON BERRIOS",
+        "REC. YARDS": "680",
+        "SNAPS IN ROUTE": "402",
+        "TARGETS": "84",
+        "TEAM": "Miami (FL)",
+        "YPRR": "1.69",
+        "nameFirst": "BRAXTON",
+        "nameLast": "BERRIOS"
+    },
+    {
+        "NAME": "JIMMY WILLIAMS",
+        "REC. YARDS": "431",
+        "SNAPS IN ROUTE": "259",
+        "TARGETS": "62",
+        "TEAM": "East Carolina",
+        "YPRR": "1.66",
+        "nameFirst": "JIMMY",
+        "nameLast": "WILLIAMS"
+    },
+    {
+        "NAME": "TEVARIS MCCORMICK",
+        "REC. YARDS": "418",
+        "SNAPS IN ROUTE": "254",
+        "TARGETS": "47",
+        "TEAM": "Troy",
+        "YPRR": "1.65",
+        "nameFirst": "TEVARIS",
+        "nameLast": "MCCORMICK"
+    },
+    {
+        "NAME": "MARK QUATTLEBAUM",
+        "REC. YARDS": "343",
+        "SNAPS IN ROUTE": "209",
+        "TARGETS": "51",
+        "TEAM": "Charlotte",
+        "YPRR": "1.64",
+        "nameFirst": "MARK",
+        "nameLast": "QUATTLEBAUM"
+    },
+    {
+        "NAME": "ARMANTI FOREMAN",
+        "REC. YARDS": "280",
+        "SNAPS IN ROUTE": "171",
+        "TARGETS": "43",
+        "TEAM": "Texas",
+        "YPRR": "1.64",
+        "nameFirst": "ARMANTI",
+        "nameLast": "FOREMAN"
+    },
+    {
+        "NAME": "BRANDON POWELL",
+        "REC. YARDS": "406",
+        "SNAPS IN ROUTE": "249",
+        "TARGETS": "67",
+        "TEAM": "Florida",
+        "YPRR": "1.63",
+        "nameFirst": "BRANDON",
+        "nameLast": "POWELL"
+    },
+    {
+        "NAME": "SHAY FIELDS",
+        "REC. YARDS": "623",
+        "SNAPS IN ROUTE": "387",
+        "TARGETS": "77",
+        "TEAM": "Colorado",
+        "YPRR": "1.61",
+        "nameFirst": "SHAY",
+        "nameLast": "FIELDS"
+    },
+    {
+        "NAME": "JOSH STEWART",
+        "REC. YARDS": "518",
+        "SNAPS IN ROUTE": "321",
+        "TARGETS": "69",
+        "TEAM": "UTSA",
+        "YPRR": "1.61",
+        "nameFirst": "JOSH",
+        "nameLast": "STEWART"
+    },
+    {
+        "NAME": "C.J. DUNCAN",
+        "REC. YARDS": "517",
+        "SNAPS IN ROUTE": "324",
+        "TARGETS": "76",
+        "TEAM": "Vanderbilt",
+        "YPRR": "1.60",
+        "nameFirst": "C.J.",
+        "nameLast": "DUNCAN"
+    },
+    {
+        "NAME": "WORKPEH KOFA",
+        "REC. YARDS": "340",
+        "SNAPS IN ROUTE": "213",
+        "TARGETS": "41",
+        "TEAM": "Charlotte",
+        "YPRR": "1.60",
+        "nameFirst": "WORKPEH",
+        "nameLast": "KOFA"
+    },
+    {
+        "NAME": "DESMON WHITE",
+        "REC. YARDS": "421",
+        "SNAPS IN ROUTE": "265",
+        "TARGETS": "58",
+        "TEAM": "TCU",
+        "YPRR": "1.59",
+        "nameFirst": "DESMON",
+        "nameLast": "WHITE"
+    },
+    {
+        "NAME": "BRYCE BOBO",
+        "REC. YARDS": "693",
+        "SNAPS IN ROUTE": "442",
+        "TARGETS": "95",
+        "TEAM": "Colorado",
+        "YPRR": "1.57",
+        "nameFirst": "BRYCE",
+        "nameLast": "BOBO"
+    },
+    {
+        "NAME": "ERVIN PHILIPS",
+        "REC. YARDS": "891",
+        "SNAPS IN ROUTE": "583",
+        "TARGETS": "138",
+        "TEAM": "Syracuse",
+        "YPRR": "1.53",
+        "nameFirst": "ERVIN",
+        "nameLast": "PHILIPS"
+    },
+    {
+        "NAME": "TAIVON JACOBS",
+        "REC. YARDS": "527",
+        "SNAPS IN ROUTE": "346",
+        "TARGETS": "83",
+        "TEAM": "Maryland",
+        "YPRR": "1.52",
+        "nameFirst": "TAIVON",
+        "nameLast": "JACOBS"
+    },
+    {
+        "NAME": "SIMMIE COBBS JR.",
+        "REC. YARDS": "830",
+        "SNAPS IN ROUTE": "545",
+        "TARGETS": "119",
+        "TEAM": "Indiana",
+        "YPRR": "1.52",
+        "nameFirst": "SIMMIE",
+        "nameLast": "COBBS JR."
+    },
+    {
+        "NAME": "JACOB SANNON",
+        "REC. YARDS": "598",
+        "SNAPS IN ROUTE": "395",
+        "TARGETS": "89",
+        "TEAM": "Idaho",
+        "YPRR": "1.51",
+        "nameFirst": "JACOB",
+        "nameLast": "SANNON"
+    },
+    {
+        "NAME": "JOHN DIARSE",
+        "REC. YARDS": "574",
+        "SNAPS IN ROUTE": "386",
+        "TARGETS": "64",
+        "TEAM": "TCU",
+        "YPRR": "1.49",
+        "nameFirst": "JOHN",
+        "nameLast": "DIARSE"
+    },
+    {
+        "NAME": "NACARIUS FANT",
+        "REC. YARDS": "704",
+        "SNAPS IN ROUTE": "474",
+        "TARGETS": "101",
+        "TEAM": "Western Kentucky",
+        "YPRR": "1.49",
+        "nameFirst": "NACARIUS",
+        "nameLast": "FANT"
+    },
+    {
+        "NAME": "DYLAN CANTRELL",
+        "REC. YARDS": "815",
+        "SNAPS IN ROUTE": "546",
+        "TARGETS": "112",
+        "TEAM": "Texas Tech",
+        "YPRR": "1.49",
+        "nameFirst": "DYLAN",
+        "nameLast": "CANTRELL"
+    },
+    {
+        "NAME": "TRA'VON CHAPMAN",
+        "REC. YARDS": "466",
+        "SNAPS IN ROUTE": "317",
+        "TARGETS": "76",
+        "TEAM": "Akron",
+        "YPRR": "1.47",
+        "nameFirst": "TRA'VON",
+        "nameLast": "CHAPMAN"
+    },
+    {
+        "NAME": "TYLER BATSON",
+        "REC. YARDS": "370",
+        "SNAPS IN ROUTE": "252",
+        "TARGETS": "47",
+        "TEAM": "UTEP",
+        "YPRR": "1.47",
+        "nameFirst": "TYLER",
+        "nameLast": "BATSON"
+    },
+    {
+        "NAME": "RAY-RAY MCCLOUD",
+        "REC. YARDS": "490",
+        "SNAPS IN ROUTE": "341",
+        "TARGETS": "66",
+        "TEAM": "Clemson",
+        "YPRR": "1.44",
+        "nameFirst": "RAY-RAY",
+        "nameLast": "MCCLOUD"
+    },
+    {
+        "NAME": "AUSTIN WOLF",
+        "REC. YARDS": "467",
+        "SNAPS IN ROUTE": "326",
+        "TARGETS": "58",
+        "TEAM": "Akron",
+        "YPRR": "1.43",
+        "nameFirst": "AUSTIN",
+        "nameLast": "WOLF"
+    },
+    {
+        "NAME": "PHIL MAYHUE",
+        "REC. YARDS": "521",
+        "SNAPS IN ROUTE": "370",
+        "TARGETS": "59",
+        "TEAM": "Memphis",
+        "YPRR": "1.41",
+        "nameFirst": "PHIL",
+        "nameLast": "MAYHUE"
+    },
+    {
+        "NAME": "CHRIS DAVIS JR.",
+        "REC. YARDS": "262",
+        "SNAPS IN ROUTE": "186",
+        "TARGETS": "42",
+        "TEAM": "New Mexico",
+        "YPRR": "1.41",
+        "nameFirst": "CHRIS",
+        "nameLast": "DAVIS JR."
+    },
+    {
+        "NAME": "DA'MARI SCOTT",
+        "REC. YARDS": "561",
+        "SNAPS IN ROUTE": "408",
+        "TARGETS": "82",
+        "TEAM": "Fresno St",
+        "YPRR": "1.38",
+        "nameFirst": "DA'MARI",
+        "nameLast": "SCOTT"
+    },
+    {
+        "NAME": "TRENT BOSTICK",
+        "REC. YARDS": "357",
+        "SNAPS IN ROUTE": "261",
+        "TARGETS": "57",
+        "TEAM": "Charlotte",
+        "YPRR": "1.37",
+        "nameFirst": "TRENT",
+        "nameLast": "BOSTICK"
+    },
+    {
+        "NAME": "KAMRIN SOLOMON",
+        "REC. YARDS": "395",
+        "SNAPS IN ROUTE": "291",
+        "TARGETS": "48",
+        "TEAM": "Florida Atlantic",
+        "YPRR": "1.36",
+        "nameFirst": "KAMRIN",
+        "nameLast": "SOLOMON"
+    },
+    {
+        "NAME": "DEVIN GRAY",
+        "REC. YARDS": "444",
+        "SNAPS IN ROUTE": "329",
+        "TARGETS": "54",
+        "TEAM": "Cincinnati",
+        "YPRR": "1.35",
+        "nameFirst": "DEVIN",
+        "nameLast": "GRAY"
+    },
+    {
+        "NAME": "MARCHIE MURDOCK",
+        "REC. YARDS": "513",
+        "SNAPS IN ROUTE": "383",
+        "TARGETS": "61",
+        "TEAM": "Iowa St",
+        "YPRR": "1.34",
+        "nameFirst": "MARCHIE",
+        "nameLast": "MURDOCK"
+    },
+    {
+        "NAME": "GLENN SMITH",
+        "REC. YARDS": "361",
+        "SNAPS IN ROUTE": "274",
+        "TARGETS": "63",
+        "TEAM": "Georgia St",
+        "YPRR": "1.32",
+        "nameFirst": "GLENN",
+        "nameLast": "SMITH"
+    },
+    {
+        "NAME": "A.J. CONEY",
+        "REC. YARDS": "511",
+        "SNAPS IN ROUTE": "396",
+        "TARGETS": "67",
+        "TEAM": "Akron",
+        "YPRR": "1.29",
+        "nameFirst": "A.J.",
+        "nameLast": "CONEY"
+    },
+    {
+        "NAME": "MALIK TURNER",
+        "REC. YARDS": "342",
+        "SNAPS IN ROUTE": "266",
+        "TARGETS": "61",
+        "TEAM": "Illinois",
+        "YPRR": "1.29",
+        "nameFirst": "MALIK",
+        "nameLast": "TURNER"
+    },
+    {
+        "NAME": "MACAN WILSON",
+        "REC. YARDS": "446",
+        "SNAPS IN ROUTE": "349",
+        "TARGETS": "58",
+        "TEAM": "Northwestern",
+        "YPRR": "1.28",
+        "nameFirst": "MACAN",
+        "nameLast": "WILSON"
+    },
+    {
+        "NAME": "JORDAN VEASY",
+        "REC. YARDS": "491",
+        "SNAPS IN ROUTE": "390",
+        "TARGETS": "65",
+        "TEAM": "California",
+        "YPRR": "1.26",
+        "nameFirst": "JORDAN",
+        "nameLast": "VEASY"
+    },
+    {
+        "NAME": "JOHNNIE NIUPALAU",
+        "REC. YARDS": "368",
+        "SNAPS IN ROUTE": "296",
+        "TARGETS": "44",
+        "TEAM": "Eastern Michigan",
+        "YPRR": "1.24",
+        "nameFirst": "JOHNNIE",
+        "nameLast": "NIUPALAU"
+    },
+    {
+        "NAME": "DONALD GRAY",
+        "REC. YARDS": "215",
+        "SNAPS IN ROUTE": "174",
+        "TARGETS": "42",
+        "TEAM": "Mississippi St",
+        "YPRR": "1.24",
+        "nameFirst": "DONALD",
+        "nameLast": "GRAY"
+    },
+    {
+        "NAME": "QUAY JOHNSON",
+        "REC. YARDS": "461",
+        "SNAPS IN ROUTE": "376",
+        "TARGETS": "76",
+        "TEAM": "East Carolina",
+        "YPRR": "1.23",
+        "nameFirst": "QUAY",
+        "nameLast": "JOHNSON"
+    },
+    {
+        "NAME": "JARED MURPHY",
+        "REC. YARDS": "431",
+        "SNAPS IN ROUTE": "354",
+        "TARGETS": "58",
+        "TEAM": "Miami (OH)",
+        "YPRR": "1.22",
+        "nameFirst": "JARED",
+        "nameLast": "MURPHY"
+    },
+    {
+        "NAME": "BRAELON ROBERTS",
+        "REC. YARDS": "288",
+        "SNAPS IN ROUTE": "237",
+        "TARGETS": "41",
+        "TEAM": "Utah St",
+        "YPRR": "1.22",
+        "nameFirst": "BRAELON",
+        "nameLast": "ROBERTS"
+    },
+    {
+        "NAME": "MATT VANDEBERG",
+        "REC. YARDS": "384",
+        "SNAPS IN ROUTE": "316",
+        "TARGETS": "53",
+        "TEAM": "Iowa",
+        "YPRR": "1.22",
+        "nameFirst": "MATT",
+        "nameLast": "VANDEBERG"
+    },
+    {
+        "NAME": "SAM MARTIN",
+        "REC. YARDS": "359",
+        "SNAPS IN ROUTE": "296",
+        "TARGETS": "44",
+        "TEAM": "Miami (OH)",
+        "YPRR": "1.21",
+        "nameFirst": "SAM",
+        "nameLast": "MARTIN"
+    },
+    {
+        "NAME": "GREGORY PHILLIPS",
+        "REC. YARDS": "424",
+        "SNAPS IN ROUTE": "349",
+        "TARGETS": "67",
+        "TEAM": "Purdue",
+        "YPRR": "1.21",
+        "nameFirst": "GREGORY",
+        "nameLast": "PHILLIPS"
+    },
+    {
+        "NAME": "JONAH TRINNAMAN",
+        "REC. YARDS": "305",
+        "SNAPS IN ROUTE": "256",
+        "TARGETS": "47",
+        "TEAM": "BYU",
+        "YPRR": "1.19",
+        "nameFirst": "JONAH",
+        "nameLast": "TRINNAMAN"
+    },
+    {
+        "NAME": "DEVIN ROSS",
+        "REC. YARDS": "489",
+        "SNAPS IN ROUTE": "416",
+        "TARGETS": "81",
+        "TEAM": "Colorado",
+        "YPRR": "1.18",
+        "nameFirst": "DEVIN",
+        "nameLast": "ROSS"
+    },
+    {
+        "NAME": "CAMERON BATSON",
+        "REC. YARDS": "487",
+        "SNAPS IN ROUTE": "413",
+        "TARGETS": "72",
+        "TEAM": "Texas Tech",
+        "YPRR": "1.18",
+        "nameFirst": "CAMERON",
+        "nameLast": "BATSON"
+    },
+    {
+        "NAME": "DIJON PASCHAL",
+        "REC. YARDS": "295",
+        "SNAPS IN ROUTE": "250",
+        "TARGETS": "46",
+        "TEAM": "Arkansas St",
+        "YPRR": "1.18",
+        "nameFirst": "DIJON",
+        "nameLast": "PASCHAL"
+    },
+    {
+        "NAME": "KEELAN EWALIKO",
+        "REC. YARDS": "299",
+        "SNAPS IN ROUTE": "258",
+        "TARGETS": "42",
+        "TEAM": "Hawaii",
+        "YPRR": "1.16",
+        "nameFirst": "KEELAN",
+        "nameLast": "EWALIKO"
+    },
+    {
+        "NAME": "ALLENZAE STAGGERS",
+        "REC. YARDS": "479",
+        "SNAPS IN ROUTE": "412",
+        "TARGETS": "77",
+        "TEAM": "Southern Miss",
+        "YPRR": "1.16",
+        "nameFirst": "ALLENZAE",
+        "nameLast": "STAGGERS"
+    },
+    {
+        "NAME": "JORDAN CUNNINGHAM",
+        "REC. YARDS": "307",
+        "SNAPS IN ROUTE": "279",
+        "TARGETS": "44",
+        "TEAM": "North Carolina",
+        "YPRR": "1.10",
+        "nameFirst": "JORDAN",
+        "nameLast": "CUNNINGHAM"
+    },
+    {
+        "NAME": "JORDAN VILLAMIN",
+        "REC. YARDS": "356",
+        "SNAPS IN ROUTE": "330",
+        "TARGETS": "56",
+        "TEAM": "Oregon St",
+        "YPRR": "1.08",
+        "nameFirst": "JORDAN",
+        "nameLast": "VILLAMIN"
+    },
+    {
+        "NAME": "AMMON BARKER",
+        "REC. YARDS": "398",
+        "SNAPS IN ROUTE": "368",
+        "TARGETS": "69",
+        "TEAM": "Hawaii",
+        "YPRR": "1.08",
+        "nameFirst": "AMMON",
+        "nameLast": "BARKER"
+    },
+    {
+        "NAME": "CHRISTIAN BLAKE",
+        "REC. YARDS": "437",
+        "SNAPS IN ROUTE": "424",
+        "TARGETS": "89",
+        "TEAM": "Northern Illinois",
+        "YPRR": "1.03",
+        "nameFirst": "CHRISTIAN",
+        "nameLast": "BLAKE"
+    },
+    {
+        "NAME": "MARLON WATTS",
+        "REC. YARDS": "319",
+        "SNAPS IN ROUTE": "316",
+        "TARGETS": "43",
+        "TEAM": "Louisiana Tech",
+        "YPRR": "1.01",
+        "nameFirst": "MARLON",
+        "nameLast": "WATTS"
+    },
+    {
+        "NAME": "GREGORY HOGAN",
+        "REC. YARDS": "272",
+        "SNAPS IN ROUTE": "290",
+        "TARGETS": "42",
+        "TEAM": "New Mexico St",
+        "YPRR": "0.94",
+        "nameFirst": "GREGORY",
+        "nameLast": "HOGAN"
+    },
+    {
+        "NAME": "ERIC COOPER",
+        "REC. YARDS": "280",
+        "SNAPS IN ROUTE": "297",
+        "TARGETS": "42",
+        "TEAM": "Central Michigan",
+        "YPRR": "0.94",
+        "nameFirst": "ERIC",
+        "nameLast": "COOPER"
+    },
+    {
+        "NAME": "CONNER CRAMER",
+        "REC. YARDS": "277",
+        "SNAPS IN ROUTE": "318",
+        "TARGETS": "47",
+        "TEAM": "New Mexico St",
+        "YPRR": "0.87",
+        "nameFirst": "CONNER",
+        "nameLast": "CRAMER"
+    },
+    {
+        "NAME": "T.L. FORD II",
+        "REC. YARDS": "211",
+        "SNAPS IN ROUTE": "277",
+        "TARGETS": "43",
+        "TEAM": "Charlotte",
+        "YPRR": "0.76",
+        "nameFirst": "T.L.",
+        "nameLast": "FORD II"
+    },
+    {
+        "NAME": "ISAIAH JONES",
+        "REC. YARDS": "191",
+        "SNAPS IN ROUTE": "286",
+        "TARGETS": "48",
+        "TEAM": "Southern Miss",
+        "YPRR": "0.67",
+        "nameFirst": "ISAIAH",
+        "nameLast": "JONES"
+    }
+]
