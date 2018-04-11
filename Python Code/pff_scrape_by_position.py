@@ -6,8 +6,8 @@ Created on Fri Mar 30 13:07:16 2018
 @author: ejreidelbach
 
 :DESCRIPTION:
-    - This script will transfer the contents of the PFF 2018 NFL Draft Guide PDF
-    into a .JSON file.
+    - This script will transfer the player statistic tables for each position
+    in the PFF 2018 NFL Draft Guide PDF into a .JSON file.
 
 :REQUIRES:  
     - Tabula  (https://pypi.python.org/pypi/tabula-py)
@@ -32,46 +32,38 @@ import json
 #==============================================================================
 
 # Set the project working directory
-os.chdir(r'/home/ejreidelbach/projects/NFL/Data/Draft')
+os.chdir(r'/home/ejreidelbach/projects/NFL/Data/DraftV2')
 
 # Helpful Tutorials
 # https://medium.com/dunder-data/selecting-subsets-of-data-in-pandas-6fcd0170be9c
 # https://dbsnail.com/2017/11/07/extracting-tables-in-pdf-format-with-tabula-py/
 # https://blog.chezo.uno/tabula-py-extract-table-from-pdf-into-python-dataframe-6c7acfa5f302
 
-# Extract PFF Position Rankings
-rankingPageDict = {'QB':5, 'RB':26, 'WR':47, 'TE':87, 'OT':103, 'OG':125,
-                   'OC':142, 'CB':156, 'S':184, 'LB':208, 'DT':242, 'DE':274}
-
-#df2 = read_pdf('draft-guide2018.pdf',pages=rankingPageDict['QB'])
-
-
-
 # Extract the PFF Positional Statistics
-statsPageDict = {'QB:Adjusted_Completion_Percentage':'6-7',
-                 'QB:Under_Pressure':'8-9',
-                 'QB:Deep_Passing':'10-11',
-                 'RB:Elusive_Rating':'28-29',
-                 'RB:Pass_Blocking_Efficiency':'30-31',
-                 'WR:Yards_Per_Route_Run':'49-52',
-                 'WR:Deep_Passing':'53-55',
-                 'WR:Drop_Rate':'56-59',
-                 'WR:Slot_Performance':'60-61',
-                 'TE:Yards_Per_Route_Run':'89-90',
-                 'OT:Pass_Blocking_Efficiency':'105-107',
-                 'OG:Pass_Blocking_Efficiency':'127-128',
-                 'OC:Pass_Blocking_Efficiency':'144-145',
-                 'CB:Coverage':'158-161',
-                 'CB:Slot_Performance':'162-164',
-                 'S:Run_Stop_Percentage':'186-188',
-                 'S:Tackling_Efficiency':'189-192', #requires special handling
-                 'LB:Run_Stop_Percentage':'210-213',
-                 'LB:Tackling_Efficiency':'214-217', #requires special handling
-                 'LB:Pass_Rush_Opportunity':'218-221',
-                 'DT:Pass_Rush_Productivity':'244-248',
-                 'DT:Run_Stop_Percentage':'249-253',
-                 'DE:Pass_Rush_Productivity':'276-279', #requires special handling
-                 'DE:Run_Stop_Percentage':'280-283'}
+statsPageDict = {'QB:Adjusted_Completion_Percentage':'7-8',
+                 'QB:Under_Pressure':'9-10',
+                 'QB:Deep_Passing':'11-12',
+                 'RB:Elusive_Rating':'35-36',
+                 'RB:Pass_Blocking_Efficiency':'37-38',
+                 'WR:Yards_Per_Route_Run':'68-71',
+                 'WR:Deep_Passing':'72-74',
+                 'WR:Drop_Rate':'75-78',
+                 'WR:Slot_Performance':'79-80',
+                 'TE:Yards_Per_Route_Run':'123-124',
+                 'OT:Pass_Blocking_Efficiency':'141-143',
+                 'OG:Pass_Blocking_Efficiency':'169-170',
+                 'OC:Pass_Blocking_Efficiency':'191-192',
+                 'CB:Coverage':'328-331',
+                 'CB:Slot_Performance':'332-333,371',
+                 'S:Run_Stop_Percentage':'374-376',
+                 'S:Tackling_Efficiency':'377-380', #requires special handling
+                 'LB:Run_Stop_Percentage':'285-288',
+                 'LB:Tackling_Efficiency':'289-292', #requires special handling
+                 'LB:Pass_Rush_Opportunity':'293-296',
+                 'DT:Pass_Rush_Productivity':'246-250',
+                 'DT:Run_Stop_Percentage':'251-255',
+                 'DE:Pass_Rush_Productivity':'207-210', #requires special handling
+                 'DE:Run_Stop_Percentage':'211-214'}
 
 for key in statsPageDict:
     statsList = []
@@ -79,7 +71,7 @@ for key in statsPageDict:
     print("Starting " + key)
     
     # Grab the requested tables from the specified PDF pages
-    tempStats = read_pdf('draft-guide2018.pdf', multiple_tables = True,
+    tempStats = read_pdf('2018 Draft Guide v2.pdf', multiple_tables = True,
               pages=statsPageDict[key])
     
     # Extract the information from the retrieved tables
