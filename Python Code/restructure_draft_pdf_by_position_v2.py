@@ -74,7 +74,6 @@ for posDict in fileDict:
         # Add file information to a master dataframe for the position
         if len(positionDF) == 0:
             positionDF = tempDF
-            #positionDF = pd.concat([positionDF,tempDF], ignore_index = True)
         else:
             positionDF = pd.merge(positionDF,tempDF, how='outer')
         
@@ -83,12 +82,13 @@ for posDict in fileDict:
         positionDict = positionDF.to_dict('records')
         for d in positionDict:
             positionList.append(d)
-            masterPosList.append(d) # Add to master position List
-            
-        # Output the reduced json file
-        fname_new = r'/home/ejreidelbach/projects/NFL/Data/DraftV2/pff_draft_guide_2018_statistics_' + str(posDict) + '.json'
-        with open(fname_new, 'wt') as out:
-            json.dump(positionList, out, sort_keys=True, indent=4, separators=(',', ': '))
+               
+    masterPosList.append(positionList)  
+    
+    # Output the reduced json file
+    fname_new = r'/home/ejreidelbach/projects/NFL/Data/DraftV2/pff_draft_guide_2018_statistics_' + str(posDict) + '.json'
+    with open(fname_new, 'wt') as out:
+        json.dump(positionList, out, sort_keys=True, indent=4, separators=(',', ': '))       
             
 # Output the reduced json file
 fname_new = r'/home/ejreidelbach/projects/NFL/Data/DraftV2/pff_draft_guide_2018_statistics_Combined.json'
