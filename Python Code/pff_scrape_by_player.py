@@ -13,6 +13,8 @@ Created on Wed Apr 11 10:03:18 2018
     - Tabula  (https://pypi.python.org/pypi/tabula-py)
    
 :TODO:
+    - the information for G Will Hernandez is incorrect on page 172 and will 
+    require manual correction in the output JSON file
 """
  
 #==============================================================================
@@ -109,41 +111,40 @@ for position in playerPageDict:
         
     # Merge tables containing player information into one JSON file
     playerList = []
-    playerInfo = {}
     for count in range(0,len(page_nums)):
+        playerInfo = {}
         # Name and Position        
         playerInfo['position'] = playerNameList[count].loc[0,0].split(' ')[0]
         playerInfo['nameFirst'] = playerNameList[count].loc[0,0].split(' ')[1]
         playerInfo['nameLast'] = playerNameList[count].loc[0,0].split(' ' )[2]
         
         # Basic Player Info
-        playerInfo['college'] = playerInfoList[count].loc[0,0].split(': ')[1]
+        playerInfo['TEAM'] = playerInfoList[count].loc[0,0].split(': ')[1]
         playerInfo['schoolYear'] = playerInfoList[count].loc[0,1].split(': ')[1]
         playerInfo['pffGrade'] = playerInfoList[count].loc[1,0].split(': ')[1]
         playerInfo['pffPosRank'] = playerInfoList[count].loc[1,1].split(': ')[1]
         
         # Player Historic Stats
+        stats = []
         stats = playerStatsList[count].to_dict('records')
         for item in stats:
             year = item.pop('Unnamed: 0')
             if (year == 'THREE YEAR STATS'):
                 year = 'ThreeYearTotal'
-            year = 'stats'+year
+            year = 'stats'+str(year)
+            # recast stats as strings to avoid the following error:
+            #   Object of type 'int64' is not JSON serializable
+            item = {k:str(v) for k, v in item.items()}
             playerInfo[year] = item
-                
+                            
         # Player Advanced Stats
         advStats = advStatsList[count].T.iloc[:2,:]
         advStats.columns = advStats.iloc[0,:]
         advStats.drop(advStats.index[0], inplace=True)
         playerInfo.update(advStats.to_dict('records')[0])
         playerList.append(playerInfo)
-            
-#    # Add the extracted information to a permanent list
-#    storageDict = storageDF.to_dict('records')
-#    for d in storageDict:
-#        statsList.append(d)
-#
-#    # Output the list to a file
-#    fname_new = 'Positional/pff_draft_guide_2018_player_statistics_' + str(position) + '.json'
-#    with open(fname_new, 'wt') as out:
-#        json.dump(statsList, out, sort_keys=True, indent=4, separators=(',', ': '))
+    
+    # Output the list to a file
+    fname_new = 'pff_draft_guide_2018_player_statistics_' + str(position) + '.json'
+    with open(fname_new, 'wt') as out:
+        json.dump(playerList, out, sort_keys=True, indent=4, separators=(',', ': '))

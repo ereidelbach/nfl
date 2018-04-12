@@ -1,0 +1,452 @@
+[
+    {
+        "PASS BLOCK EFFICIENCY": "98.5",
+        "RUN BLOCK SUCCESS %": "90.7%",
+        "SNAPS/BULLRUSH\rPRESSURE": "162.7",
+        "SNAPS/INSIDE\rPRESSURE": "488.0",
+        "SNAPS/OUTSIDE\rPRESSURE": "97.6",
+        "college": "MICHIGAN STATE",
+        "nameFirst": "BRIAN",
+        "nameLast": "ALLEN",
+        "pffGrade": "86.7",
+        "pffPosRank": "8",
+        "position": "C",
+        "schoolYear": "SR",
+        "stats2015": {
+            "HURRIES": "17",
+            "PB SNAPS": "422",
+            "PEN": "2",
+            "QB HITS": "3",
+            "RB SNAPS": "446",
+            "SACKS": "2",
+            "SNAPS": "868"
+        },
+        "stats2016": {
+            "HURRIES": "7",
+            "PB SNAPS": "415",
+            "PEN": "1",
+            "QB HITS": "1",
+            "RB SNAPS": "380",
+            "SACKS": "2",
+            "SNAPS": "795"
+        },
+        "stats2017": {
+            "HURRIES": "8",
+            "PB SNAPS": "488",
+            "PEN": "4",
+            "QB HITS": "2",
+            "RB SNAPS": "452",
+            "SACKS": "0",
+            "SNAPS": "940"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "32",
+            "PB SNAPS": "1325",
+            "PEN": "7",
+            "QB HITS": "6",
+            "RB SNAPS": "1278",
+            "SACKS": "4",
+            "SNAPS": "2603"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "99.4",
+        "RUN BLOCK SUCCESS %": "88.3%",
+        "SNAPS/BULLRUSH\rPRESSURE": "-",
+        "SNAPS/INSIDE\rPRESSURE": "395.0",
+        "SNAPS/OUTSIDE\rPRESSURE": "197.5",
+        "college": "ALABAMA",
+        "nameFirst": "BRADLEY",
+        "nameLast": "BOZEMAN",
+        "pffGrade": "86.5",
+        "pffPosRank": "7",
+        "position": "C",
+        "schoolYear": "RS-SR",
+        "stats2015": {
+            "HURRIES": "0",
+            "PB SNAPS": "25",
+            "PEN": "1",
+            "QB HITS": "0",
+            "RB SNAPS": "50",
+            "SACKS": "0",
+            "SNAPS": "75"
+        },
+        "stats2016": {
+            "HURRIES": "6",
+            "PB SNAPS": "492",
+            "PEN": "0",
+            "QB HITS": "1",
+            "RB SNAPS": "500",
+            "SACKS": "0",
+            "SNAPS": "992"
+        },
+        "stats2017": {
+            "HURRIES": "3",
+            "PB SNAPS": "395",
+            "PEN": "3",
+            "QB HITS": "0",
+            "RB SNAPS": "437",
+            "SACKS": "0",
+            "SNAPS": "832"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "9",
+            "PB SNAPS": "912",
+            "PEN": "4",
+            "QB HITS": "1",
+            "RB SNAPS": "987",
+            "SACKS": "0",
+            "SNAPS": "1899"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "98.2",
+        "RUN BLOCK SUCCESS %": "93.4%",
+        "SNAPS/BULLRUSH\rPRESSURE": "-",
+        "SNAPS/INSIDE\rPRESSURE": "70.6",
+        "SNAPS/OUTSIDE\rPRESSURE": "176.5",
+        "college": "LSU",
+        "nameFirst": "WILL",
+        "nameLast": "CLAPP",
+        "pffGrade": "86.1",
+        "pffPosRank": "3",
+        "position": "C",
+        "schoolYear": "RS-JR",
+        "stats2015": {
+            "HURRIES": "8",
+            "PB SNAPS": "304",
+            "PEN": "4",
+            "QB HITS": "3",
+            "RB SNAPS": "447",
+            "SACKS": "0",
+            "SNAPS": "751"
+        },
+        "stats2016": {
+            "HURRIES": "7",
+            "PB SNAPS": "295",
+            "PEN": "2",
+            "QB HITS": "2",
+            "RB SNAPS": "343",
+            "SACKS": "0",
+            "SNAPS": "638"
+        },
+        "stats2017": {
+            "HURRIES": "7",
+            "PB SNAPS": "353",
+            "PEN": "1",
+            "QB HITS": "0",
+            "RB SNAPS": "486",
+            "SACKS": "1",
+            "SNAPS": "839"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "22",
+            "PB SNAPS": "952",
+            "PEN": "7",
+            "QB HITS": "5",
+            "RB SNAPS": "1276",
+            "SACKS": "1",
+            "SNAPS": "2228"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "96.6",
+        "RUN BLOCK SUCCESS %": "92.0%",
+        "SNAPS/BULLRUSH\rPRESSURE": "406.0",
+        "SNAPS/INSIDE\rPRESSURE": "67.7",
+        "SNAPS/OUTSIDE\rPRESSURE": "45.1",
+        "college": "MICHIGAN",
+        "nameFirst": "MASON",
+        "nameLast": "COLE",
+        "pffGrade": "84.5",
+        "pffPosRank": "6",
+        "position": "C",
+        "schoolYear": "SR",
+        "stats2015": {
+            "HURRIES": "16",
+            "PB SNAPS": "468",
+            "PEN": "4",
+            "QB HITS": "8",
+            "RB SNAPS": "413",
+            "SACKS": "4",
+            "SNAPS": "881"
+        },
+        "stats2016": {
+            "HURRIES": "12",
+            "PB SNAPS": "393",
+            "PEN": "1",
+            "QB HITS": "4",
+            "RB SNAPS": "462",
+            "SACKS": "0",
+            "SNAPS": "855"
+        },
+        "stats2017": {
+            "HURRIES": "9",
+            "PB SNAPS": "406",
+            "PEN": "3",
+            "QB HITS": "4",
+            "RB SNAPS": "461",
+            "SACKS": "4",
+            "SNAPS": "869"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "37",
+            "PB SNAPS": "1267",
+            "PEN": "8",
+            "QB HITS": "16",
+            "RB SNAPS": "1336",
+            "SACKS": "8",
+            "SNAPS": "2605"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "98.0",
+        "RUN BLOCK SUCCESS %": "93.6%",
+        "SNAPS/BULLRUSH\rPRESSURE": "-",
+        "SNAPS/INSIDE\rPRESSURE": "161.0",
+        "SNAPS/OUTSIDE\rPRESSURE": "69.0",
+        "college": "NEVADA",
+        "nameFirst": "AUSTIN",
+        "nameLast": "CORBETT",
+        "pffGrade": "83.7",
+        "pffPosRank": "7",
+        "position": "T",
+        "schoolYear": "RS-SR",
+        "stats2015": {
+            "HURRIES": "8",
+            "PB SNAPS": "370",
+            "PEN": "6",
+            "QB HITS": "3",
+            "RB SNAPS": "519",
+            "SACKS": "4",
+            "SNAPS": "889"
+        },
+        "stats2016": {
+            "HURRIES": "6",
+            "PB SNAPS": "405",
+            "PEN": "5",
+            "QB HITS": "2",
+            "RB SNAPS": "418",
+            "SACKS": "0",
+            "SNAPS": "823"
+        },
+        "stats2017": {
+            "HURRIES": "5",
+            "PB SNAPS": "483",
+            "PEN": "2",
+            "QB HITS": "4",
+            "RB SNAPS": "312",
+            "SACKS": "3",
+            "SNAPS": "796"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "19",
+            "PB SNAPS": "1258",
+            "PEN": "13",
+            "QB HITS": "9",
+            "RB SNAPS": "1249",
+            "SACKS": "7",
+            "SNAPS": "2508"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "97.8",
+        "RUN BLOCK SUCCESS %": "88.0%",
+        "SNAPS/BULLRUSH\rPRESSURE": "371.0",
+        "SNAPS/INSIDE\rPRESSURE": "92.8",
+        "SNAPS/OUTSIDE\rPRESSURE": "371.0",
+        "college": "IOWA",
+        "nameFirst": "JAMES",
+        "nameLast": "DANIELS",
+        "pffGrade": "87.6",
+        "pffPosRank": "5",
+        "position": "C",
+        "schoolYear": "JR",
+        "stats2015": {
+            "HURRIES": "5",
+            "PB SNAPS": "109",
+            "PEN": "2",
+            "QB HITS": "2",
+            "RB SNAPS": "143",
+            "SACKS": "2",
+            "SNAPS": "252"
+        },
+        "stats2016": {
+            "HURRIES": "8",
+            "PB SNAPS": "303",
+            "PEN": "4",
+            "QB HITS": "2",
+            "RB SNAPS": "378",
+            "SACKS": "3",
+            "SNAPS": "681"
+        },
+        "stats2017": {
+            "HURRIES": "6",
+            "PB SNAPS": "371",
+            "PEN": "5",
+            "QB HITS": "1",
+            "RB SNAPS": "391",
+            "SACKS": "3",
+            "SNAPS": "762"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "19",
+            "PB SNAPS": "783",
+            "PEN": "11",
+            "QB HITS": "5",
+            "RB SNAPS": "912",
+            "SACKS": "8",
+            "SNAPS": "1695"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "97.6",
+        "RUN BLOCK SUCCESS %": "92.0%",
+        "SNAPS/BULLRUSH\rPRESSURE": "86.8",
+        "SNAPS/INSIDE\rPRESSURE": "217.0",
+        "SNAPS/OUTSIDE\rPRESSURE": "72.3",
+        "college": "OHIO STATE",
+        "nameFirst": "BILLY",
+        "nameLast": "PRICE",
+        "pffGrade": "83.2",
+        "pffPosRank": "2",
+        "position": "C",
+        "schoolYear": "RS-SR",
+        "stats2015": {
+            "HURRIES": "9",
+            "PB SNAPS": "363",
+            "PEN": "4",
+            "QB HITS": "2",
+            "RB SNAPS": "493",
+            "SACKS": "1",
+            "SNAPS": "856"
+        },
+        "stats2016": {
+            "HURRIES": "15",
+            "PB SNAPS": "444",
+            "PEN": "7",
+            "QB HITS": "2",
+            "RB SNAPS": "458",
+            "SACKS": "2",
+            "SNAPS": "902"
+        },
+        "stats2017": {
+            "HURRIES": "10",
+            "PB SNAPS": "434",
+            "PEN": "3",
+            "QB HITS": "1",
+            "RB SNAPS": "435",
+            "SACKS": "2",
+            "SNAPS": "869"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "34",
+            "PB SNAPS": "1241",
+            "PEN": "14",
+            "QB HITS": "5",
+            "RB SNAPS": "1386",
+            "SACKS": "5",
+            "SNAPS": "2627"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "97.9",
+        "RUN BLOCK SUCCESS %": "90.1%",
+        "SNAPS/BULLRUSH\rPRESSURE": "64.6",
+        "SNAPS/INSIDE\rPRESSURE": "290.5",
+        "SNAPS/OUTSIDE\rPRESSURE": "193.7",
+        "college": "UCLA",
+        "nameFirst": "SCOTT",
+        "nameLast": "QUESSENBERRY",
+        "pffGrade": "85.5",
+        "pffPosRank": "1",
+        "position": "C",
+        "schoolYear": "RS-SR",
+        "stats2015": {
+            "HURRIES": "0",
+            "PB SNAPS": "0",
+            "PEN": "0",
+            "QB HITS": "0",
+            "RB SNAPS": "0",
+            "SACKS": "0",
+            "SNAPS": "0"
+        },
+        "stats2016": {
+            "HURRIES": "17",
+            "PB SNAPS": "537",
+            "PEN": "3",
+            "QB HITS": "2",
+            "RB SNAPS": "295",
+            "SACKS": "2",
+            "SNAPS": "832"
+        },
+        "stats2017": {
+            "HURRIES": "10",
+            "PB SNAPS": "581",
+            "PEN": "2",
+            "QB HITS": "4",
+            "RB SNAPS": "344",
+            "SACKS": "2",
+            "SNAPS": "925"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "27",
+            "PB SNAPS": "1118",
+            "PEN": "5",
+            "QB HITS": "6",
+            "RB SNAPS": "639",
+            "SACKS": "4",
+            "SNAPS": "1757"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "99.6",
+        "RUN BLOCK SUCCESS %": "94.6%",
+        "SNAPS/BULLRUSH\rPRESSURE": "190.0",
+        "SNAPS/INSIDE\rPRESSURE": "-",
+        "SNAPS/OUTSIDE\rPRESSURE": "-",
+        "college": "ARKANSAS",
+        "nameFirst": "FRANK",
+        "nameLast": "RAGNOW",
+        "pffGrade": "93.7",
+        "pffPosRank": "1",
+        "position": "C",
+        "schoolYear": "SR",
+        "stats2015": {
+            "HURRIES": "15",
+            "PB SNAPS": "409",
+            "PEN": "5",
+            "QB HITS": "4",
+            "RB SNAPS": "459",
+            "SACKS": "0",
+            "SNAPS": "868"
+        },
+        "stats2016": {
+            "HURRIES": "9",
+            "PB SNAPS": "458",
+            "PEN": "4",
+            "QB HITS": "3",
+            "RB SNAPS": "454",
+            "SACKS": "0",
+            "SNAPS": "912"
+        },
+        "stats2017": {
+            "HURRIES": "3",
+            "PB SNAPS": "239",
+            "PEN": "3",
+            "QB HITS": "0",
+            "RB SNAPS": "227",
+            "SACKS": "0",
+            "SNAPS": "466"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "27",
+            "PB SNAPS": "1106",
+            "PEN": "12",
+            "QB HITS": "7",
+            "RB SNAPS": "1140",
+            "SACKS": "0",
+            "SNAPS": "2246"
+        }
+    }
+]
