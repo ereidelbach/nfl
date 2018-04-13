@@ -86,12 +86,12 @@ for posDict in fileDict:
     masterPosList.append(positionList)  
     
     # Output the reduced json file
-    fname_new = r'/home/ejreidelbach/projects/NFL/Data/DraftV2/pff_draft_guide_2018_statistics_' + str(posDict) + '.json'
+    fname_new = r'/home/ejreidelbach/projects/NFL/Data/DraftV2/Temp/pff_draft_guide_2018_statistics_' + str(posDict) + '.json'
     with open(fname_new, 'wt') as out:
         json.dump(positionList, out, sort_keys=True, indent=4, separators=(',', ': '))       
             
 # Output the reduced json file
-fname_new = r'/home/ejreidelbach/projects/NFL/Data/DraftV2/pff_draft_guide_2018_statistics_Combined.json'
+fname_new = r'/home/ejreidelbach/projects/NFL/Data/DraftV2/Temp/pff_draft_guide_2018_statistics_Combined.json'
 with open(fname_new, 'wt') as out:
     json.dump(masterPosList, out, sort_keys=True, indent=4, separators=(',', ': '))
             

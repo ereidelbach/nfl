@@ -1,0 +1,1552 @@
+[
+    {
+        "PASS BLOCK EFFICIENCY": "98.3",
+        "RUN BLOCK SUCCESS %": "92.1%",
+        "SNAPS/BULLRUSH\rPRESSURE": "399.0",
+        "SNAPS/INSIDE\rPRESSURE": "-",
+        "SNAPS/OUTSIDE\rPRESSURE": "49.9",
+        "TEAM": "HAWAII",
+        "nameFirst": "DEJON",
+        "nameLast": "ALLEN",
+        "pffGrade": "88.2",
+        "pffPosRank": "11",
+        "position": "T",
+        "schoolYear": "RS-SR",
+        "stats2015": {
+            "HURRIES": "8",
+            "PB SNAPS": "439",
+            "PEN": "7",
+            "QB HITS": "1",
+            "RB SNAPS": "339",
+            "SACKS": "3",
+            "SNAPS": "778"
+        },
+        "stats2016": {
+            "HURRIES": "4",
+            "PB SNAPS": "471",
+            "PEN": "16",
+            "QB HITS": "0",
+            "RB SNAPS": "392",
+            "SACKS": "3",
+            "SNAPS": "864"
+        },
+        "stats2017": {
+            "HURRIES": "6",
+            "PB SNAPS": "399",
+            "PEN": "10",
+            "QB HITS": "2",
+            "RB SNAPS": "329",
+            "SACKS": "1",
+            "SNAPS": "728"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "18",
+            "PB SNAPS": "1309",
+            "PEN": "33",
+            "QB HITS": "3",
+            "RB SNAPS": "1060",
+            "SACKS": "7",
+            "SNAPS": "2370"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "98.2",
+        "RUN BLOCK SUCCESS %": "93.3%",
+        "SNAPS/BULLRUSH\rPRESSURE": "-",
+        "SNAPS/INSIDE\rPRESSURE": "79.8",
+        "SNAPS/OUTSIDE\rPRESSURE": "95.8",
+        "TEAM": "OKLAHOMA",
+        "nameFirst": "ORLANDO",
+        "nameLast": "BROWN",
+        "pffGrade": "88.0",
+        "pffPosRank": "5",
+        "position": "T",
+        "schoolYear": "RS-JR",
+        "stats2015": {
+            "HURRIES": "13",
+            "PB SNAPS": "522",
+            "PEN": "11",
+            "QB HITS": "1",
+            "RB SNAPS": "457",
+            "SACKS": "5",
+            "SNAPS": "979"
+        },
+        "stats2016": {
+            "HURRIES": "3",
+            "PB SNAPS": "417",
+            "PEN": "9",
+            "QB HITS": "2",
+            "RB SNAPS": "493",
+            "SACKS": "1",
+            "SNAPS": "910"
+        },
+        "stats2017": {
+            "HURRIES": "10",
+            "PB SNAPS": "479",
+            "PEN": "4",
+            "QB HITS": "0",
+            "RB SNAPS": "448",
+            "SACKS": "1",
+            "SNAPS": "927"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "26",
+            "PB SNAPS": "1418",
+            "PEN": "24",
+            "QB HITS": "3",
+            "RB SNAPS": "1398",
+            "SACKS": "7",
+            "SNAPS": "2816"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "97.9",
+        "RUN BLOCK SUCCESS %": "90.7%",
+        "SNAPS/BULLRUSH\rPRESSURE": "115.0",
+        "SNAPS/INSIDE\rPRESSURE": "115.0",
+        "SNAPS/OUTSIDE\rPRESSURE": "115.0",
+        "TEAM": "OKST",
+        "nameFirst": "ZACHARY",
+        "nameLast": "CRABTREE",
+        "pffGrade": "87.8",
+        "pffPosRank": "12",
+        "position": "T",
+        "schoolYear": "RS-SR",
+        "stats2015": {
+            "HURRIES": "26",
+            "PB SNAPS": "571",
+            "PEN": "0",
+            "QB HITS": "5",
+            "RB SNAPS": "364",
+            "SACKS": "4",
+            "SNAPS": "935"
+        },
+        "stats2016": {
+            "HURRIES": "9",
+            "PB SNAPS": "511",
+            "PEN": "5",
+            "QB HITS": "3",
+            "RB SNAPS": "396",
+            "SACKS": "5",
+            "SNAPS": "907"
+        },
+        "stats2017": {
+            "HURRIES": "9",
+            "PB SNAPS": "460",
+            "PEN": "4",
+            "QB HITS": "1",
+            "RB SNAPS": "367",
+            "SACKS": "2",
+            "SNAPS": "828"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "44",
+            "PB SNAPS": "1542",
+            "PEN": "9",
+            "QB HITS": "9",
+            "RB SNAPS": "1127",
+            "SACKS": "11",
+            "SNAPS": "2670"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "98.5",
+        "RUN BLOCK SUCCESS %": "94.3%",
+        "SNAPS/BULLRUSH\rPRESSURE": "340.0",
+        "SNAPS/INSIDE\rPRESSURE": "113.3",
+        "SNAPS/OUTSIDE\rPRESSURE": "170.0",
+        "TEAM": "OREGON",
+        "nameFirst": "TYRELL",
+        "nameLast": "CROSBY",
+        "pffGrade": "87.3",
+        "pffPosRank": "4",
+        "position": "T",
+        "schoolYear": "SR",
+        "stats2015": {
+            "HURRIES": "15",
+            "PB SNAPS": "425",
+            "PEN": "10",
+            "QB HITS": "1",
+            "RB SNAPS": "486",
+            "SACKS": "3",
+            "SNAPS": "911"
+        },
+        "stats2016": {
+            "HURRIES": "3",
+            "PB SNAPS": "26",
+            "PEN": "0",
+            "QB HITS": "0",
+            "RB SNAPS": "28",
+            "SACKS": "0",
+            "SNAPS": "54"
+        },
+        "stats2017": {
+            "HURRIES": "5",
+            "PB SNAPS": "340",
+            "PEN": "5",
+            "QB HITS": "2",
+            "RB SNAPS": "540",
+            "SACKS": "0",
+            "SNAPS": "881"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "23",
+            "PB SNAPS": "791",
+            "PEN": "15",
+            "QB HITS": "3",
+            "RB SNAPS": "1054",
+            "SACKS": "3",
+            "SNAPS": "1846"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "97.8",
+        "RUN BLOCK SUCCESS %": "93.8%",
+        "SNAPS/BULLRUSH\rPRESSURE": "-",
+        "SNAPS/INSIDE\rPRESSURE": "92.5",
+        "SNAPS/OUTSIDE\rPRESSURE": "74.0",
+        "TEAM": "COLORADO",
+        "nameFirst": "JEROMY",
+        "nameLast": "IRWIN",
+        "pffGrade": "87.5",
+        "pffPosRank": "13",
+        "position": "T",
+        "schoolYear": "RS-SR",
+        "stats2015": {
+            "HURRIES": "1",
+            "PB SNAPS": "58",
+            "PEN": "0",
+            "QB HITS": "2",
+            "RB SNAPS": "56",
+            "SACKS": "0",
+            "SNAPS": "114"
+        },
+        "stats2016": {
+            "HURRIES": "14",
+            "PB SNAPS": "500",
+            "PEN": "3",
+            "QB HITS": "7",
+            "RB SNAPS": "463",
+            "SACKS": "2",
+            "SNAPS": "963"
+        },
+        "stats2017": {
+            "HURRIES": "7",
+            "PB SNAPS": "370",
+            "PEN": "7",
+            "QB HITS": "1",
+            "RB SNAPS": "338",
+            "SACKS": "2",
+            "SNAPS": "708"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "22",
+            "PB SNAPS": "928",
+            "PEN": "10",
+            "QB HITS": "10",
+            "RB SNAPS": "857",
+            "SACKS": "4",
+            "SNAPS": "1785"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "98.0",
+        "RUN BLOCK SUCCESS %": "92.1%",
+        "SNAPS/BULLRUSH\rPRESSURE": "432.0",
+        "SNAPS/INSIDE\rPRESSURE": "108.0",
+        "SNAPS/OUTSIDE\rPRESSURE": "86.4",
+        "TEAM": "OHIO STATEATE",
+        "nameFirst": "JAMARCO",
+        "nameLast": "JONES",
+        "pffGrade": "84.9",
+        "pffPosRank": "3",
+        "position": "T",
+        "schoolYear": "SR",
+        "stats2015": {
+            "HURRIES": "0",
+            "PB SNAPS": "14",
+            "PEN": "0",
+            "QB HITS": "0",
+            "RB SNAPS": "36",
+            "SACKS": "0",
+            "SNAPS": "50"
+        },
+        "stats2016": {
+            "HURRIES": "17",
+            "PB SNAPS": "443",
+            "PEN": "7",
+            "QB HITS": "6",
+            "RB SNAPS": "455",
+            "SACKS": "1",
+            "SNAPS": "898"
+        },
+        "stats2017": {
+            "HURRIES": "7",
+            "PB SNAPS": "432",
+            "PEN": "3",
+            "QB HITS": "2",
+            "RB SNAPS": "441",
+            "SACKS": "2",
+            "SNAPS": "873"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "24",
+            "PB SNAPS": "889",
+            "PEN": "10",
+            "QB HITS": "8",
+            "RB SNAPS": "932",
+            "SACKS": "3",
+            "SNAPS": "1821"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "97.3",
+        "RUN BLOCK SUCCESS %": "94.9%",
+        "SNAPS/BULLRUSH\rPRESSURE": "97.8",
+        "SNAPS/INSIDE\rPRESSURE": "97.8",
+        "SNAPS/OUTSIDE\rPRESSURE": "97.8",
+        "TEAM": "MIAMI (FL)",
+        "nameFirst": "KC",
+        "nameLast": "MCDERMOTT",
+        "pffGrade": "84.9",
+        "pffPosRank": "19",
+        "position": "T",
+        "schoolYear": "SR",
+        "stats2015": {
+            "HURRIES": "7",
+            "PB SNAPS": "307",
+            "PEN": "6",
+            "QB HITS": "9",
+            "RB SNAPS": "274",
+            "SACKS": "3",
+            "SNAPS": "581"
+        },
+        "stats2016": {
+            "HURRIES": "12",
+            "PB SNAPS": "441",
+            "PEN": "6",
+            "QB HITS": "3",
+            "RB SNAPS": "361",
+            "SACKS": "2",
+            "SNAPS": "802"
+        },
+        "stats2017": {
+            "HURRIES": "8",
+            "PB SNAPS": "489",
+            "PEN": "2",
+            "QB HITS": "4",
+            "RB SNAPS": "336",
+            "SACKS": "4",
+            "SNAPS": "825"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "27",
+            "PB SNAPS": "1237",
+            "PEN": "14",
+            "QB HITS": "16",
+            "RB SNAPS": "971",
+            "SACKS": "9",
+            "SNAPS": "2208"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "96.9",
+        "RUN BLOCK SUCCESS %": "94.9%",
+        "SNAPS/BULLRUSH\rPRESSURE": "82.4",
+        "SNAPS/INSIDE\rPRESSURE": "82.4",
+        "SNAPS/OUTSIDE\rPRESSURE": "68.7",
+        "TEAM": "NOTRE DAME",
+        "nameFirst": "MIKE",
+        "nameLast": "MCGLINCHEY",
+        "pffGrade": "90.6",
+        "pffPosRank": "1",
+        "position": "T",
+        "schoolYear": "SR",
+        "stats2015": {
+            "HURRIES": "15",
+            "PB SNAPS": "438",
+            "PEN": "5",
+            "QB HITS": "2",
+            "RB SNAPS": "397",
+            "SACKS": "0",
+            "SNAPS": "835"
+        },
+        "stats2016": {
+            "HURRIES": "13",
+            "PB SNAPS": "439",
+            "PEN": "12",
+            "QB HITS": "2",
+            "RB SNAPS": "365",
+            "SACKS": "2",
+            "SNAPS": "804"
+        },
+        "stats2017": {
+            "HURRIES": "11",
+            "PB SNAPS": "412",
+            "PEN": "3",
+            "QB HITS": "2",
+            "RB SNAPS": "453",
+            "SACKS": "3",
+            "SNAPS": "865"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "39",
+            "PB SNAPS": "1289",
+            "PEN": "20",
+            "QB HITS": "6",
+            "RB SNAPS": "1215",
+            "SACKS": "5",
+            "SNAPS": "2504"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "97.8",
+        "RUN BLOCK SUCCESS %": "91.6%",
+        "SNAPS/BULLRUSH\rPRESSURE": "289.5",
+        "SNAPS/INSIDE\rPRESSURE": "82.7",
+        "SNAPS/OUTSIDE\rPRESSURE": "82.7",
+        "TEAM": "UCLA",
+        "nameFirst": "KOLTON",
+        "nameLast": "MILLER",
+        "pffGrade": "87.2",
+        "pffPosRank": "7",
+        "position": "T",
+        "schoolYear": "RS-JR",
+        "stats2015": {
+            "HURRIES": "19",
+            "PB SNAPS": "338",
+            "PEN": "3",
+            "QB HITS": "2",
+            "RB SNAPS": "239",
+            "SACKS": "1",
+            "SNAPS": "577"
+        },
+        "stats2016": {
+            "HURRIES": "11",
+            "PB SNAPS": "191",
+            "PEN": "2",
+            "QB HITS": "6",
+            "RB SNAPS": "141",
+            "SACKS": "1",
+            "SNAPS": "332"
+        },
+        "stats2017": {
+            "HURRIES": "6",
+            "PB SNAPS": "579",
+            "PEN": "2",
+            "QB HITS": "8",
+            "RB SNAPS": "344",
+            "SACKS": "2",
+            "SNAPS": "925"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "36",
+            "PB SNAPS": "1108",
+            "PEN": "7",
+            "QB HITS": "16",
+            "RB SNAPS": "724",
+            "SACKS": "4",
+            "SNAPS": "1834"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "98.1",
+        "RUN BLOCK SUCCESS %": "90.2%",
+        "SNAPS/BULLRUSH\rPRESSURE": "168.5",
+        "SNAPS/INSIDE\rPRESSURE": "168.5",
+        "SNAPS/OUTSIDE\rPRESSURE": "84.3",
+        "TEAM": "WMU",
+        "nameFirst": "CHUKWUMA",
+        "nameLast": "OKORAFOR",
+        "pffGrade": "76.6",
+        "pffPosRank": "9",
+        "position": "T",
+        "schoolYear": "SR",
+        "stats2015": {
+            "HURRIES": "12",
+            "PB SNAPS": "449",
+            "PEN": "14",
+            "QB HITS": "8",
+            "RB SNAPS": "432",
+            "SACKS": "3",
+            "SNAPS": "881"
+        },
+        "stats2016": {
+            "HURRIES": "16",
+            "PB SNAPS": "427",
+            "PEN": "10",
+            "QB HITS": "5",
+            "RB SNAPS": "560",
+            "SACKS": "4",
+            "SNAPS": "987"
+        },
+        "stats2017": {
+            "HURRIES": "5",
+            "PB SNAPS": "337",
+            "PEN": "10",
+            "QB HITS": "1",
+            "RB SNAPS": "468",
+            "SACKS": "2",
+            "SNAPS": "805"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "33",
+            "PB SNAPS": "1213",
+            "PEN": "34",
+            "QB HITS": "14",
+            "RB SNAPS": "1460",
+            "SACKS": "9",
+            "SNAPS": "2673"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "98.4",
+        "RUN BLOCK SUCCESS %": "92.1%",
+        "SNAPS/BULLRUSH\rPRESSURE": "212.5",
+        "SNAPS/INSIDE\rPRESSURE": "212.5",
+        "SNAPS/OUTSIDE\rPRESSURE": "85.0",
+        "TEAM": "PITTSBURGH",
+        "nameFirst": "BRIAN",
+        "nameLast": "O\u2019NEILL",
+        "pffGrade": "83.5",
+        "pffPosRank": "6",
+        "position": "T",
+        "schoolYear": "RS-JR",
+        "stats2015": {
+            "HURRIES": "20",
+            "PB SNAPS": "401",
+            "PEN": "3",
+            "QB HITS": "1",
+            "RB SNAPS": "432",
+            "SACKS": "5",
+            "SNAPS": "833"
+        },
+        "stats2016": {
+            "HURRIES": "3",
+            "PB SNAPS": "366",
+            "PEN": "4",
+            "QB HITS": "1",
+            "RB SNAPS": "464",
+            "SACKS": "0",
+            "SNAPS": "834"
+        },
+        "stats2017": {
+            "HURRIES": "6",
+            "PB SNAPS": "425",
+            "PEN": "2",
+            "QB HITS": "2",
+            "RB SNAPS": "392",
+            "SACKS": "1",
+            "SNAPS": "817"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "29",
+            "PB SNAPS": "1192",
+            "PEN": "9",
+            "QB HITS": "4",
+            "RB SNAPS": "1288",
+            "SACKS": "6",
+            "SNAPS": "2484"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "94.0",
+        "RUN BLOCK SUCCESS %": "90.4%",
+        "SNAPS/BULLRUSH\rPRESSURE": "116.5",
+        "SNAPS/INSIDE\rPRESSURE": "33.3",
+        "SNAPS/OUTSIDE\rPRESSURE": "29.1",
+        "TEAM": "MISS STATEATE",
+        "nameFirst": "MARTINAS",
+        "nameLast": "RANKIN",
+        "pffGrade": "71.2",
+        "pffPosRank": "8",
+        "position": "T",
+        "schoolYear": "RS-SR",
+        "stats2015": {
+            "HURRIES": "0",
+            "PB SNAPS": "0",
+            "PEN": "0",
+            "QB HITS": "0",
+            "RB SNAPS": "0",
+            "SACKS": "0",
+            "SNAPS": "0"
+        },
+        "stats2016": {
+            "HURRIES": "17",
+            "PB SNAPS": "350",
+            "PEN": "5",
+            "QB HITS": "6",
+            "RB SNAPS": "388",
+            "SACKS": "6",
+            "SNAPS": "739"
+        },
+        "stats2017": {
+            "HURRIES": "13",
+            "PB SNAPS": "233",
+            "PEN": "4",
+            "QB HITS": "3",
+            "RB SNAPS": "333",
+            "SACKS": "2",
+            "SNAPS": "566"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "30",
+            "PB SNAPS": "583",
+            "PEN": "9",
+            "QB HITS": "9",
+            "RB SNAPS": "721",
+            "SACKS": "8",
+            "SNAPS": "1305"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "99.1",
+        "RUN BLOCK SUCCESS %": "89.4%",
+        "SNAPS/BULLRUSH\rPRESSURE": "400.0",
+        "SNAPS/INSIDE\rPRESSURE": "400.0",
+        "SNAPS/OUTSIDE\rPRESSURE": "133.3",
+        "TEAM": "NC STATEATE",
+        "nameFirst": "WILL",
+        "nameLast": "RICHARDSON",
+        "pffGrade": "89.5",
+        "pffPosRank": "10",
+        "position": "T",
+        "schoolYear": "RS-JR",
+        "stats2015": {
+            "HURRIES": "11",
+            "PB SNAPS": "299",
+            "PEN": "1",
+            "QB HITS": "1",
+            "RB SNAPS": "272",
+            "SACKS": "5",
+            "SNAPS": "571"
+        },
+        "stats2016": {
+            "HURRIES": "8",
+            "PB SNAPS": "391",
+            "PEN": "8",
+            "QB HITS": "2",
+            "RB SNAPS": "395",
+            "SACKS": "4",
+            "SNAPS": "787"
+        },
+        "stats2017": {
+            "HURRIES": "3",
+            "PB SNAPS": "400",
+            "PEN": "4",
+            "QB HITS": "2",
+            "RB SNAPS": "396",
+            "SACKS": "0",
+            "SNAPS": "798"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "22",
+            "PB SNAPS": "1090",
+            "PEN": "13",
+            "QB HITS": "5",
+            "RB SNAPS": "1063",
+            "SACKS": "9",
+            "SNAPS": "2156"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "97.1",
+        "RUN BLOCK SUCCESS %": "94.0%",
+        "SNAPS/BULLRUSH\rPRESSURE": "182.0",
+        "SNAPS/INSIDE\rPRESSURE": "91.0",
+        "SNAPS/OUTSIDE\rPRESSURE": "45.5",
+        "TEAM": "TEXAS",
+        "nameFirst": "CONNOR",
+        "nameLast": "WILLIAMS",
+        "pffGrade": "85.7",
+        "pffPosRank": "2",
+        "position": "T",
+        "schoolYear": "JR",
+        "stats2015": {
+            "HURRIES": "6",
+            "PB SNAPS": "347",
+            "PEN": "6",
+            "QB HITS": "2",
+            "RB SNAPS": "425",
+            "SACKS": "2",
+            "SNAPS": "772"
+        },
+        "stats2016": {
+            "HURRIES": "11",
+            "PB SNAPS": "355",
+            "PEN": "3",
+            "QB HITS": "0",
+            "RB SNAPS": "408",
+            "SACKS": "0",
+            "SNAPS": "763"
+        },
+        "stats2017": {
+            "HURRIES": "3",
+            "PB SNAPS": "330",
+            "PEN": "4",
+            "QB HITS": "0",
+            "RB SNAPS": "550",
+            "SACKS": "2",
+            "SNAPS": "880"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "20",
+            "PB SNAPS": "1032",
+            "PEN": "13",
+            "QB HITS": "2",
+            "RB SNAPS": "1383",
+            "SACKS": "4",
+            "SNAPS": "2415"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "96.7",
+        "RUN BLOCK SUCCESS %": "93.8%",
+        "SNAPS/BULLRUSH\rPRESSURE": "75.1",
+        "SNAPS/INSIDE\rPRESSURE": "105.2",
+        "SNAPS/OUTSIDE\rPRESSURE": "58.4",
+        "TEAM": "LOUISVILLE",
+        "nameFirst": "GERON",
+        "nameLast": "CHRISTIAN",
+        "pffGrade": "84.4",
+        "pffPosRank": "-",
+        "position": "T",
+        "schoolYear": "JR",
+        "stats2015": {
+            "HURRIES": "30",
+            "PB SNAPS": "487",
+            "PEN": "11",
+            "QB HITS": "4",
+            "RB SNAPS": "395",
+            "SACKS": "5",
+            "SNAPS": "882"
+        },
+        "stats2016": {
+            "HURRIES": "24",
+            "PB SNAPS": "517",
+            "PEN": "7",
+            "QB HITS": "4",
+            "RB SNAPS": "378",
+            "SACKS": "4",
+            "SNAPS": "896"
+        },
+        "stats2017": {
+            "HURRIES": "18",
+            "PB SNAPS": "526",
+            "PEN": "7",
+            "QB HITS": "1",
+            "RB SNAPS": "357",
+            "SACKS": "3",
+            "SNAPS": "883"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "72",
+            "PB SNAPS": "1530",
+            "PEN": "25",
+            "QB HITS": "9",
+            "RB SNAPS": "1130",
+            "SACKS": "12",
+            "SNAPS": "2661"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "98.5",
+        "RUN BLOCK SUCCESS %": "93.7%",
+        "SNAPS/BULLRUSH\rPRESSURE": "398.0",
+        "SNAPS/INSIDE\rPRESSURE": "199.0",
+        "SNAPS/OUTSIDE\rPRESSURE": "99.5",
+        "TEAM": "UCF",
+        "nameFirst": "AARON",
+        "nameLast": "EVANS",
+        "pffGrade": "81.6",
+        "pffPosRank": "-",
+        "position": "T",
+        "schoolYear": "RS-SR",
+        "stats2015": {
+            "HURRIES": "16",
+            "PB SNAPS": "475",
+            "PEN": "3",
+            "QB HITS": "4",
+            "RB SNAPS": "311",
+            "SACKS": "4",
+            "SNAPS": "786"
+        },
+        "stats2016": {
+            "HURRIES": "15",
+            "PB SNAPS": "511",
+            "PEN": "8",
+            "QB HITS": "3",
+            "RB SNAPS": "397",
+            "SACKS": "5",
+            "SNAPS": "908"
+        },
+        "stats2017": {
+            "HURRIES": "7",
+            "PB SNAPS": "398",
+            "PEN": "7",
+            "QB HITS": "1",
+            "RB SNAPS": "351",
+            "SACKS": "0",
+            "SNAPS": "749"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "38",
+            "PB SNAPS": "1384",
+            "PEN": "18",
+            "QB HITS": "8",
+            "RB SNAPS": "1059",
+            "SACKS": "9",
+            "SNAPS": "2443"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "95.8",
+        "RUN BLOCK SUCCESS %": "92.4%",
+        "SNAPS/BULLRUSH\rPRESSURE": "83.3",
+        "SNAPS/INSIDE\rPRESSURE": "55.6",
+        "SNAPS/OUTSIDE\rPRESSURE": "41.7",
+        "TEAM": "NEBRASKA",
+        "nameFirst": "NICK",
+        "nameLast": "GATES",
+        "pffGrade": "81.2",
+        "pffPosRank": "20",
+        "position": "T",
+        "schoolYear": "RS-SR",
+        "stats2015": {
+            "HURRIES": "18",
+            "PB SNAPS": "344",
+            "PEN": "5",
+            "QB HITS": "1",
+            "RB SNAPS": "340",
+            "SACKS": "0",
+            "SNAPS": "684"
+        },
+        "stats2016": {
+            "HURRIES": "24",
+            "PB SNAPS": "427",
+            "PEN": "7",
+            "QB HITS": "8",
+            "RB SNAPS": "487",
+            "SACKS": "1",
+            "SNAPS": "914"
+        },
+        "stats2017": {
+            "HURRIES": "19",
+            "PB SNAPS": "500",
+            "PEN": "7",
+            "QB HITS": "8",
+            "RB SNAPS": "328",
+            "SACKS": "1",
+            "SNAPS": "828"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "61",
+            "PB SNAPS": "1271",
+            "PEN": "19",
+            "QB HITS": "17",
+            "RB SNAPS": "1155",
+            "SACKS": "2",
+            "SNAPS": "2426"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "98.2",
+        "RUN BLOCK SUCCESS %": "89.3%",
+        "SNAPS/BULLRUSH\rPRESSURE": "481.0",
+        "SNAPS/INSIDE\rPRESSURE": "80.2",
+        "SNAPS/OUTSIDE\rPRESSURE": "160.3",
+        "TEAM": "COLORADO STATEATE",
+        "nameFirst": "ZACK",
+        "nameLast": "GOLDITCH",
+        "pffGrade": "85.8",
+        "pffPosRank": "16",
+        "position": "T",
+        "schoolYear": "RS-SR",
+        "stats2015": {
+            "HURRIES": "8",
+            "PB SNAPS": "388",
+            "PEN": "4",
+            "QB HITS": "4",
+            "RB SNAPS": "454",
+            "SACKS": "2",
+            "SNAPS": "842"
+        },
+        "stats2016": {
+            "HURRIES": "9",
+            "PB SNAPS": "350",
+            "PEN": "5",
+            "QB HITS": "3",
+            "RB SNAPS": "428",
+            "SACKS": "0",
+            "SNAPS": "778"
+        },
+        "stats2017": {
+            "HURRIES": "6",
+            "PB SNAPS": "481",
+            "PEN": "3",
+            "QB HITS": "4",
+            "RB SNAPS": "467",
+            "SACKS": "1",
+            "SNAPS": "948"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "23",
+            "PB SNAPS": "1219",
+            "PEN": "12",
+            "QB HITS": "11",
+            "RB SNAPS": "1349",
+            "SACKS": "3",
+            "SNAPS": "2568"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "97.5",
+        "RUN BLOCK SUCCESS %": "89.9%",
+        "SNAPS/BULLRUSH\rPRESSURE": "99999.0",
+        "SNAPS/INSIDE\rPRESSURE": "78.5",
+        "SNAPS/OUTSIDE\rPRESSURE": "62.8",
+        "TEAM": "AUBURN",
+        "nameFirst": "AUSTIN",
+        "nameLast": "GOLSON",
+        "pffGrade": "79.1",
+        "pffPosRank": "-",
+        "position": "T",
+        "schoolYear": "RS-SR",
+        "stats2015": {
+            "HURRIES": "2",
+            "PB SNAPS": "254",
+            "PEN": "2",
+            "QB HITS": "0",
+            "RB SNAPS": "407",
+            "SACKS": "2",
+            "SNAPS": "661"
+        },
+        "stats2016": {
+            "HURRIES": "4",
+            "PB SNAPS": "330",
+            "PEN": "4",
+            "QB HITS": "4",
+            "RB SNAPS": "527",
+            "SACKS": "4",
+            "SNAPS": "859"
+        },
+        "stats2017": {
+            "HURRIES": "12",
+            "PB SNAPS": "446",
+            "PEN": "3",
+            "QB HITS": "1",
+            "RB SNAPS": "512",
+            "SACKS": "2",
+            "SNAPS": "961"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "18",
+            "PB SNAPS": "1030",
+            "PEN": "9",
+            "QB HITS": "5",
+            "RB SNAPS": "1446",
+            "SACKS": "8",
+            "SNAPS": "2481"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "97.2",
+        "RUN BLOCK SUCCESS %": "93.6%",
+        "SNAPS/BULLRUSH\rPRESSURE": "91.8",
+        "SNAPS/INSIDE\rPRESSURE": "91.8",
+        "SNAPS/OUTSIDE\rPRESSURE": "65.6",
+        "TEAM": "BOWLING GREEN",
+        "nameFirst": "RYAN",
+        "nameLast": "HUNTER",
+        "pffGrade": "84.7",
+        "pffPosRank": "-",
+        "position": "T",
+        "schoolYear": "RS-SR",
+        "stats2015": {
+            "HURRIES": "11",
+            "PB SNAPS": "607",
+            "PEN": "4",
+            "QB HITS": "1",
+            "RB SNAPS": "457",
+            "SACKS": "1",
+            "SNAPS": "1064"
+        },
+        "stats2016": {
+            "HURRIES": "22",
+            "PB SNAPS": "483",
+            "PEN": "8",
+            "QB HITS": "8",
+            "RB SNAPS": "451",
+            "SACKS": "4",
+            "SNAPS": "934"
+        },
+        "stats2017": {
+            "HURRIES": "11",
+            "PB SNAPS": "459",
+            "PEN": "8",
+            "QB HITS": "5",
+            "RB SNAPS": "375",
+            "SACKS": "1",
+            "SNAPS": "834"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "44",
+            "PB SNAPS": "1549",
+            "PEN": "20",
+            "QB HITS": "14",
+            "RB SNAPS": "1283",
+            "SACKS": "6",
+            "SNAPS": "2832"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "95.2",
+        "RUN BLOCK SUCCESS %": "91.4%",
+        "SNAPS/BULLRUSH\rPRESSURE": "173.5",
+        "SNAPS/INSIDE\rPRESSURE": "69.4",
+        "SNAPS/OUTSIDE\rPRESSURE": "24.8",
+        "TEAM": "AUBURN",
+        "nameFirst": "DARIUS",
+        "nameLast": "JAMES",
+        "pffGrade": "79.6",
+        "pffPosRank": "-",
+        "position": "T",
+        "schoolYear": "SR",
+        "stats2015": {
+            "HURRIES": "0",
+            "PB SNAPS": "0",
+            "PEN": "0",
+            "QB HITS": "0",
+            "RB SNAPS": "0",
+            "SACKS": "0",
+            "SNAPS": "0"
+        },
+        "stats2016": {
+            "HURRIES": "5",
+            "PB SNAPS": "198",
+            "PEN": "0",
+            "QB HITS": "7",
+            "RB SNAPS": "395",
+            "SACKS": "1",
+            "SNAPS": "594"
+        },
+        "stats2017": {
+            "HURRIES": "11",
+            "PB SNAPS": "347",
+            "PEN": "5",
+            "QB HITS": "6",
+            "RB SNAPS": "361",
+            "SACKS": "4",
+            "SNAPS": "708"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "16",
+            "PB SNAPS": "545",
+            "PEN": "5",
+            "QB HITS": "13",
+            "RB SNAPS": "756",
+            "SACKS": "5",
+            "SNAPS": "1302"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "93.2",
+        "RUN BLOCK SUCCESS %": "89.5%",
+        "SNAPS/BULLRUSH\rPRESSURE": "103.0",
+        "SNAPS/INSIDE\rPRESSURE": "51.5",
+        "SNAPS/OUTSIDE\rPRESSURE": "18.2",
+        "TEAM": "PITTSBURGH",
+        "nameFirst": "JARYD",
+        "nameLast": "JONES-SMITH",
+        "pffGrade": "44.5",
+        "pffPosRank": "-",
+        "position": "T",
+        "schoolYear": "SR",
+        "stats2015": {
+            "HURRIES": "0",
+            "PB SNAPS": "0",
+            "PEN": "0",
+            "QB HITS": "0",
+            "RB SNAPS": "0",
+            "SACKS": "0",
+            "SNAPS": "0"
+        },
+        "stats2016": {
+            "HURRIES": "1",
+            "PB SNAPS": "13",
+            "PEN": "0",
+            "QB HITS": "0",
+            "RB SNAPS": "35",
+            "SACKS": "0",
+            "SNAPS": "48"
+        },
+        "stats2017": {
+            "HURRIES": "16",
+            "PB SNAPS": "309",
+            "PEN": "2",
+            "QB HITS": "4",
+            "RB SNAPS": "295",
+            "SACKS": "6",
+            "SNAPS": "604"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "17",
+            "PB SNAPS": "322",
+            "PEN": "2",
+            "QB HITS": "4",
+            "RB SNAPS": "330",
+            "SACKS": "6",
+            "SNAPS": "652"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "97.2",
+        "RUN BLOCK SUCCESS %": "91.3%",
+        "SNAPS/BULLRUSH\rPRESSURE": "508.0",
+        "SNAPS/INSIDE\rPRESSURE": "72.6",
+        "SNAPS/OUTSIDE\rPRESSURE": "56.4",
+        "TEAM": "AKRON",
+        "nameFirst": "JOVANN",
+        "nameLast": "LETULI",
+        "pffGrade": "85.2",
+        "pffPosRank": "18",
+        "position": "T",
+        "schoolYear": "RS-JR",
+        "stats2015": {
+            "HURRIES": "0",
+            "PB SNAPS": "0",
+            "PEN": "0",
+            "QB HITS": "0",
+            "RB SNAPS": "0",
+            "SACKS": "0",
+            "SNAPS": "0"
+        },
+        "stats2016": {
+            "HURRIES": "16",
+            "PB SNAPS": "404",
+            "PEN": "10",
+            "QB HITS": "0",
+            "RB SNAPS": "257",
+            "SACKS": "6",
+            "SNAPS": "661"
+        },
+        "stats2017": {
+            "HURRIES": "14",
+            "PB SNAPS": "508",
+            "PEN": "10",
+            "QB HITS": "2",
+            "RB SNAPS": "369",
+            "SACKS": "2",
+            "SNAPS": "877"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "30",
+            "PB SNAPS": "912",
+            "PEN": "20",
+            "QB HITS": "2",
+            "RB SNAPS": "626",
+            "SACKS": "8",
+            "SNAPS": "1538"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "97.3",
+        "RUN BLOCK SUCCESS %": "92.8%",
+        "SNAPS/BULLRUSH\rPRESSURE": "106.8",
+        "SNAPS/INSIDE\rPRESSURE": "85.4",
+        "SNAPS/OUTSIDE\rPRESSURE": "106.8",
+        "TEAM": "BOISE STATEATE",
+        "nameFirst": "ARCHIE",
+        "nameLast": "LEWIS",
+        "pffGrade": "82.1",
+        "pffPosRank": "-",
+        "position": "T",
+        "schoolYear": "RS-SR",
+        "stats2015": {
+            "HURRIES": "14",
+            "PB SNAPS": "390",
+            "PEN": "7",
+            "QB HITS": "0",
+            "RB SNAPS": "337",
+            "SACKS": "5",
+            "SNAPS": "727"
+        },
+        "stats2016": {
+            "HURRIES": "5",
+            "PB SNAPS": "326",
+            "PEN": "4",
+            "QB HITS": "1",
+            "RB SNAPS": "302",
+            "SACKS": "1",
+            "SNAPS": "629"
+        },
+        "stats2017": {
+            "HURRIES": "12",
+            "PB SNAPS": "427",
+            "PEN": "5",
+            "QB HITS": "2",
+            "RB SNAPS": "374",
+            "SACKS": "1",
+            "SNAPS": "801"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "31",
+            "PB SNAPS": "1143",
+            "PEN": "16",
+            "QB HITS": "3",
+            "RB SNAPS": "1013",
+            "SACKS": "7",
+            "SNAPS": "2157"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "97.9",
+        "RUN BLOCK SUCCESS %": "89.0%",
+        "SNAPS/BULLRUSH\rPRESSURE": "121.5",
+        "SNAPS/INSIDE\rPRESSURE": "121.5",
+        "SNAPS/OUTSIDE\rPRESSURE": "121.5",
+        "TEAM": "TCU",
+        "nameFirst": "JOSEPH",
+        "nameLast": "NOTEBOOM",
+        "pffGrade": "83.7",
+        "pffPosRank": "-",
+        "position": "T",
+        "schoolYear": "RS-SR",
+        "stats2015": {
+            "HURRIES": "13",
+            "PB SNAPS": "575",
+            "PEN": "3",
+            "QB HITS": "5",
+            "RB SNAPS": "447",
+            "SACKS": "3",
+            "SNAPS": "1022"
+        },
+        "stats2016": {
+            "HURRIES": "18",
+            "PB SNAPS": "552",
+            "PEN": "9",
+            "QB HITS": "4",
+            "RB SNAPS": "378",
+            "SACKS": "6",
+            "SNAPS": "932"
+        },
+        "stats2017": {
+            "HURRIES": "10",
+            "PB SNAPS": "486",
+            "PEN": "4",
+            "QB HITS": "1",
+            "RB SNAPS": "435",
+            "SACKS": "2",
+            "SNAPS": "921"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "41",
+            "PB SNAPS": "1613",
+            "PEN": "16",
+            "QB HITS": "10",
+            "RB SNAPS": "1260",
+            "SACKS": "11",
+            "SNAPS": "2875"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "99.3",
+        "RUN BLOCK SUCCESS %": "90.5%",
+        "SNAPS/BULLRUSH\rPRESSURE": "-",
+        "SNAPS/INSIDE\rPRESSURE": "186.0",
+        "SNAPS/OUTSIDE\rPRESSURE": "372.0",
+        "TEAM": "APP STATEATE",
+        "nameFirst": "BEAU",
+        "nameLast": "NUNN",
+        "pffGrade": "87.6",
+        "pffPosRank": "14",
+        "position": "T",
+        "schoolYear": "RS-SR",
+        "stats2015": {
+            "HURRIES": "4",
+            "PB SNAPS": "151",
+            "PEN": "5",
+            "QB HITS": "1",
+            "RB SNAPS": "264",
+            "SACKS": "0",
+            "SNAPS": "415"
+        },
+        "stats2016": {
+            "HURRIES": "11",
+            "PB SNAPS": "307",
+            "PEN": "3",
+            "QB HITS": "1",
+            "RB SNAPS": "444",
+            "SACKS": "1",
+            "SNAPS": "756"
+        },
+        "stats2017": {
+            "HURRIES": "2",
+            "PB SNAPS": "372",
+            "PEN": "5",
+            "QB HITS": "0",
+            "RB SNAPS": "464",
+            "SACKS": "1",
+            "SNAPS": "839"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "17",
+            "PB SNAPS": "830",
+            "PEN": "13",
+            "QB HITS": "2",
+            "RB SNAPS": "1172",
+            "SACKS": "2",
+            "SNAPS": "2010"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "97.2",
+        "RUN BLOCK SUCCESS %": "92.2%",
+        "SNAPS/BULLRUSH\rPRESSURE": "-",
+        "SNAPS/INSIDE\rPRESSURE": "81.7",
+        "SNAPS/OUTSIDE\rPRESSURE": "49.0",
+        "TEAM": "TULSA",
+        "nameFirst": "EVAN",
+        "nameLast": "PLAGG",
+        "pffGrade": "85.4",
+        "pffPosRank": "17",
+        "position": "T",
+        "schoolYear": "RS-SR",
+        "stats2015": {
+            "HURRIES": "18",
+            "PB SNAPS": "344",
+            "PEN": "5",
+            "QB HITS": "1",
+            "RB SNAPS": "340",
+            "SACKS": "0",
+            "SNAPS": "684"
+        },
+        "stats2016": {
+            "HURRIES": "24",
+            "PB SNAPS": "427",
+            "PEN": "7",
+            "QB HITS": "8",
+            "RB SNAPS": "487",
+            "SACKS": "1",
+            "SNAPS": "914"
+        },
+        "stats2017": {
+            "HURRIES": "19",
+            "PB SNAPS": "500",
+            "PEN": "7",
+            "QB HITS": "8",
+            "RB SNAPS": "328",
+            "SACKS": "1",
+            "SNAPS": "828"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "61",
+            "PB SNAPS": "1271",
+            "PEN": "19",
+            "QB HITS": "17",
+            "RB SNAPS": "1155",
+            "SACKS": "2",
+            "SNAPS": "2426"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "97.0",
+        "RUN BLOCK SUCCESS %": "90.4%",
+        "SNAPS/BULLRUSH\rPRESSURE": "281.0",
+        "SNAPS/INSIDE\rPRESSURE": "70.3",
+        "SNAPS/OUTSIDE\rPRESSURE": "46.8",
+        "TEAM": "IDAHO",
+        "nameFirst": "JORDAN",
+        "nameLast": "ROSE",
+        "pffGrade": "80.4",
+        "pffPosRank": "22",
+        "position": "T",
+        "schoolYear": "SR",
+        "stats2015": {
+            "HURRIES": "20",
+            "PB SNAPS": "549",
+            "PEN": "11",
+            "QB HITS": "3",
+            "RB SNAPS": "384",
+            "SACKS": "2",
+            "SNAPS": "933"
+        },
+        "stats2016": {
+            "HURRIES": "12",
+            "PB SNAPS": "412",
+            "PEN": "6",
+            "QB HITS": "2",
+            "RB SNAPS": "342",
+            "SACKS": "2",
+            "SNAPS": "754"
+        },
+        "stats2017": {
+            "HURRIES": "9",
+            "PB SNAPS": "281",
+            "PEN": "11",
+            "QB HITS": "1",
+            "RB SNAPS": "259",
+            "SACKS": "1",
+            "SNAPS": "540"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "41",
+            "PB SNAPS": "1242",
+            "PEN": "28",
+            "QB HITS": "6",
+            "RB SNAPS": "985",
+            "SACKS": "5",
+            "SNAPS": "2227"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "95.6",
+        "RUN BLOCK SUCCESS %": "92.6%",
+        "SNAPS/BULLRUSH\rPRESSURE": "72.2",
+        "SNAPS/INSIDE\rPRESSURE": "60.2",
+        "SNAPS/OUTSIDE\rPRESSURE": "60.2",
+        "TEAM": "UNC",
+        "nameFirst": "BENTLEY",
+        "nameLast": "SPAIN",
+        "pffGrade": "80.5",
+        "pffPosRank": "21",
+        "position": "T",
+        "schoolYear": "SR",
+        "stats2015": {
+            "HURRIES": "22",
+            "PB SNAPS": "279",
+            "PEN": "0",
+            "QB HITS": "6",
+            "RB SNAPS": "281",
+            "SACKS": "1",
+            "SNAPS": "560"
+        },
+        "stats2016": {
+            "HURRIES": "16",
+            "PB SNAPS": "487",
+            "PEN": "4",
+            "QB HITS": "4",
+            "RB SNAPS": "351",
+            "SACKS": "3",
+            "SNAPS": "838"
+        },
+        "stats2017": {
+            "HURRIES": "13",
+            "PB SNAPS": "361",
+            "PEN": "3",
+            "QB HITS": "4",
+            "RB SNAPS": "282",
+            "SACKS": "3",
+            "SNAPS": "643"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "51",
+            "PB SNAPS": "1127",
+            "PEN": "7",
+            "QB HITS": "14",
+            "RB SNAPS": "914",
+            "SACKS": "7",
+            "SNAPS": "2041"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "93.7",
+        "RUN BLOCK SUCCESS %": "94.9%",
+        "SNAPS/BULLRUSH\rPRESSURE": "99999.0",
+        "SNAPS/INSIDE\rPRESSURE": "21.0",
+        "SNAPS/OUTSIDE\rPRESSURE": "63.0",
+        "TEAM": "ARMY",
+        "nameFirst": "BRETT",
+        "nameLast": "TOTH",
+        "pffGrade": "77.7",
+        "pffPosRank": "-",
+        "position": "T",
+        "schoolYear": "SR",
+        "stats2015": {
+            "HURRIES": "0",
+            "PB SNAPS": "25",
+            "PEN": "0",
+            "QB HITS": "0",
+            "RB SNAPS": "99",
+            "SACKS": "0",
+            "SNAPS": "124"
+        },
+        "stats2016": {
+            "HURRIES": "4",
+            "PB SNAPS": "116",
+            "PEN": "3",
+            "QB HITS": "1",
+            "RB SNAPS": "687",
+            "SACKS": "2",
+            "SNAPS": "807"
+        },
+        "stats2017": {
+            "HURRIES": "2",
+            "PB SNAPS": "63",
+            "PEN": "0",
+            "QB HITS": "2",
+            "RB SNAPS": "728",
+            "SACKS": "1",
+            "SNAPS": "794"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "6",
+            "PB SNAPS": "204",
+            "PEN": "3",
+            "QB HITS": "3",
+            "RB SNAPS": "1514",
+            "SACKS": "3",
+            "SNAPS": "1725"
+        }
+    },
+    {
+        "PASS BLOCK EFFICIENCY": "97.4",
+        "RUN BLOCK SUCCESS %": "92.4%",
+        "SNAPS/BULLRUSH\rPRESSURE": "134.5",
+        "SNAPS/INSIDE\rPRESSURE": "89.7",
+        "SNAPS/OUTSIDE\rPRESSURE": "67.3",
+        "TEAM": "LSU",
+        "nameFirst": "TOBY",
+        "nameLast": "WEATHERSBY",
+        "pffGrade": "82.6",
+        "pffPosRank": "15",
+        "position": "T",
+        "schoolYear": "JR",
+        "stats2015": {
+            "HURRIES": "5",
+            "PB SNAPS": "86",
+            "PEN": "4",
+            "QB HITS": "1",
+            "RB SNAPS": "78",
+            "SACKS": "0",
+            "SNAPS": "164"
+        },
+        "stats2016": {
+            "HURRIES": "9",
+            "PB SNAPS": "139",
+            "PEN": "1",
+            "QB HITS": "1",
+            "RB SNAPS": "193",
+            "SACKS": "1",
+            "SNAPS": "332"
+        },
+        "stats2017": {
+            "HURRIES": "8",
+            "PB SNAPS": "269",
+            "PEN": "3",
+            "QB HITS": "0",
+            "RB SNAPS": "397",
+            "SACKS": "1",
+            "SNAPS": "668"
+        },
+        "statsThreeYearTotal": {
+            "HURRIES": "22",
+            "PB SNAPS": "494",
+            "PEN": "8",
+            "QB HITS": "2",
+            "RB SNAPS": "668",
+            "SACKS": "2",
+            "SNAPS": "1164"
+        }
+    }
+]

@@ -22,7 +22,6 @@ Created on Wed Apr 11 10:03:18 2018
 #==============================================================================
 import os  
 from tabula import read_pdf
-import pandas as pd
 import json
 
 #==============================================================================
@@ -75,7 +74,9 @@ playerMultiPageDict = {'QB':'28-32', 'RB':'60-65', 'WR':'109-120', 'TE':'132-138
 for position in playerPageDict:
     # Update me as to where we are in the loop
     print("Starting " + position)
+    playerList = []
     
+    ##### playerPageDict = 1 page contains 1 player #####
     # Extract each player page in the position
     playerNameList = []
     playerInfoList = []
@@ -87,21 +88,21 @@ for position in playerPageDict:
         playerNameList.append(read_pdf('2018 Draft Guide v2.pdf', 
                                         pages=num,
                                         stream=True,
-                                        area = "31.185,34.155,69.795,300",
+                                        area = "31, 34, 70, 330",
                                         guess=False,
                                         pandas_options={'header':None}))
         playerInfoList.append(read_pdf('2018 Draft Guide v2.pdf', 
                                         pages=num,
-                                        area = "69.795,29.205,120.335,313.335",
+                                        area = "70, 29, 120, 330",
                                         guess=False,
                                         pandas_options={'header':None}))
         playerStatsList.append(read_pdf('2018 Draft Guide v2.pdf', 
                                         pages=num,
-                                        area = "109.395,26.73,198.495,391.05",
+                                        area = "110, 27, 199, 391",
                                         guess=False))
         advStatsList.append(read_pdf('2018 Draft Guide v2.pdf',
                                      pages=num,
-                                     area = "372.735,381.15,587.565,579.15",
+                                     area = "373, 381, 588, 579",
                                      guess=False))
         print("Extracted " + str(position) + " #" + str(num) + 
               " NameSize=" + str(playerNameList[-1].shape) + " InfoSize=" +
@@ -109,17 +110,115 @@ for position in playerPageDict:
               str(playerStatsList[-1].shape) + " advStatsSize=" + 
               str(advStatsList[-1].shape))
         
-    # Merge tables containing player information into one JSON file
-    playerList = []
+    # Merge separate lists containing player information into one list (playerList)
     for count in range(0,len(page_nums)):
         playerInfo = {}
         # Name and Position        
         playerInfo['position'] = playerNameList[count].loc[0,0].split(' ')[0]
         playerInfo['nameFirst'] = playerNameList[count].loc[0,0].split(' ')[1]
-        playerInfo['nameLast'] = playerNameList[count].loc[0,0].split(' ' )[2]
+        playerInfo['nameLast'] = ' '.join(playerNameList[count].loc[0,0].split(' ')[2:])
         
         # Basic Player Info
         playerInfo['TEAM'] = playerInfoList[count].loc[0,0].split(': ')[1]
+        playerInfo['TEAM'] = playerInfo['TEAM'].replace(' ST',' STATE')
+        playerInfo['schoolYear'] = playerInfoList[count].loc[0,1].split(': ')[1]
+        playerInfo['pffGrade'] = playerInfoList[count].loc[1,0].split(': ')[1]
+        playerInfo['pffPosRank'] = playerInfoList[count].loc[1,1].split(': ')[1]
+        
+        # Player Historic Stats
+        stats = []
+        stats = playerStatsList[count].to_dict('records')
+        for item in stats:
+            year = item.pop('Unnamed: 0')
+            if (year == 'THREE YEAR STATS'):
+                year = 'ThreeYearTotal'
+            year = 'stats'+str(year)
+            # recast stats as strings to avoid the following error:
+            #   Object of type 'int64' is not JSON serializable
+            item = {k:str(v) for k, v in item.items()}
+            playerInfo[year] = item
+                            
+        # Player Advanced Stats
+        advStats = advStatsList[count].T.iloc[:2,:]
+        advStats.columns = advStats.iloc[0,:]
+        advStats.drop(advStats.index[0], inplace=True)
+        playerInfo.update(advStats.to_dict('records')[0])
+        playerList.append(playerInfo)
+    
+    ##### playerMultiPageDict = 1 page contains 2 players #####
+    playerNameList = []
+    playerInfoList = []
+    playerStatsList = []
+    advStatsList = []
+    page_nums = hyphen_range(playerMultiPageDict[position])
+    for num in page_nums:
+        # area format is y1,x1,y2,x2
+        playerNameList.append(read_pdf('2018 Draft Guide v2.pdf', 
+                                        pages=num,
+                                        stream=True,
+                                        area = "31, 34, 70, 360",
+                                        guess=False,
+                                        pandas_options={'header':None}))
+        playerNameList.append(read_pdf('2018 Draft Guide v2.pdf', 
+                                        pages=num,
+                                        stream=True,
+                                        area = "31, 400, 70, 720",
+                                        guess=False,
+                                        pandas_options={'header':None}))
+        
+        playerInfoList.append(read_pdf('2018 Draft Guide v2.pdf', 
+                                        pages=num,
+                                        area = "70, 29, 120, 314",
+                                        guess=False,
+                                        pandas_options={'header':None}))
+        playerInfoList.append(read_pdf('2018 Draft Guide v2.pdf', 
+                                        pages=num,
+                                        area = "70, 405, 120, 691",
+                                        guess=False,
+                                        pandas_options={'header':None}))
+        
+        playerStatsList.append(read_pdf('2018 Draft Guide v2.pdf', 
+                                        pages=num,
+                                        area = "109, 32, 199, 391",
+                                        guess=False))
+        playerStatsList.append(read_pdf('2018 Draft Guide v2.pdf', 
+                                        pages=num,
+                                        area = "109, 404, 199, 761",
+                                        guess=False))
+        
+        advStatsList.append(read_pdf('2018 Draft Guide v2.pdf',
+                                     pages=num,
+                                     area = "200, 31, 415, 227",
+                                     guess=False))
+        advStatsList.append(read_pdf('2018 Draft Guide v2.pdf',
+                                     pages=num,
+                                     area = "200, 400, 415, 600",
+                                     guess=False))
+        
+        # Check to see if there was only 1 player on a 2-player page (i.e. last page)
+        if advStatsList[-1].empty == True:
+            del playerNameList[-1]
+            del playerInfoList[-1]
+            del playerStatsList[-1]
+            del advStatsList[-1]
+            
+        print("Extracted " + str(position) + " #" + str(num) + 
+              " NameSize=" + str(playerNameList[-1].shape) + " InfoSize=" +
+              str(playerInfoList[-1].shape) + " StatsSize=" + 
+              str(playerStatsList[-1].shape) + " advStatsSize=" + 
+              str(advStatsList[-1].shape))
+        
+    # Add player information to playerList before converting into one JSON file
+    for count in range(0,len(advStatsList)):
+        playerInfo = {}
+        # Name and Position        
+        playerInfo['position'] = playerNameList[count].loc[0,0].split(' ')[0]
+        playerInfo['nameFirst'] = playerNameList[count].loc[0,0].split(' ')[1]
+        playerInfo['nameLast'] = ' '.join(playerNameList[count].loc[0,0].split(' ')[2:])
+        
+        # Basic Player Info
+        playerInfo['TEAM'] = playerInfoList[count].loc[0,0].split(': ')[1]
+        playerInfo['TEAM'] = playerInfo['TEAM'].replace(' ST',' STATE')
         playerInfo['schoolYear'] = playerInfoList[count].loc[0,1].split(': ')[1]
         playerInfo['pffGrade'] = playerInfoList[count].loc[1,0].split(': ')[1]
         playerInfo['pffPosRank'] = playerInfoList[count].loc[1,1].split(': ')[1]
@@ -145,6 +244,6 @@ for position in playerPageDict:
         playerList.append(playerInfo)
     
     # Output the list to a file
-    fname_new = 'pff_draft_guide_2018_player_statistics_' + str(position) + '.json'
+    fname_new = 'Temp/pff_draft_guide_2018_player_statistics_' + str(position) + '.json'
     with open(fname_new, 'wt') as out:
         json.dump(playerList, out, sort_keys=True, indent=4, separators=(',', ': '))
