@@ -1,11 +1,11 @@
 [
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "35.0%",
+        "% NOT TACKLED ON FIRST CONTACT": "35.0%",
         "BREAKAWAY %": "56.0%",
         "DROP RATE": "10.0%",
         "ELUSIVE RATING": "106.2",
         "PASS BLOCK EFFICIENCY": "94.1",
-        "TEAM": "NOTRE DAME",
+        "TEAM": "Notre Dame",
         "YARDS/ROUTE": "0.48",
         "nameFirst": "JOSH",
         "nameLast": "ADAMS",
@@ -63,12 +63,12 @@
         }
     },
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "27.4%",
+        "% NOT TACKLED ON FIRST CONTACT": "27.4%",
         "BREAKAWAY %": "26.0%",
         "DROP RATE": "6.3%",
         "ELUSIVE RATING": "24.9",
         "PASS BLOCK EFFICIENCY": "95.1",
-        "TEAM": "ARIZONA STATEATE",
+        "TEAM": "Arizona State",
         "YARDS/ROUTE": "0.41",
         "nameFirst": "KALEN",
         "nameLast": "BALLAGE",
@@ -126,12 +126,12 @@
         }
     },
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "32.6%",
+        "% NOT TACKLED ON FIRST CONTACT": "32.6%",
         "BREAKAWAY %": "56.6%",
         "DROP RATE": "7.7%",
         "ELUSIVE RATING": "66.3",
         "PASS BLOCK EFFICIENCY": "94.6",
-        "TEAM": "PENN STATEATE",
+        "TEAM": "Penn State",
         "YARDS/ROUTE": "1.90",
         "nameFirst": "SAQUON",
         "nameLast": "BARKLEY",
@@ -189,12 +189,12 @@
         }
     },
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "35.0%",
+        "% NOT TACKLED ON FIRST CONTACT": "35.0%",
         "BREAKAWAY %": "45.8%",
         "DROP RATE": "0.0%",
         "ELUSIVE RATING": "96.2",
         "PASS BLOCK EFFICIENCY": "88.8",
-        "TEAM": "GEORGIA",
+        "TEAM": "Georgia",
         "YARDS/ROUTE": "0.45",
         "nameFirst": "NICK",
         "nameLast": "CHUBB",
@@ -252,12 +252,12 @@
         }
     },
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "37.2%",
+        "% NOT TACKLED ON FIRST CONTACT": "37.2%",
         "BREAKAWAY %": "44.1%",
         "DROP RATE": "6.3%",
         "ELUSIVE RATING": "77.0",
         "PASS BLOCK EFFICIENCY": "91.2",
-        "TEAM": "COLORADO STATEATE",
+        "TEAM": "Colorado State",
         "YARDS/ROUTE": "1.24",
         "nameFirst": "DALYN",
         "nameLast": "DAWKINS",
@@ -315,12 +315,12 @@
         }
     },
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "38.7%",
+        "% NOT TACKLED ON FIRST CONTACT": "38.7%",
         "BREAKAWAY %": "37.2%",
         "DROP RATE": "11.1%",
         "ELUSIVE RATING": "76.1",
         "PASS BLOCK EFFICIENCY": "92.3",
-        "TEAM": "OREGON",
+        "TEAM": "Oregon",
         "YARDS/ROUTE": "1.03",
         "nameFirst": "ROYCE",
         "nameLast": "FREEMAN",
@@ -378,7 +378,7 @@
         }
     },
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "37.1%",
+        "% NOT TACKLED ON FIRST CONTACT": "37.1%",
         "BREAKAWAY %": "29.6%",
         "DROP RATE": "0.0%",
         "ELUSIVE RATING": "58.8",
@@ -441,12 +441,12 @@
         }
     },
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "30.6%",
+        "% NOT TACKLED ON FIRST CONTACT": "30.6%",
         "BREAKAWAY %": "42.1%",
         "DROP RATE": "14.3%",
         "ELUSIVE RATING": "60.1",
         "PASS BLOCK EFFICIENCY": "94.6",
-        "TEAM": "TULANE",
+        "TEAM": "Tulane",
         "YARDS/ROUTE": "0.80",
         "nameFirst": "DONTRELL",
         "nameLast": "HILLIARD",
@@ -504,12 +504,12 @@
         }
     },
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "30.6%",
+        "% NOT TACKLED ON FIRST CONTACT": "30.6%",
         "BREAKAWAY %": "44.2%",
         "DROP RATE": "6.1%",
         "ELUSIVE RATING": "76.2",
         "PASS BLOCK EFFICIENCY": "98.2",
-        "TEAM": "NC STATEATE",
+        "TEAM": "NC State",
         "YARDS/ROUTE": "0.79",
         "nameFirst": "NYHEIM",
         "nameLast": "HINES",
@@ -567,12 +567,12 @@
         }
     },
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "35.8%",
+        "% NOT TACKLED ON FIRST CONTACT": "35.8%",
         "BREAKAWAY %": "32.0%",
         "DROP RATE": "0.0%",
         "ELUSIVE RATING": "53.5",
         "PASS BLOCK EFFICIENCY": "95.8",
-        "TEAM": "AUBURN",
+        "TEAM": "Auburn",
         "YARDS/ROUTE": "0.94",
         "nameFirst": "KERRYON",
         "nameLast": "JOHNSON",
@@ -630,7 +630,7 @@
         }
     },
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "31.8%",
+        "% NOT TACKLED ON FIRST CONTACT": "31.8%",
         "BREAKAWAY %": "46.4%",
         "DROP RATE": "6.7%",
         "ELUSIVE RATING": "76.4",
@@ -693,12 +693,12 @@
         }
     },
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "36.0%",
+        "% NOT TACKLED ON FIRST CONTACT": "36.0%",
         "BREAKAWAY %": "38.1%",
         "DROP RATE": "6.7%",
         "ELUSIVE RATING": "72.7",
         "PASS BLOCK EFFICIENCY": "94.8",
-        "TEAM": "TENNESSEE",
+        "TEAM": "Tennessee",
         "YARDS/ROUTE": "1.53",
         "nameFirst": "JOHN",
         "nameLast": "KELLY",
@@ -756,12 +756,12 @@
         }
     },
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "34.4%",
+        "% NOT TACKLED ON FIRST CONTACT": "34.4%",
         "BREAKAWAY %": "56.2%",
         "DROP RATE": "6.7%",
         "ELUSIVE RATING": "95.1",
         "PASS BLOCK EFFICIENCY": "96.9",
-        "TEAM": "GEORGIA",
+        "TEAM": "Georgia",
         "YARDS/ROUTE": "0.53",
         "nameFirst": "SONY",
         "nameLast": "MICHEL",
@@ -819,12 +819,12 @@
         }
     },
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "31.9%",
+        "% NOT TACKLED ON FIRST CONTACT": "31.9%",
         "BREAKAWAY %": "33.9%",
         "DROP RATE": "5.9%",
         "ELUSIVE RATING": "45.7",
         "PASS BLOCK EFFICIENCY": "96.5",
-        "TEAM": "OREGON STATEATE",
+        "TEAM": "Oregon State",
         "YARDS/ROUTE": "1.75",
         "nameFirst": "RYAN",
         "nameLast": "NALL",
@@ -882,12 +882,12 @@
         }
     },
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "42.8%",
+        "% NOT TACKLED ON FIRST CONTACT": "42.8%",
         "BREAKAWAY %": "57.6%",
         "DROP RATE": "4.0%",
         "ELUSIVE RATING": "128.6",
         "PASS BLOCK EFFICIENCY": "88.3",
-        "TEAM": "SAN DIEGO STATE.",
+        "TEAM": "San Diego State",
         "YARDS/ROUTE": "1.00",
         "nameFirst": "RASHAAD",
         "nameLast": "PENNY",
@@ -945,12 +945,12 @@
         }
     },
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "31.8%",
+        "% NOT TACKLED ON FIRST CONTACT": "31.8%",
         "BREAKAWAY %": "32.2%",
         "DROP RATE": "0.0%",
         "ELUSIVE RATING": "41.3",
         "PASS BLOCK EFFICIENCY": "94.0",
-        "TEAM": "ARIZONA STATEATE",
+        "TEAM": "Arizona State",
         "YARDS/ROUTE": "0.41",
         "nameFirst": "DEMARIO",
         "nameLast": "RICHARD",
@@ -1008,12 +1008,12 @@
         }
     },
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "31.4%",
+        "% NOT TACKLED ON FIRST CONTACT": "31.4%",
         "BREAKAWAY %": "34.7%",
         "DROP RATE": "7.6%",
         "ELUSIVE RATING": "55.8",
         "PASS BLOCK EFFICIENCY": "93.9",
-        "TEAM": "NMSU",
+        "TEAM": "New Mexico State",
         "YARDS/ROUTE": "1.47",
         "nameFirst": "LARRY",
         "nameLast": "ROSE III",
@@ -1071,12 +1071,12 @@
         }
     },
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "33.1%",
+        "% NOT TACKLED ON FIRST CONTACT": "33.1%",
         "BREAKAWAY %": "28.9%",
         "DROP RATE": "10.0%",
         "ELUSIVE RATING": "41.5",
         "PASS BLOCK EFFICIENCY": "92.1",
-        "TEAM": "ALABAMA",
+        "TEAM": "Alabama",
         "YARDS/ROUTE": "1.06",
         "nameFirst": "BO",
         "nameLast": "SCARBROUGH",
@@ -1134,12 +1134,12 @@
         }
     },
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "36.3%",
+        "% NOT TACKLED ON FIRST CONTACT": "36.3%",
         "BREAKAWAY %": "36.3%",
         "DROP RATE": "0.0%",
         "ELUSIVE RATING": "99.1",
         "PASS BLOCK EFFICIENCY": "95.4",
-        "TEAM": "LA TECH",
+        "TEAM": "Louisiana Tech",
         "YARDS/ROUTE": "0.99",
         "nameFirst": "BOSTON",
         "nameLast": "SCOTT",
@@ -1197,12 +1197,12 @@
         }
     },
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "39.9%",
+        "% NOT TACKLED ON FIRST CONTACT": "39.9%",
         "BREAKAWAY %": "42.6%",
         "DROP RATE": "5.7%",
         "ELUSIVE RATING": "60.3",
         "PASS BLOCK EFFICIENCY": "96.6",
-        "TEAM": "SOUTHERN MISS",
+        "TEAM": "Southern Miss",
         "YARDS/ROUTE": "1.30",
         "nameFirst": "ITO",
         "nameLast": "SMITH",
@@ -1260,12 +1260,12 @@
         }
     },
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "41.1%",
+        "% NOT TACKLED ON FIRST CONTACT": "41.1%",
         "BREAKAWAY %": "56.9%",
         "DROP RATE": "0.0%",
         "ELUSIVE RATING": "51.5",
         "PASS BLOCK EFFICIENCY": "97.6",
-        "TEAM": "MIAMI (FLA)",
+        "TEAM": "Miami (FL)",
         "YARDS/ROUTE": "1.30",
         "nameFirst": "MARK",
         "nameLast": "WALTON",
@@ -1323,12 +1323,12 @@
         }
     },
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "38.2%",
+        "% NOT TACKLED ON FIRST CONTACT": "38.2%",
         "BREAKAWAY %": "31.6%",
         "DROP RATE": "0.0%",
         "ELUSIVE RATING": "72.2",
         "PASS BLOCK EFFICIENCY": "97.2",
-        "TEAM": "WASHINGTON",
+        "TEAM": "Washington",
         "YARDS/ROUTE": "1.41",
         "nameFirst": "LAVON",
         "nameLast": "COLEMAN",
@@ -1386,7 +1386,7 @@
         }
     },
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "33.1%",
+        "% NOT TACKLED ON FIRST CONTACT": "33.1%",
         "BREAKAWAY %": "32.1%",
         "DROP RATE": "0.0%",
         "ELUSIVE RATING": "46.0",
@@ -1449,12 +1449,12 @@
         }
     },
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "30.2%",
+        "% NOT TACKLED ON FIRST CONTACT": "30.2%",
         "BREAKAWAY %": "34.6%",
         "DROP RATE": "4.2%",
         "ELUSIVE RATING": "79.0",
         "PASS BLOCK EFFICIENCY": "86.4",
-        "TEAM": "NORTHWESTERN",
+        "TEAM": "Northwestern",
         "YARDS/ROUTE": "1.36",
         "nameFirst": "JUSTIN",
         "nameLast": "JACKSON",
@@ -1512,12 +1512,12 @@
         }
     },
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "27.5%",
+        "% NOT TACKLED ON FIRST CONTACT": "27.5%",
         "BREAKAWAY %": "29.4%",
         "DROP RATE": "6.9%",
         "ELUSIVE RATING": "41.3",
         "PASS BLOCK EFFICIENCY": "96.5",
-        "TEAM": "COLORADO",
+        "TEAM": "Colorado",
         "YARDS/ROUTE": "0.88",
         "nameFirst": "PHILLIP",
         "nameLast": "LINDSAY",
@@ -1575,12 +1575,12 @@
         }
     },
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "30.2%",
+        "% NOT TACKLED ON FIRST CONTACT": "30.2%",
         "BREAKAWAY %": "34.6%",
         "DROP RATE": "4.2%",
         "ELUSIVE RATING": "79.0",
         "PASS BLOCK EFFICIENCY": "86.4",
-        "TEAM": "WSU",
+        "TEAM": "Washington State",
         "YARDS/ROUTE": "1.36",
         "nameFirst": "JAMAL",
         "nameLast": "MORROW",
@@ -1638,12 +1638,12 @@
         }
     },
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "25.9%",
+        "% NOT TACKLED ON FIRST CONTACT": "25.9%",
         "BREAKAWAY %": "30.8%",
         "DROP RATE": "9.4%",
         "ELUSIVE RATING": "32.3",
         "PASS BLOCK EFFICIENCY": "95.6",
-        "TEAM": "HAWAII",
+        "TEAM": "Hawaii",
         "YARDS/ROUTE": "0.66",
         "nameFirst": "DIOCEMY",
         "nameLast": "SAINT JUSTE",
@@ -1701,12 +1701,12 @@
         }
     },
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "30.7%",
+        "% NOT TACKLED ON FIRST CONTACT": "30.7%",
         "BREAKAWAY %": "34.3%",
         "DROP RATE": "6.1%",
         "ELUSIVE RATING": "49.0",
         "PASS BLOCK EFFICIENCY": "79.2",
-        "TEAM": "IOWA",
+        "TEAM": "Iowa",
         "YARDS/ROUTE": "1.62",
         "nameFirst": "AKRUM",
         "nameLast": "WADLEY",
@@ -1764,12 +1764,12 @@
         }
     },
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "32.9%",
+        "% NOT TACKLED ON FIRST CONTACT": "32.9%",
         "BREAKAWAY %": "47.7%",
         "DROP RATE": "6.5%",
         "ELUSIVE RATING": "78.5",
         "PASS BLOCK EFFICIENCY": "96.3",
-        "TEAM": "OLE MISS",
+        "TEAM": "Ole Miss",
         "YARDS/ROUTE": "1.46",
         "nameFirst": "JORDAN",
         "nameLast": "WILKINS",
@@ -1827,12 +1827,12 @@
         }
     },
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "DNP",
+        "% NOT TACKLED ON FIRST CONTACT": "DNP",
         "BREAKAWAY %": "DNP",
         "DROP RATE": "DNP",
         "ELUSIVE RATING": "DNP",
         "PASS BLOCK EFFICIENCY": "DNP",
-        "TEAM": "WEST VIRGINIA",
+        "TEAM": "West Virginia",
         "YARDS/ROUTE": "DNP",
         "nameFirst": "ELIJAH",
         "nameLast": "WELLMAN",
@@ -1890,12 +1890,12 @@
         }
     },
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "DNP",
+        "% NOT TACKLED ON FIRST CONTACT": "DNP",
         "BREAKAWAY %": "DNP",
         "DROP RATE": "DNP",
         "ELUSIVE RATING": "DNP",
         "PASS BLOCK EFFICIENCY": "DNP",
-        "TEAM": "STANFORD",
+        "TEAM": "Stanford",
         "YARDS/ROUTE": "DNP",
         "nameFirst": "DANIEL",
         "nameLast": "MARX",
@@ -1953,12 +1953,12 @@
         }
     },
     {
-        "% NOT TACKLED ON\rFIRST CONTACT": "DNP",
+        "% NOT TACKLED ON FIRST CONTACT": "DNP",
         "BREAKAWAY %": "DNP",
         "DROP RATE": "DNP",
         "ELUSIVE RATING": "DNP",
         "PASS BLOCK EFFICIENCY": "DNP",
-        "TEAM": "SDSU",
+        "TEAM": "San Diego State",
         "YARDS/ROUTE": "DNP",
         "nameFirst": "NICK",
         "nameLast": "BAWDEN",
@@ -2022,7 +2022,7 @@
         "DROP RATE": "3.6%",
         "SLOT RECEPTIONS": "1",
         "SLOT YARDS": "8",
-        "TEAM": "OKLAHOMA",
+        "TEAM": "Oklahoma",
         "YARDS/ROUTE": "2.94",
         "nameFirst": "DIMITRI",
         "nameLast": "FLOWERS",

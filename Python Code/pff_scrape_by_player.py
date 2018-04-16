@@ -20,6 +20,7 @@ Created on Wed Apr 11 10:03:18 2018
 #==============================================================================
 # Package Import
 #==============================================================================
+import csv
 import os  
 from tabula import read_pdf
 import json
@@ -62,6 +63,14 @@ os.chdir(r'/home/ejreidelbach/projects/NFL/Data/DraftV2')
 # https://medium.com/dunder-data/selecting-subsets-of-data-in-pandas-6fcd0170be9c
 # https://dbsnail.com/2017/11/07/extracting-tables-in-pdf-format-with-tabula-py/
 # https://blog.chezo.uno/tabula-py-extract-table-from-pdf-into-python-dataframe-6c7acfa5f302
+
+# Establish dictionary for standardizing school names
+schoolAbbrevDict = {}
+with open('/home/ejreidelbach/projects/NFL/Data/school_abbreviations.csv') as fin:
+    reader=csv.reader(fin, skipinitialspace=True, quotechar="'")
+    for row in reader:
+        valueList = list(filter(None, row[1:]))
+        schoolAbbrevDict[row[0]]=valueList
 
 # Extract PFF Position Rankings
 playerPageDict = {'QB':'13-27', 'RB':'39-59', 'WR':'81-108', 'TE':'125-131', 
@@ -115,12 +124,17 @@ for position in playerPageDict:
         playerInfo = {}
         # Name and Position        
         playerInfo['position'] = playerNameList[count].loc[0,0].split(' ')[0]
-        playerInfo['nameFirst'] = playerNameList[count].loc[0,0].split(' ')[1]
-        playerInfo['nameLast'] = ' '.join(playerNameList[count].loc[0,0].split(' ')[2:])
+        playerInfo['nameFirst'] = playerNameList[count].loc[0,0].split(' ')[1].replace('\u2019',"'")
+        playerInfo['nameLast'] = ' '.join(playerNameList[count].loc[0,0].split(' ')[2:]).replace('\u2019',"'")
         
         # Basic Player Info
         playerInfo['TEAM'] = playerInfoList[count].loc[0,0].split(': ')[1]
-        playerInfo['TEAM'] = playerInfo['TEAM'].replace(' ST',' STATE')
+        for school in schoolAbbrevDict:
+            schoolList = [x.lower() for x in schoolAbbrevDict[school]]
+            if playerInfo['TEAM'].lower() in schoolList:
+                playerInfo['TEAM'] = school
+            elif playerInfo['TEAM'].lower() == school.lower():
+                playerInfo['TEAM'] = school
         playerInfo['schoolYear'] = playerInfoList[count].loc[0,1].split(': ')[1]
         playerInfo['pffGrade'] = playerInfoList[count].loc[1,0].split(': ')[1]
         playerInfo['pffPosRank'] = playerInfoList[count].loc[1,1].split(': ')[1]
@@ -143,6 +157,11 @@ for position in playerPageDict:
         advStats.columns = advStats.iloc[0,:]
         advStats.drop(advStats.index[0], inplace=True)
         playerInfo.update(advStats.to_dict('records')[0])
+        # remove any formatting issues with keys (i.e. \r \n)
+        for key, value in playerInfo.items():
+            if '\r' in key:
+                new_key = key.replace('\r',' ')
+                playerInfo[new_key] = playerInfo.pop(key)
         playerList.append(playerInfo)
     
     ##### playerMultiPageDict = 1 page contains 2 players #####
@@ -213,12 +232,17 @@ for position in playerPageDict:
         playerInfo = {}
         # Name and Position        
         playerInfo['position'] = playerNameList[count].loc[0,0].split(' ')[0]
-        playerInfo['nameFirst'] = playerNameList[count].loc[0,0].split(' ')[1]
-        playerInfo['nameLast'] = ' '.join(playerNameList[count].loc[0,0].split(' ')[2:])
+        playerInfo['nameFirst'] = playerNameList[count].loc[0,0].split(' ')[1].replace('\u2019',"'")
+        playerInfo['nameLast'] = ' '.join(playerNameList[count].loc[0,0].split(' ')[2:]).replace('\u2019',"'")
         
         # Basic Player Info
         playerInfo['TEAM'] = playerInfoList[count].loc[0,0].split(': ')[1]
-        playerInfo['TEAM'] = playerInfo['TEAM'].replace(' ST',' STATE')
+        for school in schoolAbbrevDict:
+            schoolList = [x.lower() for x in schoolAbbrevDict[school]]
+            if playerInfo['TEAM'].lower() in schoolList:
+                playerInfo['TEAM'] = school
+            elif playerInfo['TEAM'].lower() == school.lower():
+                playerInfo['TEAM'] = school
         playerInfo['schoolYear'] = playerInfoList[count].loc[0,1].split(': ')[1]
         playerInfo['pffGrade'] = playerInfoList[count].loc[1,0].split(': ')[1]
         playerInfo['pffPosRank'] = playerInfoList[count].loc[1,1].split(': ')[1]
@@ -238,10 +262,15 @@ for position in playerPageDict:
                             
         # Player Advanced Stats
         advStats = advStatsList[count].T.iloc[:2,:]
-        advStats.columns = advStats.iloc[0,:]
+        advStats.columns = advStats.iloc[0,:]  
         advStats.drop(advStats.index[0], inplace=True)
         playerInfo.update(advStats.to_dict('records')[0])
-        playerList.append(playerInfo)
+        # remove any formatting issues with keys (i.e. \r \n)
+        for key, value in playerInfo.items():
+            if '\r' in key:
+                new_key = key.replace('\r',' ')
+                playerInfo[new_key] = playerInfo.pop(key)
+        playerList.append(playerInfo)   
     
     # Output the list to a file
     fname_new = 'Temp/pff_draft_guide_2018_player_statistics_' + str(position) + '.json'
