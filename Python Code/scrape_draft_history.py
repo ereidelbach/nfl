@@ -49,7 +49,7 @@ positionAbbrList = ['OT','OG','OC']
 #==============================================================================
 
 # Set the project working directory
-os.chdir(r'/home/ejreidelbach/projects/NFL/Data/Combine')
+os.chdir(r'/home/ejreidelbach/projects/NFL/Data/Draft')
 
 # Set the link that we will be scraping
 mainURL = r'http://www.drafthistory.com/index.php/years/'

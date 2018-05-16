@@ -213,7 +213,7 @@ headers = {"User-agent":
 positionList = ['QB','FB','HB','WR','TE','OT','OG','OC','ST','DT','DE','EDGE','ILB','OLB','SS','FS','CB']
 player_URL_List = []
 
-# Open a PhantomJS web browser and direct it to the DEA's dropbox search page
+# Open a Headless Firefox browser
 options = Options()
 options.set_headless(headless=True)
 browser = webdriver.Firefox(firefox_options=options)
