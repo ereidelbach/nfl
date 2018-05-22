@@ -64,28 +64,28 @@ stats_all = stats_field + stats_half + stats_home_away + stats_margin + \
             stats_points + stats_quarters + stats_field
 
 # stat columns specific to the various categories
-pass_stats_list = ['att',
-                   'comp',
-                   'pct',
-                   'yds',
-                   'avg',
-                   'lng',
-                   'td',
-                   'int',
-                   '1st',
-                   '1st%',
-                   '20+',
-                   'sack',
-                   'rate',]
+qb_stats_list = ['att',
+                 'comp',
+                 'pct',
+                 'yds',
+                 'avg',
+                 'lng',
+                 'td',
+                 'int',
+                 '1st',
+                 '1st%',
+                 '20+',
+                 'sack',
+                 'rate',]
 
-rush_stats_list = ['att',
-                   'yds',
-                   'avg',
-                   'lng',
-                   'td',
-                   '1st',]
+rb_stats_list = ['att',
+                 'yds',
+                 'avg',
+                 'lng',
+                 'td',
+                 '1st',]
 
-rec_stats_list = ['rec',
+wr_stats_list = ['rec',
                  'yds',
                  'avg',
                  'lng',
@@ -107,6 +107,20 @@ def_stats_list = ['comb',
                   'avg',
                   'lng',]
 
+kick_stats_list = ['20_29_att',
+                   '20_29_made',
+                   '30-39_att',
+                   '30_39_made',
+                   '40_49_att',
+                   '40_49_made',
+                   '50_+_att',
+                   '50_+_made',
+                   'fg_made',
+                   'fg_att',
+                   'fg_pct',]
+
+punt_stats_list = []
+
 # positions for which stats can be obtained
 position_list = {'QUARTERBACK',
                  'RUNNING_BACK',
@@ -115,10 +129,7 @@ position_list = {'QUARTERBACK',
                  'DEFENSIVE_LINEMAN',
                  'LINEBACKER',
                  'DEFENSIVE_BACK',
-                 'KICKOFF_KICKER',
-                 'KICK_RETURNER',
                  'PUNTER',
-                 'PUNT_RETURNER',
                  'FIELD_GOAL_KICKER',
                  }
 
@@ -145,18 +156,24 @@ year_list = {'2017',
         }
 
 # create a dictionary that determines stats to scrape for each position
-scrape_dict = {'QUARTERBACK':['Passing Splits','Rushing Splits'],
-               'RUNNING_BACK':['Receiving Splits','Rushing Splits'],
-               'WIDE_RECEIVER':['Receiving Splits','Rushing Splits'],
-               'TIGHT_END':'',
-               'DEFENSIVE_LINEMAN':'',
-               'LINEBACKER':'',
-               'DEFENSIVE_BACK':'',
-               'KICKOFF_KICKER':'',
-               'KICK_RETURNER':'',
-               'PUNTER':'',
-               'PUNT_RETURNER':'',
-               'FIELD_GOAL_KICKER':'',
+scrape_dict = {'QB':['Passing Splits','Rushing Splits'],
+               'RB':['Receiving Splits','Rushing Splits'],
+               'WR':['Receiving Splits','Rushing Splits'],
+               'TE':['Receiving Splits'],
+               'DE':['Defensive Splits'],
+               'DT':['Defensive Splits'],
+               'NT':['Defensive Splits'],
+               'ILB':['Defensive Splits'],
+               'OLB':['Defensive Splits'],
+               'MLB':['Defensive Splits'],
+               'LB':['Defensive Splits'],
+               'FS':['Defensive Splits'],
+               'SS':['Defensive Splits'],
+               'SAF':['Defensive Splits'],
+               'CB':['Defensive Splits'],
+               'DB':['Defensive Splits'],
+               'P':['Punting Splits'],
+               'K':['Kicking Splits'],
               }
 
 def soupifyURL(url):
@@ -166,6 +183,9 @@ def soupifyURL(url):
     return soup
 
 def scrapePlayerStats(url, year, browser):
+    year = '2017'
+    url = 'http://www.nfl.com/players/jarvislandry/profile?id=LAN163029'
+    
     playerInfo = {}
     soup = soupifyURL(url)
     
@@ -202,107 +222,147 @@ def scrapePlayerStats(url, year, browser):
     ### Extract Situational Stats
     
     soup = soupifyURL(url + 'situationalstats')
-    temp_table = soup.find_all('table', {'class':'data-table1'})
-    if temp_table == []:
-        for stat in stats_all:
-            for cat in rec_stats_list:
-                playerInfo[stat + '_' + cat] = ''
-    else:
-        # Get column headers
-        cat_stats_list = []
-        header = temp_table[0].find('tr', {'class':'player-table-key'})
-        for col in header.find_all('td')[1:]:
-            cat_stats_list.append(col.text.lower())
-        
-        # Determine what stats are available for the player
-        split_url_list = ''
-        Skipping Rushing / Passing / Defensive for WR
     
-        # Calculate Yearly Stats
-    
-        # Extract Receiving Splits for WR
-        ## Attempts (SKIPPED - Not relavant for WR)
-        temp = temp_table[0]
-        playerInfo['stats_attempts_1_10']
-        
-        ## Field Position ############################################      
-        values_list = list(temp_table[-7].find('tbody').find_all('tr'))
-        values_list = [i for i in values_list if len(i) > 1]   
-        
-        for stat, value in zip(stats_field, values_list):
-            for cat, col  in zip(cat_stats_list, value.find_all('td')[1:]):
-                if (col.text == '--'):
-                    playerInfo[stat + '_' + cat] = int(0)
-                try:
-                    playerInfo[stat + '_' + cat] = int(col.text.replace(',',''))
-                except:
-                    playerInfo[stat + '_' + cat] = float(col.text.replace(',',''))
-        
-        ## Half ######################################################
-        values_list = list(temp_table[-6].find('tbody').find_all('tr'))
-        values_list = [i for i in values_list if len(i) > 1]
-        
-        for stat, value in zip(stats_half, values_list):
-            for cat, col  in zip(cat_stats_list, value.find_all('td')[1:]):
-                try:
-                    playerInfo[stat + '_' + cat] = int(col.text.replace(',',''))
-                except:
-                    playerInfo[stat + '_' + cat] = float(col.text.replace(',',''))
-        
-        ## Home/Away #################################################
-        values_list = list(temp_table[-5].find('tbody').find_all('tr'))
-        values_list = [i for i in values_list if len(i) > 1]
+    # Determine what stats are available for the player
+    stat_split_list = []
+    stat_splits = soup.find('ul', {'class':'player-tabs'})
+    for stat_split in stat_splits.find_all('a'):
+        stat_split_list.append(stat_split.text)
 
-        for stat, value in zip(stats_home_away, values_list):
-            for cat, col  in zip(cat_stats_list, value.find_all('td')[1:]):
-                try:
-                    playerInfo[stat + '_' + cat] = int(col.text.replace(',',''))
-                except:
-                    playerInfo[stat + '_' + cat] = float(col.text.replace(',',''))
-        
-        ## Margin ####################################################
-        values_list = list(temp_table[-4].find('tbody').find_all('tr'))
-        values_list = [i for i in values_list if len(i) > 1]
+    # Extract the navigation bar at the bottom of the page for navigation
+    #options = Options()
+    #options.set_headless(headless=True)
+    #browser = webdriver.Firefox(firefox_options=options)
+    browser = webdriver.Firefox()
+    #browser = webdriver.Firefox(executable_path=r'E:\Projects\geckodriver.exe')
+    browser.implicitly_wait(100)
+    browser.get(url + 'situationalstats')
 
-        for stat, value in zip(stats_margin, values_list):
-            for cat, col  in zip(cat_stats_list, value.find_all('td')[1:]):
-                try:
-                    playerInfo[stat + '_' + cat] = int(col.text.replace(',',''))
-                except:
-                    playerInfo[stat + '_' + cat] = float(col.text.replace(',',''))
         
-        ## Point Situation ###########################################
-        values_list = list(temp_table[-3].find('tbody').find_all('tr'))
-        values_list = [i for i in values_list if len(i) > 1]
-
-        for stat, value in zip(stats_points, values_list):
-            for cat, col  in zip(cat_stats_list, value.find_all('td')[1:]):
-                try:
-                    playerInfo[stat + '_' + cat] = int(col.text.replace(',',''))
-                except:
-                    playerInfo[stat + '_' + cat] = float(col.text.replace(',',''))
+    # Extract stats for every category that is of interest to that position group
+    for stat_split in stat_split_list:
         
-        ## Quarters ##################################################
-        values_list = list(temp_table[-2].find('tbody').find_all('tr'))
-        values_list = [i for i in values_list if len(i) > 1]
+        # If the stat category is worthy of scraping for that position, scrape it
+        if stat_split in scrape_dict[playerInfo['position']]:
 
-        for stat, value in zip(stats_quarters, values_list):
-            for cat, col  in zip(cat_stats_list, value.find_all('td')[1:]):
-                try:
-                    playerInfo[stat + '_' + cat] = int(col.text.replace(',',''))
-                except:
-                    playerInfo[stat + '_' + cat] = float(col.text.replace(',',''))
+            # Find the stat tables for the specified split category
+            temp_table = soup.find('div',{'id':'game_split_tabs_'+str(
+                    stat_split_list.index(stat_split))}).find_all('table', {'class':'data-table1'})
+
+            # If the returned tables are empty, skip to the next category
+            if temp_table == []:
+                continue
+#                for stat in stats_all:
+#                    for cat in rec_stats_list:
+#                        playerInfo[stat + '_' + cat] = ''
+                
+            # If the tables contain data for that split category, scrape them
+            else:
+                
+                # Iterate through every stat category and extract out the data
+                
+                # Get column headers
+                cat_stats_list = []
+                header = temp_table[0].find('tr', {'class':'player-table-key'})
+                for col in header.find_all('td')[1:]:
+                    cat_stats_list.append(col.text.lower())
+                    
+                # Get stat categories
+                
+                
+                # Calculate Yearly Stats
+            
+                ## Iterate through every stat category and extract out the data
+                values_list = list(temp_table[-7].find('tbody').find_all('tr'))
+                values_list = [i for i in values_list if len(i) > 1]   
+                
+                for stat, value in zip(stats_field, values_list):
+                    for cat, col  in zip(cat_stats_list, value.find_all('td')[1:]):
+                        if (col.text == '--'):
+                            playerInfo[stat + '_' + cat] = int(0)
+                        try:
+                            playerInfo[stat + '_' + cat] = int(col.text.replace(',',''))
+                        except:
+                            playerInfo[stat + '_' + cat] = float(col.text.replace(',',''))
+                
+                ## Field Position ############################################      
+                values_list = list(temp_table[-7].find('tbody').find_all('tr'))
+                values_list = [i for i in values_list if len(i) > 1]   
+                
+                for stat, value in zip(stats_field, values_list):
+                    for cat, col  in zip(cat_stats_list, value.find_all('td')[1:]):
+                        if (col.text == '--'):
+                            playerInfo[stat + '_' + cat] = int(0)
+                        try:
+                            playerInfo[stat + '_' + cat] = int(col.text.replace(',',''))
+                        except:
+                            playerInfo[stat + '_' + cat] = float(col.text.replace(',',''))
+                
+                ## Half ######################################################
+                values_list = list(temp_table[-6].find('tbody').find_all('tr'))
+                values_list = [i for i in values_list if len(i) > 1]
+                
+                for stat, value in zip(stats_half, values_list):
+                    for cat, col  in zip(cat_stats_list, value.find_all('td')[1:]):
+                        try:
+                            playerInfo[stat + '_' + cat] = int(col.text.replace(',',''))
+                        except:
+                            playerInfo[stat + '_' + cat] = float(col.text.replace(',',''))
+                
+                ## Home/Away #################################################
+                values_list = list(temp_table[-5].find('tbody').find_all('tr'))
+                values_list = [i for i in values_list if len(i) > 1]
         
-        ## Field Type ################################################
-        values_list = list(temp_table[-1].find('tbody').find_all('tr'))
-        values_list = [i for i in values_list if len(i) > 1]
-
-        for stat, value in zip(stats_field_type, values_list):
-            for cat, col  in zip(cat_stats_list, value.find_all('td')[1:]):
-                try:
-                    playerInfo[stat + '_' + cat] = int(col.text.replace(',',''))
-                except:
-                    playerInfo[stat + '_' + cat] = float(col.text.replace(',',''))
+                for stat, value in zip(stats_home_away, values_list):
+                    for cat, col  in zip(cat_stats_list, value.find_all('td')[1:]):
+                        try:
+                            playerInfo[stat + '_' + cat] = int(col.text.replace(',',''))
+                        except:
+                            playerInfo[stat + '_' + cat] = float(col.text.replace(',',''))
+                
+                ## Margin ####################################################
+                values_list = list(temp_table[-4].find('tbody').find_all('tr'))
+                values_list = [i for i in values_list if len(i) > 1]
+        
+                for stat, value in zip(stats_margin, values_list):
+                    for cat, col  in zip(cat_stats_list, value.find_all('td')[1:]):
+                        try:
+                            playerInfo[stat + '_' + cat] = int(col.text.replace(',',''))
+                        except:
+                            playerInfo[stat + '_' + cat] = float(col.text.replace(',',''))
+                
+                ## Point Situation ###########################################
+                values_list = list(temp_table[-3].find('tbody').find_all('tr'))
+                values_list = [i for i in values_list if len(i) > 1]
+        
+                for stat, value in zip(stats_points, values_list):
+                    for cat, col  in zip(cat_stats_list, value.find_all('td')[1:]):
+                        try:
+                            playerInfo[stat + '_' + cat] = int(col.text.replace(',',''))
+                        except:
+                            playerInfo[stat + '_' + cat] = float(col.text.replace(',',''))
+                
+                ## Quarters ##################################################
+                values_list = list(temp_table[-2].find('tbody').find_all('tr'))
+                values_list = [i for i in values_list if len(i) > 1]
+        
+                for stat, value in zip(stats_quarters, values_list):
+                    for cat, col  in zip(cat_stats_list, value.find_all('td')[1:]):
+                        try:
+                            playerInfo[stat + '_' + cat] = int(col.text.replace(',',''))
+                        except:
+                            playerInfo[stat + '_' + cat] = float(col.text.replace(',',''))
+                
+                ## Field Type ################################################
+                values_list = list(temp_table[-1].find('tbody').find_all('tr'))
+                values_list = [i for i in values_list if len(i) > 1]
+        
+                for stat, value in zip(stats_field_type, values_list):
+                    for cat, col  in zip(cat_stats_list, value.find_all('td')[1:]):
+                        try:
+                            playerInfo[stat + '_' + cat] = int(col.text.replace(',',''))
+                        except:
+                            playerInfo[stat + '_' + cat] = float(col.text.replace(',',''))
     
     ### Extract Draft
     soup = soupifyURL(url + 'draft')
