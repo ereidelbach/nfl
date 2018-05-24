@@ -24,7 +24,6 @@ import pandas as pd
 import os
 from bs4 import BeautifulSoup
 import requests
-import time
 
 #==============================================================================
 # Function Definitions / Reference Variable Declaration
@@ -166,10 +165,10 @@ scrape_dict = {'QB':['Passing Splits','Rushing Splits'],
               }
 # create a dictionary that determines stats to scrape for each position
 #   for year-based statistics
-scrape_dict_year = {'QB':['PASSING','RUSHING'],
-                    'RB':['RECEIVING','RUSHING','PUNT RETURN','KICK RETURN'],
-                    'WR':['RECEIVING','RUSHING','PUNT RETURN','KICK RETURN'],
-                    'TE':['RECEIVING'],
+scrape_dict_year = {'QB':['PASSING','RUSHING','FUMBLES'],
+                    'RB':['RECEIVING','RUSHING','PUNT RETURN','KICK RETURN','FUMBLES'],
+                    'WR':['RECEIVING','RUSHING','PUNT RETURN','KICK RETURN','FUMBLES'],
+                    'TE':['RECEIVING','FUMBLES'],
                     'DE':['DEFENSIVE'],
                     'DT':['DEFENSIVE'],
                     'NT':['DEFENSIVE'],
@@ -194,11 +193,8 @@ def soupifyURL(url):
 
 def scrapePlayerStats(url, year, index, list_length, position):   
     playerInfo = {}
-    url = 'http://www.nfl.com/player/stevesmith/2504595/profile'
-    year = '2016'
     soup = soupifyURL(url)
     
-    playerInfo['year'] = year
     playerInfo['url'] = url
     playerInfo['position'] = position_dict[position]
     
@@ -211,13 +207,16 @@ def scrapePlayerStats(url, year, index, list_length, position):
     
     # Check to see if a player is no longer active (if so, handle differently)
     temp = list(soup.find('div', {'class':'player-info'}).find_all('p'))
-    if len(temp) <= 5:
+    if len(temp) <= 5 or (len(temp)==6 and temp[5].text.split(':')[0] == 'Hall of Fame Induction'):
         temp = list(soup.find('div', {'class':'player-info'}).find_all('p')[1])
         height = temp[2].split(': ')[1].strip()
         playerInfo['height'] = height
         playerInfo['heightInches'] = int(height.split('-')[0])*12 + int(height.split('-')[1])
         playerInfo['weight'] = temp[4].split(': ')[1].strip()
-        playerInfo['age'] = temp[6].split(': ')[1].strip()
+        try:
+            playerInfo['age'] = temp[6].split(': ')[1].strip()
+        except:
+            playerInfo['age'] = 'N/A'
         
         temp = list(soup.find('div', {'class':'player-info'}).find_all('p')[3])
         playerInfo['college'] = temp[1].split(': ')[1].strip()
@@ -242,13 +241,16 @@ def scrapePlayerStats(url, year, index, list_length, position):
 #        temp = list(soup.find('div', {'class':'player-info'}).find_all('p')[5])
 #        playerInfo['experience'] = temp[1].split(': ')[1][0]
     
-        temp = list(soup.find('div', {'class':'player-info'}).find_all('p')[6])    
-        temp = temp[1].split('[')[1].split(']')[0]
-        if ', ' in temp:
-            temp = temp.split(', ')[1]
-        elif ',' in temp:
-            temp = temp.split(',')[1]
-        playerInfo['high_school_state'] = temp
+        try:
+            temp = list(soup.find('div', {'class':'player-info'}).find_all('p')[6])    
+            temp = temp[1].split('[')[1].split(']')[0]
+            if ', ' in temp:
+                temp = temp.split(', ')[1]
+            elif ',' in temp:
+                temp = temp.split(',')[1]
+            playerInfo['high_school_state'] = temp
+        except:
+            playerInfo['high_school_state'] = 'N/A'
         
         #playerInfo['position'] = soup.find('span', {'class':'player-number'}).text.split(' ')[1].strip()
         playerInfo['team_current'] = soup.find('p', {'class':'player-team-links'}).find('a').text
@@ -258,99 +260,131 @@ def scrapePlayerStats(url, year, index, list_length, position):
     
     soup = soupifyURL(url + 'situationalstats')
     
-    # Determine what stats are available for the player
-    stat_split_list = []
-    stat_splits = soup.find('ul', {'class':'player-tabs'})
-    for stat_split in stat_splits.find_all('a'):
-        stat_split_list.append(stat_split.text)
-
-    # Extract stats for every category that is of interest to that position group
-    for stat_split in stat_split_list:
+    # Determine what years are available for the player
+    year_soup = list(soup.find('select',{'id':'season'}).find_all('option'))
+    stat_split_year_list = []
+    for yr in year_soup:
+        stat_split_year_list.append(yr.text)
         
-        # If the stat category is worthy of scraping for that position, scrape it
-        if stat_split in scrape_dict[playerInfo['position']]:
+    # Scrape stats for every available year
+    situational_stats_list = []
+    for scrape_year in stat_split_year_list:
+    
+        yearPlayerInfo = {}
+        yearPlayerInfo['year'] = scrape_year
+        if scrape_year != year:
+            soup = soupifyURL(url + 'situationalstats?season=' + scrape_year)
+        
+        # Determine what stats are available for the player
+        stat_split_list = []
+        stat_splits = soup.find('ul', {'class':'player-tabs'})
+        for stat_split in stat_splits.find_all('a'):
+            stat_split_list.append(stat_split.text)
+    
+        # Extract stats for every category that is of interest to that position group
+        for stat_split in stat_split_list:
             
-            # Find the stat tables for the specified split category
-            temp_table = soup.find('div',{'id':'game_split_tabs_'+str(
-                    stat_split_list.index(stat_split))}).find_all('table', {'class':'data-table1'})
-
-            # If the returned tables are empty, skip to the next category
-            if temp_table == []:
-                continue
+            # If the stat category is worthy of scraping for that position, scrape it
+            if stat_split in scrape_dict[playerInfo['position']]:
                 
-            # If the tables contain data for that split category, scrape them
-            else:
-                
-                # Iterate through every stat category and extract out the data
-                for table in temp_table:
-                    # Get the stat category
-                    cat = table.find('td',{'class':'first-td'}).text.lower().replace(' ','_')
+                # Find the stat tables for the specified split category
+                temp_table = soup.find('div',{'id':'game_split_tabs_'+str(
+                        stat_split_list.index(stat_split))}).find_all('table', {'class':'data-table1'})
+    
+                # If the returned tables are empty, skip to the next category
+                if temp_table == []:
+                    continue
                     
-                    # Ignore the Attempts 
-                    if cat == 'attempts' and stat_split == 'Receiving Splits':
-                        continue
+                # If the tables contain data for that split category, scrape them
+                else:
                     
-                    # Get the category column headers
-                    cat_stats_list = []
-                    header = table.find('tr', {'class':'player-table-key'})
-                    for col in header.find_all('td')[1:]:
-                        cat_stats_list.append(col.text.lower()) 
+                    # Iterate through every stat category and extract out the data
+                    for table in temp_table:
+                        # Get the stat category
+                        cat = table.find('td',{'class':'first-td'}).text.lower().replace(' ','_')
+                        
+                        # Ignore the Attempts 
+                        if cat == 'attempts' and stat_split == 'Receiving Splits':
+                            continue
+                        
+                        # Get the category column headers
+                        cat_stats_list = []
+                        header = table.find('tr', {'class':'player-table-key'})
+                        for col in header.find_all('td')[1:]:
+                            cat_stats_list.append(col.text.lower()) 
+    
+                        # Extract the rows that have statistics to scrape              
+                        values_list = list(table.find('tbody').find_all('tr'))
+                        values_list = [i for i in values_list if len(i) > 1]   
+                        
+                        # For every row, merge the row header with the column header
+                        #   to creat a variable name and extract the associated value
+                        for value in values_list:
+                            subcat = value.find('td').text.lower().replace(' ','_')
+                            for stat, col  in zip(cat_stats_list, value.find_all('td')[1:]):
+                                if (col.text == '--'):
+                                    yearPlayerInfo[stat_split.split(' ')[0].lower() + \
+                                               '_' + cat + '_' + subcat + '_' + stat] = int(0)
+                                    continue
+                                try:
+                                    yearPlayerInfo[stat_split.split(' ')[0].lower() + \
+                                               '_' + cat + '_' + subcat + '_' + stat] = int(
+                                               col.text.replace('T','').replace(',',''))
+                                except:
+                                    yearPlayerInfo[stat_split.split(' ')[0].lower() + \
+                                               '_' + cat + '_' + subcat + '_' + stat] = float(
+                                               col.text.replace('T','').replace(',',''))     
+        situational_stats_list.append(yearPlayerInfo)
+    playerInfo['stats_situational'] = situational_stats_list
 
-                    # Extract the rows that have statistics to scrape              
-                    values_list = list(table.find('tbody').find_all('tr'))
-                    values_list = [i for i in values_list if len(i) > 1]   
-                    
-                    # For every row, merge the row header with the column header
-                    #   to creat a variable name and extract the associated value
-                    for value in values_list:
-                        subcat = value.find('td').text.lower().replace(' ','_')
-                        for stat, col  in zip(cat_stats_list, value.find_all('td')[1:]):
-                            if (col.text == '--'):
-                                playerInfo[stat_split.split(' ')[0].lower() + \
-                                           '_' + cat + '_' + subcat + '_' + stat] = int(0)
-                                continue
-                            try:
-                                playerInfo[stat_split.split(' ')[0].lower() + \
-                                           '_' + cat + '_' + subcat + '_' + stat] = int(
-                                           col.text.replace('T','').replace(',',''))
-                            except:
-                                playerInfo[stat_split.split(' ')[0].lower() + \
-                                           '_' + cat + '_' + subcat + '_' + stat] = float(
-                                           col.text.replace('T','').replace(',',''))        
-  
     ### Extract Summarized Annual Statistics
     soup = soupifyURL(url + 'careerstats')
 
-#    # Determine what years are available for the player
-#    years_list = []
-#    years_data_list = []
-#    years_data_list  = list(soup.find('table', {'class':'data-table1'}).find('tbody').find_all('tr'))
-#    # remove any rows which do not contain statistical information
-#    for year in years_list:
-#        if len(year) == 1:
-#            years_list.remove(year)
-#    # remove the Totals row
-#    years_list.pop(-1)
-    
-    for year in years_list:
+    # Determine what years are available for the player
+    try:
+        years_list  = list(soup.find('table', {'class':'data-table1'}).find('tbody').find_all('tr'))
+        # remove any rows which do not contain statistical information
+        for yr in years_list:
+            if len(yr) == 1:
+                years_list.remove(yr)
+        # remove the Totals row
+        del years_list[-1]
+        year_count = len(years_list)
+    except:
+        years_list = []
+   
+    # If the returned tables are empty, the player has no career stats and we'll
+    #   skip this section
+    if len(years_list) == 0:
+        pass
+    else:  
         # Determine what stats are available for the player
         year_stat_split_list = []
         year_stat_splits = soup.find_all('thead')
+
         
-        # If the returned tables are empty, the player has no career stats and we'll
-        #   skip this section
-        if len(year_stat_splits) == 0:
-            pass
-        else:  
-            for year_stat_split in year_stat_splits:
-                year_stat_split_list.append(year_stat_split.find('div').text)
-        
+        # Determine what statistics are listed for a player
+        for year_stat_split in year_stat_splits:
+            year_stat_split_list.append(year_stat_split.find('div').text)
+       
+        # Extract stats for every category that are of interest based on the 
+        #   player's position for all years that the playered has statistics
+        career_stats_list = []
+        for i in range(0,year_count):
+            yearPlayerInfo = {}
+            
+            # set the year for which statistics will be scraped
+            yearPlayerInfo['year'] = soup.find('table', {
+                    'class':'data-table1'}).find('tbody').find_all('tr')[i*2]\
+                    .find_all('td')[0].text.strip()
+            
             # Set the player's team for that year
-            year_team = soup.find('table', {'class':'data-table1'}).find('tbody').find('tr').find_all('td')[1].text.strip()
-            playerInfo['team_' + year] = year_team
-        
-            # Extract stats for every category that is of interest to that position group
-            for year_stat in year_stat_split_list:
+            yearPlayerInfo['team'] = soup.find('table', {
+                    'class':'data-table1'}).find('tbody').find_all('tr')[i*2]\
+                    .find_all('td')[1].text.strip()
+                    
+            # Iterate over every statistical category
+            for year_stat in year_stat_split_list:                
                 # If the stat category is worthy of scraping for that position, scrape it
                 if year_stat.upper() in scrape_dict_year[playerInfo['position']]:
                     
@@ -358,27 +392,28 @@ def scrapePlayerStats(url, year, index, list_length, position):
                     temp_table = soup.find_all('table', {'class':'data-table1'})
                     temp_table = temp_table[year_stat_split_list.index(year_stat)]
                     
-                    # Extract the data for the specifed category
-                    
+                    # Extract the data for the specifed category                   
                     cols = temp_table.find('thead').find_all('td')[3:]
-                    data = temp_table.find('tbody').find('tr').find_all('td')[2:]
+                    data = temp_table.find('tbody').find_all('tr')[i*2].find_all('td')[2:]
         
                     for col, dat in zip(cols, data):
                         if (dat.text.strip() == '--'):
-                            playerInfo[year + '_' + year_stat.replace(' ','_').lower() \
+                            yearPlayerInfo[year_stat.replace(' ','_').lower() \
                                        + '_' + col.text.lower()] = int(0)
                         elif len(dat.text.strip()) > 6:
-                            playerInfo[year + '_' + year_stat.replace(' ','_').lower() \
+                            yearPlayerInfo[year_stat.replace(' ','_').lower() \
                                        + '_' + col.text.lower()] = dat.text.strip()
                         else:
                             try:
-                                playerInfo[year + '_' + year_stat.replace(' ','_').lower() \
+                                yearPlayerInfo[year_stat.replace(' ','_').lower() \
                                            + '_' + col.text.lower()] = int(
                                            dat.text.replace('T','').replace(',',''))
                             except:
-                                playerInfo[year + '_' + year_stat.replace(' ','_').lower() \
+                                yearPlayerInfo[year_stat.replace(' ','_').lower() \
                                            + '_' + col.text.lower()] = float(
                                            dat.text.replace('T','').replace(',',''))
+            career_stats_list.append(yearPlayerInfo)
+        playerInfo['stats_annual'] = career_stats_list
     
     ### Extract Draft
     soup = soupifyURL(url + 'draft')
@@ -423,43 +458,75 @@ def scrapePlayerURL(soup, url_list):
         url_list.append('http://www.nfl.com' + playerURL)  
     return url_list
 
-def scrapeYearByPosition(year, position):
-    # Extract the original page information
-    url = ('http://www.nfl.com/stats/categorystats?tabSeq=1&season=' 
-       + year + '&seasonType=REG&d-447263-p=1&statisticPositionCategory=' 
-       + position)
-    soup = soupifyURL(url)
-       
-    # Extract the number of remaining pages for that position
-    pages_html = soup.find('span', {'class':'linkNavigation floatRight'})
-    page_url_list = []
-    for page in pages_html.find_all('a', href=True)[:-1]:
-        page_url_list.append('http://www.nfl.com' + page['href'])
+def scrapeYearByPosition(startYear, stopYear, position):
     
-    # Extract the links for every player within the given year
-    url_list = []
-    url_list = scrapePlayerURL(soup, url_list)
-    for url in page_url_list:
+    # A master list of every player scraped to prevent needless duplication
+    url_history_list = []
+    
+#    import os
+#    os.chdir(r'/home/ejreidelbach/projects/NFL/Data/PlayerStats')
+#    files = [f for f in os.listdir('.') if f.endswith(('.json'))]
+#    files = sorted(files)
+#    for file in files:
+#        with open(file, 'r') as f:
+#            jsonFile = json.load(f)   
+#            for row in jsonFile:
+#                if row['url'] not in url_history_list:
+#                    url_history_list.append(row['url'])
+#    
+#    startYear = 2000
+#    stopYear = 2008
+#    position='WIDE_RECEIVER'
+            
+    years_to_scrape_list = list(range(stopYear,startYear-1,-1))
+    # for every year specified, scrape the desired statistics
+    for year in years_to_scrape_list:
+        
+        # convert the year from int to str for ease of reference     
+        year = str(year)
+
+        # Extract the original page information
+        url = ('http://www.nfl.com/stats/categorystats?tabSeq=1&season=' 
+           + year + '&seasonType=REG&d-447263-p=1&statisticPositionCategory=' 
+           + position)
         soup = soupifyURL(url)
+           
+        # Extract the number of remaining pages for that position
+        pages_html = soup.find('span', {'class':'linkNavigation floatRight'})
+        page_url_list = []
+        for page in pages_html.find_all('a', href=True)[:-1]:
+            page_url_list.append('http://www.nfl.com' + page['href'])
+        
+        # Extract the links for every player within the given year
+        url_list = []
         url_list = scrapePlayerURL(soup, url_list)
-       
-    # Extract player information for every player within a year
-    playerList = []
-    for url in url_list:
-        playerList.append(scrapePlayerStats(
-                url, year, url_list.index(url), len(url_list))) 
-        
-    # Export the data set as a JSON file
-    filename = year + '_' + position + '.json'
-    with open(filename, 'wt') as out:
-        json.dump(playerList, out, sort_keys=True, indent=4, separators=(',', ': '))
-        
-    # Convert the list to a Pandas dataframe, fill in missing values with 0, 
-    #   and export the dataframe to a CSV file
-    df = pd.DataFrame(playerList)
-    df.fillna(0, inplace=True)
-    filename = year + '_' + position + '.csv'
-    df.to_csv(filename, sep='\t', index=False)
+        for url in page_url_list:
+            soup = soupifyURL(url)
+            url_list = scrapePlayerURL(soup, url_list)
+           
+        # Extract player information for every player within a year
+        playerList = []
+        for url in url_list:
+            if url not in url_history_list:
+                url_history_list.append(url)
+                playerList.append(scrapePlayerStats(
+                        url, year, url_list.index(url), len(url_list), position)) 
+            else:
+                print('Year ' + str(year) + ', Already read in: ' + url.split(
+                        'players/')[1].split('/')[0] + ' (Player ' + \
+                        str(url_list.index(url)) + ' out of ' + str(len(url_list)-1) + ')')
+            
+        # Export the data set as a JSON file
+        filename = year + '_' + position + '.json'
+        with open(filename, 'wt') as out:
+            json.dump(playerList, out, sort_keys=True, indent=4, separators=(',', ': '))
+            
+        # Convert the list to a Pandas dataframe, fill in missing values with 0, 
+        #   and export the dataframe to a CSV file
+        df = pd.DataFrame(playerList)
+        df.fillna(0, inplace=True)
+        filename = year + '_' + position + '.csv'
+        df.to_csv(filename, sep='\t', index=False)
     
 
 #==============================================================================
@@ -469,9 +536,8 @@ def scrapeYearByPosition(year, position):
 # Set the project working directory
 os.chdir(r'/home/ejreidelbach/projects/NFL/Data/PlayerStats')
 
-# Scrape all wide receiver data dating back to 2000
-for year in list(range(2016, 1999, -1)):
-    scrapeYearByPosition(str(year), 'WIDE_RECEIVER')
+# Scrape all wide receiver data from 2000 to 2017
+scrapeYearByPosition(2000, 2017, 'WIDE_RECEIVER')
     
 #for year in year_list:
 #    for position in position_list:
