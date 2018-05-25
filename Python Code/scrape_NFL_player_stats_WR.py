@@ -14,8 +14,6 @@ Created on Wed May 16 15:01:38 2018
     - Account for additional column header in kicker information regarding
         yardage kicks were attempted from
         ** example page: http://www.nfl.com/player/gregzuerlein/2534797/careerstats
-    - Scrape 'born' date to compare with season year to identify age for each season
-    - Remove scraping code for the `Age` variable that exists on each player site
 """
  
 #==============================================================================
