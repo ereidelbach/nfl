@@ -257,7 +257,6 @@ def scrapePlayerStats(url, year, index, list_length, position):
         playerInfo['team_pic_url'] = soup.find('div', {'class':'player-photo'}).find('img')['src']
     
     ### Extract Situational Stats for every year available
-    
     soup = soupifyURL(url + 'situationalstats')
     
     # Determine what years are available for the player
@@ -272,8 +271,9 @@ def scrapePlayerStats(url, year, index, list_length, position):
     
         yearPlayerInfo = {}
         yearPlayerInfo['year'] = scrape_year
-        if scrape_year != year:
-            soup = soupifyURL(url + 'situationalstats?season=' + scrape_year)
+#        if scrape_year != year:
+#            soup = soupifyURL(url + 'situationalstats?season=' + scrape_year)
+        soup = soupifyURL(url + 'situationalstats?season=' + scrape_year)
         
         # Determine what stats are available for the player
         stat_split_list = []
@@ -541,15 +541,6 @@ scrapeYearByPosition(2000, 2017, 'WIDE_RECEIVER')
     
 #for year in year_list:
 #    for position in position_list:
+#        os.chdir(r'/home/ejreidelbach/projects/NFL/Data/PlayerStats/' + position)
 #        scrapeYearByPosition(year, position)
 #scrapeYearByPosition('2017','WIDE_RECEIVER')
-
-## JSON file
-#filename = r'2017_WIDE_RECEIVER.json'
-#
-## Read in JSON file as JSON object
-#with open(filename, 'r') as f:
-#    jsonFile = json.load(f)
-#
-## Read in JSON file as Pandas DataFrame
-#df = pd.DataFrame.from_records(jsonFile)

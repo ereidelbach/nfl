@@ -23,14 +23,78 @@ Created on Thu May 24 12:54:49 2018
 import json
 import pandas as pd
 import os
+import copy
 
 #==============================================================================
 # Function Definitions / Reference Variable Declaration
 #==============================================================================
+# positions for which stats can be obtained
+position_list = ['QUARTERBACK',
+                 'RUNNING_BACK',
+                 'WIDE_RECEIVER',
+                 'TIGHT_END',
+                 'DEFENSIVE_LINEMAN',
+                 'LINEBACKER',
+                 'DEFENSIVE_BACK',
+                 'PUNTER',
+                 'FIELD_GOAL_KICKER',
+                 ]
 
 #==============================================================================
 # Working Code
 #==============================================================================
 
 # Set the project working directory
-os.chdir(r'/home/ejreidelbach/projects')
+os.chdir(r'/home/ejreidelbach/projects/NFL/Data/PlayerStats')
+
+# Iterate over every position folder
+#for position in position_list:
+#    os.chdir(r'/home/ejreidelbach/projects/NFL/Data/PlayerStats/' + position)
+    
+position = 'WIDE_RECEIVER'
+
+# Read in all player data from the available JSON files
+files = [f for f in os.listdir('.') if f.endswith(('.json'))]
+files = sorted(files)
+
+stat_list = []
+for file in files:
+    with open(file, 'r') as f:
+        jsonFile = json.load(f)   
+        for player in jsonFile:
+            stat_list.append(player)
+            
+# Unpack nested career data and situational data for each player
+stat_list_flattened = []
+for row in stat_list:
+    # create a deep copy of the row
+    player = copy.deepcopy(row)
+    
+    # pop off the stats_annual and stats_situational elements so that we
+    #   can iterate over them and add their contents back to the basic player info
+    try:
+        stats_annual = player.pop('stats_annual')
+    except:
+        print('No Annaul stats found for Player #: ' + str(stat_list.index(row)) + \
+              ' - ' + player['name_first'] + ' ' + player['name_last'])
+    stats_situational = player.pop('stats_situational')
+
+    # Unpack nested career and situational data by year
+    import itertools
+    stats_combined = list(itertools.zip_longest(stats_annual, stats_situational, fillvalue=''))
+    for annual, situation in stats_combined:
+        yearPlayer = {}
+        yearPlayer.update(player)
+        yearPlayer.update(annual)
+        yearPlayer.update(situation)
+        stat_list_flattened.append(yearPlayer)
+#        else:
+#            print('Player #: ' + str(stat_list.index(row)) + ' -- ' + \
+#                  player['name_first'] + ' ' + player['name_last'] + \
+#                  ': Years do not match...Annual: ' + annual['year'] \
+#                  + ' Situation: ' + situation['year'])               
+
+# Push imported JSON data into a Pandas Dataframe
+df = pd.DataFrame(stat_list_flattened)
+df.to_csv(position + '.csv')
+#df = pd.DataFrame.from_records(jsonFile)
