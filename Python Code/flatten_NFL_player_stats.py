@@ -24,6 +24,8 @@ import json
 import pandas as pd
 import os
 import copy
+from datetime import datetime
+import math
 
 #==============================================================================
 # Function Definitions / Reference Variable Declaration
@@ -50,7 +52,8 @@ os.chdir(r'/home/ejreidelbach/projects/NFL/Data/PlayerStats')
 # Iterate over every position folder
 #for position in position_list:
 #    os.chdir(r'/home/ejreidelbach/projects/NFL/Data/PlayerStats/' + position)
-    
+
+os.chdir(r'/home/ejreidelbach/projects/NFL/Data/PlayerStats/' + position)    
 position = 'WIDE_RECEIVER'
 
 # Read in all player data from the available JSON files
@@ -87,6 +90,14 @@ for row in stat_list:
         yearPlayer.update(player)
         yearPlayer.update(annual)
         yearPlayer.update(situation)
+        
+        # Calculate player age (12/31 of the given year - player's bday)
+        d1 = datetime.strptime(yearPlayer['birthday'], "%m/%d/%Y")
+        d2 = '12/31/' + yearPlayer['year']
+        d2 = datetime.strptime(d2, "%m/%d/%Y")
+        days_between = math.floor(abs((d2-d1).days)/365)
+        yearPlayer['age'] = days_between
+        
         stat_list_flattened.append(yearPlayer)
 #        else:
 #            print('Player #: ' + str(stat_list.index(row)) + ' -- ' + \
@@ -94,7 +105,12 @@ for row in stat_list:
 #                  ': Years do not match...Annual: ' + annual['year'] \
 #                  + ' Situation: ' + situation['year'])               
 
-# Push imported JSON data into a Pandas Dataframe
+# Output the flattened list to a CSV
+filename = r'/home/ejreidelbach/projects/NFL/Data/PlayerStats/' + position + '.json'
+with open(filename, 'wt') as out:
+    json.dump(stat_list_flattened, out, sort_keys=True, indent=4, separators=(',', ': '))
+
+# Push the flattened list into a Pandas Dataframe and output it to a CSV
 df = pd.DataFrame(stat_list_flattened)
-df.to_csv(position + '.csv')
-#df = pd.DataFrame.from_records(jsonFile)
+filename = r'/home/ejreidelbach/projects/NFL/Data/PlayerStats/' + position + '.csv'
+df.to_csv(filename, index = False)

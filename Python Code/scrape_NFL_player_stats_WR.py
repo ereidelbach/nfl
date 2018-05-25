@@ -14,6 +14,8 @@ Created on Wed May 16 15:01:38 2018
     - Account for additional column header in kicker information regarding
         yardage kicks were attempted from
         ** example page: http://www.nfl.com/player/gregzuerlein/2534797/careerstats
+    - Scrape 'born' date to compare with season year to identify age for each season
+    - Remove scraping code for the `Age` variable that exists on each player site
 """
  
 #==============================================================================
@@ -213,16 +215,20 @@ def scrapePlayerStats(url, year, index, list_length, position):
         playerInfo['height'] = height
         playerInfo['heightInches'] = int(height.split('-')[0])*12 + int(height.split('-')[1])
         playerInfo['weight'] = temp[4].split(': ')[1].strip()
-        try:
-            playerInfo['age'] = temp[6].split(': ')[1].strip()
-        except:
-            playerInfo['age'] = 'N/A'
+#        try:
+#            playerInfo['age'] = temp[6].split(': ')[1].strip()
+#        except:
+#            playerInfo['age'] = 'N/A'
+        
+        temp = list(soup.find('div', {'class':'player-info'}).find_all('p')[2])
+        playerInfo['birthday'] = temp[2].split(' ')[1]
+        
         
         temp = list(soup.find('div', {'class':'player-info'}).find_all('p')[3])
         playerInfo['college'] = temp[1].split(': ')[1].strip()
         playerInfo['pic_url'] = soup.find('div', {'class':'player-photo'}).find('img')['src']
         
-        playerInfo['team_current'] = 'RETIRED'
+        playerInfo['team_current'] = 'INACTIVE'
         playerInfo['team_pic_url'] = 'N/A'
 
     else:   
@@ -231,7 +237,10 @@ def scrapePlayerStats(url, year, index, list_length, position):
         playerInfo['height'] = height
         playerInfo['heightInches'] = int(height.split('-')[0])*12 + int(height.split('-')[1])
         playerInfo['weight'] = temp[4].split(': ')[1].strip()
-        playerInfo['age'] = temp[6].split(': ')[1].strip()
+        #playerInfo['age'] = temp[6].split(': ')[1].strip()
+        
+        temp = list(soup.find('div', {'class':'player-info'}).find_all('p')[3])
+        playerInfo['birthday'] = temp[2].split(' ')[1]
         
         temp = list(soup.find('div', {'class':'player-info'}).find_all('p')[4])
         playerInfo['college'] = temp[1].split(': ')[1].strip()
@@ -517,7 +526,7 @@ def scrapeYearByPosition(startYear, stopYear, position):
                         str(url_list.index(url)) + ' out of ' + str(len(url_list)-1) + ')')
             
         # Export the data set as a JSON file
-        filename = year + '_' + position + '.json'
+        filename = '/' + position + '/' + year + '_' + position + '.json'
         with open(filename, 'wt') as out:
             json.dump(playerList, out, sort_keys=True, indent=4, separators=(',', ': '))
             
@@ -525,7 +534,7 @@ def scrapeYearByPosition(startYear, stopYear, position):
         #   and export the dataframe to a CSV file
         df = pd.DataFrame(playerList)
         df.fillna(0, inplace=True)
-        filename = year + '_' + position + '.csv'
+        filename = '/' + position + '/' + year + '_' + position + '.csv'
         df.to_csv(filename, sep='\t', index=False)
     
 
