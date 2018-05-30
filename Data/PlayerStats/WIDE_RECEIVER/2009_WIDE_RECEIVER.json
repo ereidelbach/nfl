@@ -63956,6 +63956,7 @@
         "name_last": "Allen",
         "pic_url": "http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/ALL434082.png",
         "position": "WR",
+        "stats_annual": [],
         "stats_situational": [
             {
                 "year": "2009"
@@ -64027,6 +64028,7 @@
         "name_last": "Harper",
         "pic_url": "http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/HAR267861.png",
         "position": "WR",
+        "stats_annual": [],
         "stats_situational": [
             {
                 "year": "2010"

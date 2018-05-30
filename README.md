@@ -23,8 +23,10 @@ This data can then be used for a variety of analytical pursuits.
 2. NFL Reddit page: [Link][2]
 3. ESPN.com NFL page [Link][3]
 4. Mockdraftable [Link][4]
+5. CARMELO model [Link][5]
 
   [1]: http://www.nfl.com
   [2]: https://www.reddit.com/r/nfl/
   [3]: http://www.espn.com/nfl/
   [4]: https://www.mockdraftable.com
+  [5]: https://fivethirtyeight.com/features/how-were-predicting-nba-player-career/

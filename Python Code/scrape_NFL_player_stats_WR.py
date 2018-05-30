@@ -14,6 +14,12 @@ Created on Wed May 16 15:01:38 2018
     - Account for additional column header in kicker information regarding
         yardage kicks were attempted from
         ** example page: http://www.nfl.com/player/gregzuerlein/2534797/careerstats
+    - The script does not account for player's changing teams mid-year
+        ** example page: http://www.nfl.com/player/kennybritt/71217/careerstats
+        # Kenny changes teams in 2017 from New England to Cleveland but the script
+            treats the Cleveland line as 2016 and then duplicates the 2009 season
+            with Tennessee twice.  
+        # Need to correct this by grouping by year and combining to one line
 """
  
 #==============================================================================
@@ -363,6 +369,7 @@ def scrapePlayerStats(url, year, index, list_length, position):
     # If the returned tables are empty, the player has no career stats and we'll
     #   skip this section
     if len(years_list) == 0:
+        playerInfo['stats_annual'] = []
         pass
     else:  
         # Determine what stats are available for the player
@@ -524,16 +531,17 @@ def scrapeYearByPosition(startYear, stopYear, position):
                         str(url_list.index(url)) + ' out of ' + str(len(url_list)-1) + ')')
             
         # Export the data set as a JSON file
-        filename = '/' + position + '/' + year + '_' + position + '.json'
+        #filename = '/' + position + '/' + year + '_' + position + '.json'
+        filename = position + '/' + year + '_' + position + '.json'
         with open(filename, 'wt') as out:
             json.dump(playerList, out, sort_keys=True, indent=4, separators=(',', ': '))
             
         # Convert the list to a Pandas dataframe, fill in missing values with 0, 
         #   and export the dataframe to a CSV file
-        df = pd.DataFrame(playerList)
-        df.fillna(0, inplace=True)
-        filename = '/' + position + '/' + year + '_' + position + '.csv'
-        df.to_csv(filename, sep='\t', index=False)
+#        df = pd.DataFrame(playerList)
+#        df.fillna(0, inplace=True)
+#        filename = '/' + position + '/' + year + '_' + position + '.csv'
+#        df.to_csv(filename, sep='\t', index=False)
     
 
 #==============================================================================

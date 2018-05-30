@@ -42533,6 +42533,7 @@
         "name_last": "Hamilton",
         "pic_url": "http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/HAM210352.png",
         "position": "WR",
+        "stats_annual": [],
         "stats_situational": [
             {
                 "year": "2007"
@@ -45193,6 +45194,7 @@
         "name_last": "Smith",
         "pic_url": "http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/SMI613135.png",
         "position": "WR",
+        "stats_annual": [],
         "stats_situational": [
             {
                 "year": "2004"
