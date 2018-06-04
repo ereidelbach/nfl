@@ -14,12 +14,6 @@ Created on Wed May 16 15:01:38 2018
     - Account for additional column header in kicker information regarding
         yardage kicks were attempted from
         ** example page: http://www.nfl.com/player/gregzuerlein/2534797/careerstats
-    - The script does not account for player's changing teams mid-year
-        ** example page: http://www.nfl.com/player/kennybritt/71217/careerstats
-        # Kenny changes teams in 2017 from New England to Cleveland but the script
-            treats the Cleveland line as 2016 and then duplicates the 2009 season
-            with Tennessee twice.  
-        # Need to correct this by grouping by year and combining to one line
 """
  
 #==============================================================================

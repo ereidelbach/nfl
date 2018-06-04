@@ -38,11 +38,8 @@ os.chdir(r'/home/ejreidelbach/projects/NFL/Data/')
 playerDF = pd.read_csv('PlayerStats/WIDE_RECEIVER.csv')
 
 # Import Draft Data
-draft_list = []
 with open('Draft/historic_draft_data.json', 'r') as f:
-    jsonFile = json.load(f)   
-    for player in jsonFile:
-        draft_list.append(player)
+    draft_list = json.load(f)   
     
 # Create a dataframe from the imported json
 draftDF = pd.DataFrame(draft_list)

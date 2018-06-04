@@ -964,7 +964,7 @@ Marv,Bateman,78,26, P,3,Utah,Dallas Cowboys,1972
 Randy,Jackson,79,1,RB,4,Wichita State,Buffalo Bills,1972
 Lorenzo,Brinkley,80,2,DB,4,Missouri,Pittsburgh Steelers,1972
 Bernard,Jackson,81,3,DB,4,Washington State,Cincinnati Bengals,1972
-Jeff,(Pat),82,4,LB,4,Brigham Young,Arizona Cardinals,1972
+Jeff,Lyman,82,4,LB,4,Brigham Young,Arizona Cardinals,1972
 Tim,Kearney,83,5,LB,4,Northern Michigan,Dallas Cowboys,1972
 Martin,Imhof,84,6,DT,4,San Diego State,Arizona Cardinals,1972
 Mike,Crangle,85,7,DE,4,Tennessee-Martin,New Orleans Saints,1972
@@ -1036,7 +1036,7 @@ Curt,Watson,150,20,RB,6,Tennessee,New Orleans Saints,1972
 Edward,Hebert,151,21,DT,6,Texas Southern,Los Angeles Rams,1972
 Bruce,Laird,152,22,DB,6,American International,Indianapolis Colts,1972
 John,Kahler,153,23,DE,6,Long Beach State,Kansas City Chiefs,1972
-Anthony,(Amos),154,24,LB,6,Louisville,Minnesota Vikings,1972
+Anthony,Martin,154,24,LB,6,Louisville,Minnesota Vikings,1972
 Ray,Nettles,155,25,LB,6,Tennessee,Miami Dolphins,1972
 Charles,Bolden,156,26,DB,6,Iowa,Dallas Cowboys,1972
 Ralph,Stepaniak,157,1,DB,7,Notre Dame,Buffalo Bills,1972
@@ -1058,7 +1058,7 @@ Charles,Stoudmire,172,16,WR,7,Portland State,Detroit Lions,1972
 Ray,Jamieson,173,17,RB,7,Memphis State,Oakland Raiders,1972
 Don,Wesley,174,18, T,7,Maryland State,Cleveland Browns,1972
 Edgar,Hardy,175,19, G,7,Jackson State,San Francisco 49ers,1972
-Alonzo,(Skip),176,20,DB,7,USC,Oakland Raiders,1972
+Alonzo,Thomas,176,20,DB,7,USC,Oakland Raiders,1972
 Mike,Zikas,177,21,DT,7,Notre Dame,New York Giants,1972
 Dnnis,Pete,178,22,DB,7,San Francisco State,Oakland Raiders,1972
 Dean,Carlson,179,23,QB,7,Iowa State,Kansas City Chiefs,1972
@@ -1105,7 +1105,7 @@ Larry,Horton,219,11,DE,9,Iowa,Chicago Bears,1972
 Mike,Kelson,220,12, T,9,Arkansas,New England Patriots,1972
 Fran,Schmitz,221,13,DT,9,St. Norbert,Los Angeles Chargers,1972
 Pat,Gibbs,222,14,DB,9,Lamar University,Philadelphia Eagles,1972
-Bill,(Ray),223,15,DB,9,Richmond,Atlanta Falcons,1972
+Bill,Easterling,223,15,DB,9,Richmond,Atlanta Falcons,1972
 Bill,McClintock,224,16,DB,9,Drake,Detroit Lions,1972
 Harry,Howard,225,17,DB,9,Ohio State,Los Angeles Rams,1972
 Larry,McKee,226,18, G,9,Arizona,Cleveland Browns,1972
@@ -1428,7 +1428,7 @@ Randolph,Mattingly,100,22,QB,4,Evansville,Cleveland Browns,1973
 Joe,Wylie,101,23,WR,4,Oklahoma,Oakland Raiders,1973
 Gail,Clark,102,24,LB,4,Michigan State,Pittsburgh Steelers,1973
 Jeff,Yeates,103,25,DT,4,Boston College,Buffalo Bills,1973
-Dave,(Bo),104,26,WR,4,Michigan,Miami Dolphins,1973
+Dave,Rather,104,26,WR,4,Michigan,Miami Dolphins,1973
 Edesel,Garrison,105,1,WR,5,USC,Tennessee Titans,1973
 David,Reavis,106,2,DE,5,Arkansas,Pittsburgh Steelers,1973
 Allan,Ellis,107,3,DB,5,UCLA,Chicago Bears,1973
@@ -1767,7 +1767,7 @@ Michael,Ryal,439,23, G,17,USC,Oakland Raiders,1973
 Mike,Shannon,440,24,DT,17,Oregon State,Pittsburgh Steelers,1973
 Jeff,Davis,441,25,RB,17,Mars Hill,Washington Redskins,1973
 Charles,Wade,442,26,WR,17,Tennessee State,Miami Dolphins,1973
-Ed,(Too,1,1,DE,1,Tennessee State,Dallas Cowboys,1974
+Ed,Jones,1,1,DE,1,Tennessee State,Dallas Cowboys,1974
 Bo,Matthews,2,2,RB,1,Colorado,Los Angeles Chargers,1974
 John,Hicks,3,3, G,1,Ohio State,New York Giants,1974
 Waymond,Bryant,4,4,LB,1,Tennessee State,Chicago Bears,1974
@@ -2838,7 +2838,7 @@ Dick,Dixon,184,2,DT,7,Arkansas State,Seattle Seahawks,1976
 Joe,ingersoll,185,3, G,7,UNLV,Miami Dolphins,1976
 Greg,Schaum,186,4,DT,7,Michigan State,Dallas Cowboys,1976
 Bob,Bateman,187,5,QB,7,Brown,Cincinnati Bengals,1976
-Abdul,(Larry),188,6,DE,7,Kent State,New York Jets,1976
+Abdul,Salaam,188,6,DE,7,Kent State,New York Jets,1976
 Steve,Cassidy,189,7,DT,7,Louisiana State,Cleveland Browns,1976
 Jerry,Muckenstrum,190,8,LB,7,Arkansas State,Chicago Bears,1976
 Carl,Hairston,191,9,DE,7,Maryland-Eastern Shore,Philadelphia Eagles,1976
@@ -11730,13 +11730,13 @@ Kelly,Jennings,31,31,DB,1,Miami (FL),Seattle Seahawks,2006
 Mathias,Kiwanuka,32,32,DE,1,Boston College,New York Giants,2006
 DeMeco,Ryans,33,1,LB,2,Alabama,Houston Texans,2006
 D'Qwell,Jackson,34,2,LB,2,Maryland,Cleveland Browns,2006
-Roger,(Rocky),35,3,LB,2,Miami (FL),Washington Redskins,2006
+Roger,McIntosh,35,3,LB,2,Miami (FL),Washington Redskins,2006
 Chad,Jackson,36,4,WR,2,Florida,New England Patriots,2006
 Jimmy,Williams,37,5,DB,2,Virginia Tech,Atlanta Falcons,2006
 Thomas,Howard,38,6,LB,2,Texas-El Paso,Oakland Raiders,2006
 Winston,Justice,39,7, T,2,USC,Philadelphia Eagles,2006
 Daniel,Bullocks,40,8,DB,2,Nebraska,Detroit Lions,2006
-Taitusi,(Deuce),41,9, G,2,USC,Arizona Cardinals,2006
+Taitusi,Lutui,41,9, G,2,USC,Arizona Cardinals,2006
 Danieal,Manning,42,10,DB,2,Abilene Christian,Chicago Bears,2006
 Roman,Harper,43,11,DB,2,Alabama,New Orleans Saints,2006
 Sinorice,Moss,44,12,WR,2,Miami (FL),New York Giants,2006
@@ -11869,12 +11869,12 @@ Wali,Lundy,170,1,RB,6,Virginia,Houston Texans,2006
 Mike,Hass,171,2,WR,6,Oregon State,New Orleans Saints,2006
 Jonathan,Orr,172,3,WR,6,Wisconsin,Tennessee Titans,2006
 Reed,Doughty,173,4,DB,6,Northern Colorado,Washington Redskins,2006
-Josh,(Bernard),174,5,DB,6,Pittsburgh,New Orleans Saints,2006
+Josh,Lay,174,5,DB,6,Pittsburgh,New Orleans Saints,2006
 Delanie,Walker,175,6,WR,6,Central Missouri State,San Francisco 49ers,2006
 Kevin,Boothe,176,7, T,6,Cornell,Oakland Raiders,2006
 Jon,Lewis,177,8,DT,6,Virginia Tech,Arizona Cardinals,2006
 Keith,Ellison,178,9,LB,6,Oregon State,Buffalo Bills,2006
-Alton,(Dee),179,10,DB,6,West Virginia,Detroit Lions,2006
+Alton,McCann,179,10,DB,6,West Virginia,Detroit Lions,2006
 Lawrence,Vickers,180,11,RB,6,Colorado,Cleveland Browns,2006
 Baba,Oshinowo,181,12,DT,6,Stanford,Cleveland Browns,2006
 Montavious,Stanley,182,13,DT,6,Louisville,Dallas Cowboys,2006
@@ -12032,7 +12032,7 @@ James,Jones,78,14,WR,3,San Jose State,Green Bay Packers,2007
 Mike,Walker,79,15,WR,3,Central Florida,Jacksonville Jaguars,2007
 Paul,Williams,80,17,WR,3,Fresno State,Tennessee Titans,2007
 Jay,Alford,81,18,DT,3,Penn State,New York Giants,2007
-DeMarcus,'Tank',82,19,DT,3,North Carolina State,Kansas City Chiefs,2007
+DeMarcus,Tyler,82,19,DT,3,North Carolina State,Kansas City Chiefs,2007
 Charles,Johnson,83,20,DE,3,Georgia,Carolina Panthers,2007
 Jonathan,Wade,84,21,DB,3,Tennessee,Los Angeles Rams,2007
 Brandon,Mebane,85,22,DT,3,California,Seattle Seahawks,2007
@@ -13806,7 +13806,7 @@ Preston,Brown,73,9,LB,3,Louisville,Buffalo Bills,2014
 Jay,Bromley,74,10,DT,3,Syracuse,New York Giants,2014
 Tre,Mason,75,11,RB,3,Auburn,Los Angeles Rams,2014
 Travis,Swanson,76,12, C,3,Arkansas,Detroit Lions,2014
-Chris,,77,13,LB,3,Wisconsin,San Francisco 49ers,2014
+Chris,Borland,77,13,LB,3,Wisconsin,San Francisco 49ers,2014
 Spencer,Long,78,14, G,3,Nebraska,Washington Redskins,2014
 Terrence,Brooks,79,15,DB,3,Florida State,Baltimore Ravens,2014
 Dexter,McDougle,80,16,DB,3,Maryland,New York Jets,2014
@@ -13850,14 +13850,14 @@ Ka'Deem,Carey,117,17,RB,4,Arizona,Chicago Bears,2014
 Martavis,Bryant,118,18,WR,4,Clemson,Pittsburgh Steelers,2014
 Anthony,Hitchens,119,19,LB,4,Iowa,Dallas Cowboys,2014
 Logan,Thomas,120,20,QB,4,Virginia Tech,Arizona Cardinals,2014
-Carl,,121,21,LB,4,Arizona State,Green Bay Packers,2014
+Carl,Bradford,121,21,LB,4,Arizona State,Green Bay Packers,2014
 Marqueston,Huff,122,22,DB,4,Wyoming,Tennessee Titans,2014
 Kevin,Norwood,123,23,WR,4,Alabama,Seattle Seahawks,2014
 De'Anthony,Thomas,124,24,RB,4,Oregon,Kansas City Chiefs,2014
 Walt,Aikens,125,25,DB,4,Liberty,Miami Dolphins,2014
 Khairi,Fortt,126,26,LB,4,California,New Orleans Saints,2014
 Pierre,Desir,127,27,DB,4,Lindenwood,Cleveland Browns,2014
-Tre,,128,28,DB,4,North Carolina,Carolina Panthers,2014
+Tre,Boston,128,28,DB,4,North Carolina,Carolina Panthers,2014
 Dontae,Johnson,129,29,DB,4,North Carolina State,San Francisco 49ers,2014
 James,White,130,30,RB,4,Wisconsin,New England Patriots,2014
 Brock,Vereen,131,31,DB,4,Minnesota,Chicago Bears,2014
@@ -13868,7 +13868,7 @@ Tom,Savage,135,35,QB,4,Pittsburgh,Houston Texans,2014
 Larry,Webster,136,36,DE,4,Bloomsburg (PA),Detroit Lions,2014
 Dakota,Dozier,137,37, T,4,Furman,New York Jets,2014
 Lorenzo,Taliaferro,138,38,RB,4,Coastal Carolina,Baltimore Ravens,2014
-Prince,,139,39,LB,4,Notre Dame,Atlanta Falcons,2014
+Prince,Shembo,139,39,LB,4,Notre Dame,Atlanta Falcons,2014
 Cameron,Fleming,140,40, T,4,Stanford,New England Patriots,2014
 Taylor,Hart,141,1,DE,5,Oregon,Philadelphia Eagles,2014
 Ryan,Grant,142,2,WR,5,Tulane,Washington Redskins,2014
@@ -13877,9 +13877,9 @@ Telvin,Smith,144,4,LB,5,Florida State,Jacksonville Jaguars,2014
 David,Yankey,145,5, G,5,Stanford,Minnesota Vikings,2014
 Devin,Street,146,6,WR,5,Pittsburgh,Dallas Cowboys,2014
 Ricardo,Allen,147,7,DB,5,Purdue,Atlanta Falcons,2014
-Bene,,148,8,DB,5,San Jose State,Carolina Panthers,2014
+Bene,Benwikere,148,8,DB,5,San Jose State,Carolina Panthers,2014
 Kevin,Pamphile,149,9, T,5,Purdue,Tampa Bay Buccaneers,2014
-Aaron,,150,10,DE,5,South Florida,San Francisco 49ers,2014
+Aaron,Lynch,150,10,DE,5,South Florida,San Francisco 49ers,2014
 Avery,Williamson,151,11,LB,5,Kentucky,Tennessee Titans,2014
 Nat,Berhe,152,12,DB,5,San Diego State,New York Giants,2014
 Cyril,Richardson,153,13, G,5,Baylor,Buffalo Bills,2014
@@ -13888,11 +13888,11 @@ Arthur,Lynch,155,15,TE,5,Georgia,Miami Dolphins,2014
 Lamin,Barrow,156,16,LB,5,Louisiana State,Denver Broncos,2014
 Shaquille,Richardson,157,17,DB,5,Arizona,Pittsburgh Steelers,2014
 Caraun,Reid,158,18,DT,5,Princeton,Detroit Lions,2014
-Chris,,159,19,DE,5,Arkansas,Jacksonville Jaguars,2014
+Chris,Smith,159,19,DE,5,Arkansas,Jacksonville Jaguars,2014
 Ed,Stinson,160,20,DE,5,Alabama,Arizona Cardinals,2014
 Corey,Linsley,161,21, C,5,Ohio State,Green Bay Packers,2014
 Ed,Reynolds,162,22,DB,5,Stanford,Philadelphia Eagles,2014
-Aaron,,163,23,QB,5,Georgia,Kansas City Chiefs,2014
+Aaron,Murray,163,23,QB,5,Georgia,Kansas City Chiefs,2014
 AJ,McCarron,164,24,QB,5,Alabama,Cincinnati Bengals,2014
 Ryan,Carrethers,165,25,DT,5,Arkansas State,Los Angeles Chargers,2014
 Jonathan,Newsome,166,26,DE,5,Ball State,Indianapolis Colts,2014
@@ -13918,7 +13918,7 @@ Robert,Herron,185,9,WR,6,Wyoming,Tampa Bay Buccaneers,2014
 Lache,Seastrunk,186,10,RB,6,Baylor,Washington Redskins,2014
 Bennett,Jackson,187,11,DB,6,Notre Dame,New York Giants,2014
 E.J.,Gaines,188,12,DB,6,Missouri,Los Angeles Rams,2014
-T.J.,,189,13,WR,6,Notre Dame,Detroit Lions,2014
+T.J.,Jones,189,13,WR,6,Notre Dame,Detroit Lions,2014
 Matt,Hazel,190,14,WR,6,Coastal Carolina,Miami Dolphins,2014
 Pat,O'Donnell,191,15, P,6,Miami (FL),Chicago Bears,2014
 Jordan,Zumwalt,192,16,LB,6,UCLA,Pittsburgh Steelers,2014
@@ -13940,7 +13940,7 @@ Matt,Paradis,207,31, C,6,Boise State,Denver Broncos,2014
 Eric,Pinkins,208,32,DB,6,San Diego State,Seattle Seahawks,2014
 Quincy,Enunwa,209,33,WR,6,Nebraska,New York Jets,2014
 IK,Enemkpali,210,34,DE,6,Louisiana Tech,New York Jets,2014
-Jay,,211,35,RB,6,Auburn,Houston Texans,2014
+Jay,Prosch,211,35,RB,6,Auburn,Houston Texans,2014
 Marquis,Flowers,212,36,LB,6,Arizona,Cincinnati Bengals,2014
 Tajh,Boyd,213,37,QB,6,Clemson,New York Jets,2014
 Garrett,Gilbert,214,38,QB,6,Southern Methodist,Los Angeles Rams,2014
@@ -14239,7 +14239,7 @@ Trevor,Siemian,250,33,QB,7,Northwestern,Denver Broncos,2015
 Taurean,Nixon,251,34,DB,7,Tulane,Denver Broncos,2015
 Josh,Furman,252,35,DB,7,Oklahoma State,Denver Broncos,2015
 Xzavier,Dickson,253,36,LB,7,Alabama,New England Patriots,2015
-Rory,'Busta',254,37,TE,7,South Carolina,San Francisco 49ers,2015
+Rory,Anderson,254,37,TE,7,South Carolina,San Francisco 49ers,2015
 Denzell,Goode,255,38, T,7,Mars Hill,Indianapolis Colts,2015
 Gerald,Christian,256,39,TE,7,Louisville,Arizona Cardinals,2015
 Jared,Goff,1,1,QB,1,California,Los Angeles Rams,2016
