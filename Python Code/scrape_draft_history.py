@@ -26,6 +26,7 @@ from selenium.webdriver.firefox.options import Options
 from bs4 import BeautifulSoup
 import requests
 import operator
+import pandas as pd
 
 #==============================================================================
 # Function Definitions / Reference Variable Declaration
@@ -44,6 +45,43 @@ def soupifyURL(url):
 
 positionList = ['T','G','C']
 positionAbbrList = ['OT','OG','OC']
+
+teamDict = {'49ers':'San Francisco 49ers',
+            'Bears':'Chicago Bears',
+            'Bengals':'Cincinnati Bengals',
+            'Bills':'Buffalo Bills',
+            'Broncos':'Denver Broncos',
+            'Browns':'Cleveland Browns',
+            'Buccaneers':'Tampa Bay Buccaneers',
+            'Cardinals':'Arizona Cardinals',
+            'Chargers':'Los Angeles Chargers',
+            'Chiefs':'Kansas City Chiefs',
+            'Colts':'Indianapolis Colts',
+            'Cowboys':'Dallas Cowboys',
+            'Dolphins':'Miami Dolphins',
+            'Eagles':'Philadelphia Eagles',
+            'Falcons':'Atlanta Falcons',
+            'Giants':'New York Giants',
+            'Jaguars':'Jacksonville Jaguars',
+            'Jets':'New York Jets',
+            'Lions':'Detroit Lions',
+            'Oilers':'Tennessee Titans',
+            'Packers':'Green Bay Packers',
+            'Panthers':'Carolina Panthers',
+            'Patriots':'New England Patriots',
+            'Raiders':'Oakland Raiders',
+            'Rams':'Los Angeles Rams',
+            'Ravens':'Baltimore Ravens',
+            'Redskins':'Washington Redskins',
+            'Saints':'New Orleans Saints',
+            'Seahawks':'Seattle Seahawks',
+            'Steelers':'Pittsburgh Steelers',
+            'Texans':'Houston Texans',
+            'Titans':'Tennessee Titans',
+            'Vikings':'Minnesota Vikings',
+            'redskins':'Washington Redskins',
+        }
+
 #==============================================================================
 # Working Code
 #==============================================================================
@@ -105,7 +143,7 @@ for url in url_list[34:]:
         player_dict['overall'] = cols[2].text
         player_dict['nameFirst'] = cols[3].text.split(' ')[0]
         player_dict['nameLast'] = cols[3].text.split(' ')[1]
-        player_dict['team'] = cols[4].text
+        player_dict['team'] = cols[4].text.strip()
         for x,y in zip(positionList,positionAbbrList):
             if (x == cols[5].text):
                 player_dict['position'] = y
@@ -122,7 +160,14 @@ for url in url_list[34:]:
         
     print('Done with: ' + url['year'])
     
+# Change the names of all teams to reflect the format used by NFL.com
+for player in draft_list:
+    player['team'] = teamDict[player['team']]
+    
 # Write the historic list to a .json file
 filename = 'historic_draft_data.json'
 with open(filename, 'wt') as out:
     json.dump(draft_list, out, sort_keys=True, indent=4, separators=(',', ': ')) 
+
+draftDF = pd.DataFrame(draft_list)
+draftDF.to_csv('historic_draft_data.csv', index=False)

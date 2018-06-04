@@ -21,7 +21,39 @@ import pandas as pd
 #==============================================================================
 # Function Definitions / Reference Variable Declaration
 #==============================================================================
+def calculate_historical_values(playersDF):
+    historicalDict = {}
+    historicalStdDict = {}
+    historicalMeanDict = {}
+    
+    # Iterate over every age group in the positions data
+    for age in playersDF['age'].value_counts().sort_index().index.tolist():
+        #age = 23
+        yearDF = playersDF[playersDF['age'] == age].reset_index()
+        
+        # Within each age group, calculate the difference in standard deviations
+        #   between the current player and all historical players for each stat.
+        # Then square the number, multiply it by the proportion of the weight 
+        #   assigned to the category (TBD) and take the square root of the sum
+        #   of squares.  This will be called the player's "DEVIANCE."
+        ageStdDict = {}
+        ageMeanDict = {}
+        for stat in comp_list:
+            # Determine the standard deviation for the stat across all players
+            ageStdDict[stat] = yearDF[stat].std()
+            ageMeanDict[stat] = yearDF[stat].mean()
+        historicalStdDict[str(age)] = ageStdDict
+        historicalMeanDict[str(age)] = ageMeanDict
+        print('Done with age: ' + str(age))
+        
+    # Store the calculated mean and standard deviation in a master dict
+    #   called: `historicalDict`
+    historicalDict['std'] = historicalStdDict
+    historicalDict['mean'] = historicalMeanDict
+    return historicalDict
 
+def calculate_player_deviations(playerDF, historicalDict):
+    
 #==============================================================================
 # Working Code
 #==============================================================================
@@ -50,70 +82,26 @@ for col in cols_list:
         comp_list.append(col)
     if col.startswith('rushing'):
         comp_list.append(col)
+  
+historicDict = compare_player(df)
 
 # Create aggregate player data based on their average season totals and their
 #   median season totals
-df_mean = df.groupby(['url'], as_index = False).mean()
-df_median = df.groupby(['url'], as_index = False).median()
+#df_mean = df.groupby(['url'], as_index = False).mean()
+#df_median = df.groupby(['url'], as_index = False).median()
+#
+#var_list = [x for x in list(df.columns) if x not in list(df_mean.columns)]
+#var_list.append('url')
+#var_list.remove('team')
+#
+#df_mean_merge = pd.merge(df_mean, df[var_list], on=['url'], how='left')
+#df_mean_merge.drop_duplicates(inplace=True)
+#
+#df_median_merge = pd.merge(df_median, df[var_list], on=['url'], how='left')
+#df_median_merge.drop_duplicates(inplace=True)
 
-var_list = [x for x in list(df.columns) if x not in list(df_mean.columns)]
-var_list.append('url')
-var_list.remove('year')
-var_list.remove('team')
-
-df_mean_merge = pd.merge(df_mean, df[var_list], on=['url'], how='left')
-df_mean_merge.drop_duplicates(inplace=True)
-
-df_median_merge = pd.merge(df_median, df[var_list], on=['url'], how='left')
-df_median_merge.drop_duplicates(inplace=True)
-
-
-#     df[(df['name_last'] == 'Diggs') & (df['name_first'] == 'Stefon')]
-    playerURL = diggs['url'][4147]
 
     
-     
-    # Iterate over every statistic for every year of a player's career and
-    #   calculate the similarity score (Deviance)
-#    for stat in comp_list:
-#        for year in list(player['year']):
-#            year = '2017'
-#            yearDF = player[player['year'] == year].reset_index()
-#            comparisonDF = playersDF[playersDF['age'] == yearDF['age'][0]]
-    
-playersDF = pd.DataFrame.copy(df)
-playersDF = playersDF[comp_list]
-playersDF['is_duplicate'] = playersDF.duplicated()
-playersDF.to_csv('duplicated.csv')
-
-def compare_player(playersDF):
-    #playersDF = pd.DataFrame.copy(df)
-    historicalStdDict = {}
-    historicalMeanDict = {}
-    # Iterate over every age group in the positions data
-    for age in list(playersDF['age']):
-        #age = 23
-        yearDF = playersDF[playersDF['age'] == age].reset_index()
-        
-        # Within each age group, calculate the difference in standard deviations
-        #   between the current player and all historical players for each stat.
-        # Then square the number, multiply it by the proportion of the weight 
-        #   assigned to the category (TBD) and take the square root of the sum
-        #   of squares.  This will be called the player's "DEVIANCE."
-        ageStdDict = {}
-        ageMeanDict = {}
-        for stat in comp_list:
-            # Determine the standard deviation for the stat across all players
-            ageStdDict[stat] = yearDF[stat].std()
-            ageMeanDict[stat] = yearDF[stat].mean()
-        historicalStdDict[str(age)] = ageStdDict
-        historicalMeanDict[str(age)] = ageMeanDict
-        print('Done with age: ' + str(age))
-    historicalDict['std'] = historicalStdDict
-    historicalDict['mean'] = historicalMeanDict
-    return historicalDict
-
-def calculate_player_deviations(playerDF, historicalDict):
 
     
     
