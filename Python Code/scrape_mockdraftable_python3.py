@@ -105,18 +105,30 @@ def cleanUpData(player):
         if player[data] == None:
             pass
         else:
-            if data in ['weight','combineBench']:
+            if data in ['weight',
+                        'combineBench']:
                 player[data] = player[data].decode("utf-8").split(' ')[0]
-            elif data in ['wingspan','lengthArm','lengthHand','combineBroad','combineVert']:
+            elif data in ['wingspan',
+                          'lengthArm',
+                          'lengthHand',
+                          'combineBroad',
+                          'combineVert']:
                 player[data] = player[data].decode("utf-8").split('"')[0]
-            elif data in ['combineCone','combine10split','combine20split','combine40dash','combine20shuttle','combine60shuttle']:
+            elif data in ['combineCone',
+                          'combine10split',
+                          'combine20split',
+                          'combine40dash',
+                          'combine20shuttle',
+                          'combine60shuttle']:
                 player[data] = player[data].decode("utf-8").split('s')[0]
     return player    
 
 def createPlayerDict():
-    varNames = ['nameFirst', 'nameLast', 'draftYear', 'college', 'heightFeet', 'heightInches','weight', 'wingspan', 
-                'lengthArm', 'lengthHand', 'combine10split', 'combine20split', 'combine40dash', 'combineBench', 
-                'combineVert', 'combineBroad', 'combineCone', 'combine20shuttle', 'combine60shuttle','url','position']
+    varNames = ['nameFirst', 'nameLast', 'draftYear', 'college', 'heightFeet', 
+                'heightInches','weight', 'wingspan', 'lengthArm', 'lengthHand', 
+                'combine10split', 'combine20split', 'combine40dash', 
+                'combineBench', 'combineVert', 'combineBroad', 'combineCone', 
+                'combine20shuttle', 'combine60shuttle','url','position']
     playerDict = {}
     for var in varNames:
         playerDict[var] = None
@@ -124,8 +136,10 @@ def createPlayerDict():
 
 def fractionCheck(text):
     # For reference: https://www.compart.com/en/unicode/decomposition/%3Cfraction%3E
-    fractions = [u"⅒",u"⅑",u"⅛",u"⅐",u"⅙",u"⅕",u"¼",u"⅓",u"⅜",u"⅖",u"½",u"⅗",u"⅝",u"⅔",u"¾",u"⅘",u"⅚",u"⅞"]
-    fraction_values = [u".1",u".111",u".125",u".143",u".167",u".2",u".25",u".333",u".375",u".4",u".5",u".6",u".625",
+    fractions = [u"⅒",u"⅑",u"⅛",u"⅐",u"⅙",u"⅕",u"¼",
+                 u"⅓",u"⅜",u"⅖",u"½",u"⅗",u"⅝",u"⅔",u"¾",u"⅘",u"⅚",u"⅞"]
+    fraction_values = [u".1",u".111",u".125",u".143",u".167",
+                       u".2",u".25",u".333",u".375",u".4",u".5",u".6",u".625",
                        u".666",u".75",u".8",u".833",u".875"]
     #for fraction in fractions:
     for a, b in zip(fractions, fraction_values):
@@ -134,10 +148,19 @@ def fractionCheck(text):
     return text.encode('ascii','ignore').strip()
 
 def getVariableName(name):
-    variableDict = {'Height':'height', 'Weight':'weight', 'Wingspan':'wingspan', 'Arm Length':'lengthArm',
-                    'Hand Size':'lengthHand', '10 Yard Split':'combine10split', '20 Yard Split':'combine20split',
-                    '40 Yard Dash':'combine40dash', 'Bench Press':'combineBench', 'Vertical Jump':'combineVert',
-                    'Broad Jump':'combineBroad', '3-Cone Drill':'combineCone', '20 Yard Shuttle':'combine20shuttle',
+    variableDict = {'Height':'height', 
+                    'Weight':'weight', 
+                    'Wingspan':'wingspan', 
+                    'Arm Length':'lengthArm', 
+                    'Hand Size':'lengthHand', 
+                    '10 Yard Split':'combine10split', 
+                    '20 Yard Split':'combine20split',
+                    '40 Yard Dash':'combine40dash', 
+                    'Bench Press':'combineBench', 
+                    'Vertical Jump':'combineVert',
+                    'Broad Jump':'combineBroad', 
+                    '3-Cone Drill':'combineCone', 
+                    '20 Yard Shuttle':'combine20shuttle',
                     '60 Yard Shuttle':'combine60shuttle'}
     return(variableDict[name])
 
