@@ -33,7 +33,6 @@ Created on Thu May 24 12:54:49 2018
 #==============================================================================
 # Package Import
 #==============================================================================
-import itertools
 import json
 import pandas as pd
 import os
@@ -125,7 +124,7 @@ def update_draft_info(player_list):
 #        finalDF_filtered = finalDF[finalDF['team'] != finalDF['team_historic']]
     return player_list
 
-def merge_combine_data(player_list):
+def merge_combine_data(list_of_players):
     '''
     Description:
         This function will merge scraped player data from NFL.com with 
@@ -138,28 +137,37 @@ def merge_combine_data(player_list):
     Output:
         final_list (list) - contains all player information to include newly
             merged combine data from mockdraftable.com
-    '''
+    '''  
     # read in combine data
     with open(r'/home/ejreidelbach/projects/NFL/Data/Combine/mockdraftable_data.json', 'r') as f:
         combine_list = json.load(f)   
-    combine_vars = ['nameFirst', 'nameLast', 'draftYear', 'college', 
-                    'heightFeet', 'heightInches', 'heightInchesTotal', 
-                    'weight', 'wingspan', 'lengthArm', 'lengthHand', 
-                    'combine10split', 'combine20split', 'combine40dash', 
-                    'combineBench', 'combineVert', 'combineBroad', 
-                    'combineCone', 'combine20shuttle', 'combine60shuttle',
-                    'url', 'position']
+        
+    # identify the variables we'll be working with
+    combine_vars = ['draftYear', 'heightFeet', 'heightInches', 
+                    'heightInchesTotal', 'weight', 'wingspan', 'lengthArm', 
+                    'lengthHand', 'combine10split', 'combine20split', 
+                    'combine40dash', 'combineBench', 'combineVert', 
+                    'combineBroad', 'combineCone', 'combine20shuttle', 
+                    'combine60shuttle', 'url']
+    player_vars = ['combine_draftYear', 'combine_height_feet', 
+                   'combine_height_inches', 'combine_height_inches_total',
+                   'combine_weight', 'combine_wingspan', 'combine_length_arm',
+                   'combine_length_hand', 'combine_split_10', 
+                   'combine_split_20', 'combine_dash_40', 'combine_bench',
+                   'combine_vert', 'combine_broad', 'combine_cone', 
+                   'combine_shuttle_20', 'combine_shuttle_60', 'combine_url']
     
-    for player in player_list:
+    # for every player in the list, match that player with his combine data
+    #   and add that data to the player's record
+    for player in list_of_players:
         for info in combine_list:
-            if ((player['name_first'] == info['nameFirst']) and 
-                (player['name_last'] == info['nameLast']) and
-                (player['school'] == info['college'])):
-                player['combine_info]
-    nameFirst
-    nameLast
-    college
-    draftYear
+            if ((player['name_first'] == info['nameFirst']) 
+            and (player['name_last'] == info['nameLast']) 
+            and (player['college'].split(' ')[0] == info['college'].split(' ')[0])):
+                for a, b in zip(player_vars, combine_vars):
+                    player[a] = info[b]
+                break
+    return list_of_players
 
 def combine_multiyear_stats(annual_list):
     '''
@@ -206,7 +214,7 @@ def combine_multiyear_stats(annual_list):
             #       Passing: `Pct`, `Att/G`, `Avg`, `Yds/G`, `TD%`, `Int%`, 
             #                `Lng`, `Rate`
             #       Punting: `Lng`, `Avg`, `Net Avg`
-            #       Kickoff: `Avg`, `Pct`, `Avg`
+            #       Kickoff: `Avg`, `Pct`, `Avg`  
             #       Field Goal: `Lng`, `Pct`, `Pct`, `Pct`, `Pct`, `Pct`, `Pct`
             temp_dict = {}
 
@@ -219,18 +227,21 @@ def combine_multiyear_stats(annual_list):
                     category = entry.split('_')[0]
                     
                 # set variables names to be used for stat calculations
-                att = ''              
+                att = ''         
+                g = category + '_g'
+                first = category + '_1st'
+                yds = category + '_yds'                
                 if 'return' in category:
                     att = category + '_ret'
                 elif category == 'receiving': 
                     att = category + '_rec'
                 elif category == 'rushing':
                     att = category + '_att'
-                yds = category + '_yds'
+
+                # punt returns are unique in that their yards are stored as
+                #   the substring `_rety` so they require their own `if`
                 if category == 'punt_return':
                     yds = category + '_rety'
-                g = category + '_g'
-                first = category + '_1st'
                 
                 # special calculations are required for statistics that
                 #   containt the values listed above.  They are calculated on
@@ -294,6 +305,46 @@ def combine_multiyear_stats(annual_list):
             
     return final_list
 
+def standardize_school_names(data):
+    '''
+    Description:
+        This function will ensure all colleges have the same standardized
+            name regardless of abbreviation of name variant used by the source
+            data (i.e. Penn St. rather than PSU or Penn State, etc...)
+    
+    Input:
+        data (list) - contains info with college/school names that have not
+            yet been standardized
+        
+    Output:
+        data (list) - return the updated list of info
+    '''
+    # import the spreadsheet we will be using to standardize school names
+    schoolsDF = pd.read_csv(
+            r'/home/ejreidelbach/projects/NFL/Data/school_abbreviations.csv')
+    schoolsList = schoolsDF.to_dict(orient='records')
+
+    # iterate over element in the input data, look up the school name, and
+    #   set it to the desired value (if it exists)
+    for info in data:
+        # find matching school and change the name, as required
+        for school in schoolsList:
+            if info['college'] in [school['Team'], 
+                          school['Abbreviation1'],
+                          school['Abbreviation2'],
+                          school['Abbreviation3'],
+                          school['Abbreviation4'],
+                          school['Abbreviation5']]:
+                if info['college'] != school['Team']:
+                    print('Changing: ' + info['college'] + ' to ' +
+                          school['Team'])
+                info['college'] = school['Team']
+                break
+    
+    # return the formatted data
+    return data
+
+
 #==============================================================================
 # Working Code
 #==============================================================================
@@ -350,8 +401,8 @@ for position in position_list:
 
         # Test to see if there were any issues with compression resulting in 
         #   different numbers of years for annual stats and situational stats
-        if len(stats_annual) != len(stats_situational):
-            print ('Different year totals for: ' + str(stat_list.index(row)))
+#        if len(stats_annual) != len(stats_situational):
+#            print ('Different year totals for: ' + str(stat_list.index(row)))
 
         # It's possible that there may not be annual stats or situational stats
         #   in a given year.  To account for this, we have to carefully merge
@@ -384,9 +435,17 @@ for position in position_list:
             yearPlayer['age'] = days_between
             
             stat_list_flattened.append(yearPlayer)
+   
+    # Standardize team (i.e. college/school) names for each player
+    stat_list_flattened = standardize_school_names(stat_list_flattened)
 
     # Correct draft info for each player 
     stat_list_flattened = update_draft_info(stat_list_flattened)
+
+    # Add combine data to players by matching first name, last name and
+    #   school name
+    # NOTE:  It is a known error that this does not have a 100% success rate
+    stat_list_flattened = merge_combine_data(stat_list_flattened)
 
     # Output the flattened list to a CSV
     filename = r'/home/ejreidelbach/projects/NFL/Data/PlayerStats/' + position + '.json'

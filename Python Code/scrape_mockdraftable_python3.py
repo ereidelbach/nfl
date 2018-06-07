@@ -86,6 +86,7 @@ from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from bs4 import BeautifulSoup
 import requests
+import pandas as pd
 
 #==============================================================================
 # Function Definitions / Reference Variable Declaration
@@ -257,6 +258,45 @@ def soupifyURL(url):
     soup = BeautifulSoup(r.content,'html5lib')
     return soup
 
+def standardize_school_names(data):
+    '''
+    Description:
+        This function will ensure all colleges have the same standardized
+            name regardless of abbreviation of name variant used by the source
+            data (i.e. Penn St. rather than PSU or Penn State, etc...)
+    
+    Input:
+        data (list) - contains info with college/school names that have not
+            yet been standardized
+        
+    Output:
+        data (list) - return the updated list of info
+    '''
+    # import the spreadsheet we will be using to standardize school names
+    schoolsDF = pd.read_csv(
+            r'/home/ejreidelbach/projects/NFL/Data/school_abbreviations.csv')
+    schoolsList = schoolsDF.to_dict(orient='records')
+
+    # iterate over element in the input data, look up the school name, and
+    #   set it to the desired value (if it exists)
+    for info in data:
+        # find matching school and change the name, as required
+        for school in schoolsList:
+            if info['college'] in [school['Team'], 
+                          school['Abbreviation1'],
+                          school['Abbreviation2'],
+                          school['Abbreviation3'],
+                          school['Abbreviation4'],
+                          school['Abbreviation5']]:
+                if info['college'] != school['Team']:
+                    print('Changing: ' + info['college'] + ' to ' +
+                          school['Team'])
+                info['college'] = school['Team']
+                break
+    
+    # return the formatted data
+    return data
+
 #==============================================================================
 # Working Code
 #==============================================================================
@@ -312,19 +352,8 @@ for url in player_URL_List:
     if (urlCount%100==0): print(urlCount)
     urlCount+=1  
 
-# Convert any byte objects to str
-#playerCount = 0
-#for player in playerList:
-#    if (playerCount%100==0): print(playerCount)
-#    playerCount+=1  
-#    for var in player:
-#        if (type(player[var]) == bytes):
-#            player[var] = player[var].decode('utf-8')
-##        if (var == 'heightInches'):
-##            try:
-##                player['heightInches'] = player['heightInches'].replace('"','')
-##            except:
-##                pass
+# Standardize school names
+playerList = standardize_school_names(playerList)
     
 # Write the contents of the playerList to a .json file
 filename = 'mockdraftable_data.json'
