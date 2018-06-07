@@ -74,31 +74,9 @@ def update_draft_info(player_list):
     with open(r'/home/ejreidelbach/projects/NFL/Data/Draft/historic_draft_data.json', 'r') as f:
         draft_list = json.load(f)
 
-#    final_list = []
-
     # iterate over every player in the player list and update their information
     #   with information obtained from the draft_list
     for player in player_list:
-        
-#        # create a temporary dictionary for the purposes of slimming down the
-#        #   data in a test environment
-#        temp_dict = {k: player[k] for k in (
-#                'name_first', 
-#                'name_last',
-#                'year',
-#                'college',
-#                'draft_pick_overall',
-#                'draft_pick_round',
-#                'draft_round',
-#                'draft_team',)}
-#        temp_dict['nameFirst'] = temp_dict.pop('name_first')
-#        temp_dict['nameLast'] = temp_dict.pop('name_last')
-#        temp_dict['school'] = temp_dict.pop('college')
-#        temp_dict['overall'] = temp_dict.pop('draft_pick_overall')
-#        temp_dict['round'] = temp_dict.pop('draft_round')
-#        temp_dict['pick'] = temp_dict.pop('draft_pick_round')
-#        temp_dict['team'] = temp_dict.pop('draft_team')
-
         # find a matching player in draft_list based on:
         #   player_list:  name_first, name_last, college
         #   draft_list:  nameFirst, nameLast, school
@@ -109,19 +87,11 @@ def update_draft_info(player_list):
             if (player['name_first'] == pick['nameFirst'] 
             and player['name_last'] == pick['nameLast'] 
             and player['college'].split(' ')[0] == pick['school'].split(' ')[0]):
-#                for k, v in pick.items():
-#                    key = k + '_historic'
-#                    temp_dict[key] = v
-#                final_list.append(temp_dict)
                 player['draft_pick_overall'] = pick['overall']
                 player['draft_pick_round'] = pick['pick']
                 player['draft_round'] = pick['round']
                 player['draft_team'] = pick['team']
                 break
-#        finalDF = pd.DataFrame(final_list)
-#        finalDF['duplicated'] = finalDF.duplicated()
-#        finalDF.drop_duplicates(inplace=True)
-#        finalDF_filtered = finalDF[finalDF['team'] != finalDF['team_historic']]
     return player_list
 
 def merge_combine_data(list_of_players):

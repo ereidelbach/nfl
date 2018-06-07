@@ -230,7 +230,8 @@ def scrapePlayerStats(url, year, index, list_length, position):
                 'div', {'class':'player-photo'}).find('img')['src']
         
         playerInfo['team_current'] = 'INACTIVE'
-        playerInfo['team_pic_url'] = 'N/A'
+#        playerInfo['team_pic_url'] = 'N/A'
+        playerInfo['high_school_state'] = 'N/A'
 
     else:   
         temp = list(soup.find('div', {'class':'player-info'}).find_all('p')[2])
@@ -263,8 +264,8 @@ def scrapePlayerStats(url, year, index, list_length, position):
         
         playerInfo['team_current'] = soup.find(
                 'p', {'class':'player-team-links'}).find('a').text
-        playerInfo['team_pic_url'] = soup.find(
-                'div', {'class':'player-photo'}).find('img')['src']
+#        playerInfo['team_pic_url'] = soup.find(
+#                'div', {'class':'player-photo'}).find('img')['src']
     
     ### Extract Situational Stats for every year available
     soup = soupifyURL(url + 'situationalstats')
@@ -534,6 +535,7 @@ def scrapeYearByPosition(startYear, stopYear, position):
             
         # Convert the list to a Pandas dataframe, fill in missing values with 0, 
         #   and export the dataframe to a CSV file
+        os.chdir(direc)
 #        df = pd.DataFrame(playerList)
 #        df.fillna(0, inplace=True)
 #        filename = '/' + position + '/' + year + '_' + position + '.csv'
@@ -553,5 +555,4 @@ for position in position_list:
         os.chdir(direc)
     except:
         os.makedirs(direc)
-        os.chdir(direc)
     scrapeYearByPosition(2017, 2017, position)

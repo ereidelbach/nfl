@@ -84,7 +84,7 @@ for col in cols_list:
     if col.startswith('rushing'):
         comp_list.append(col)
   
-historicDict = compare_player(df)
+historicDict = calculate_historical_values(df)
 
 # Create aggregate player data based on their average season totals and their
 #   median season totals
