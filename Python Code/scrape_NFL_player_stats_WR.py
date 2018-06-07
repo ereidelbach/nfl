@@ -192,6 +192,8 @@ def soupifyURL(url):
     return soup
 
 def scrapePlayerStats(url, year, index, list_length, position):   
+    url = 'http://www.nfl.com/player/jajuandawson/2504103/profile'
+    position = 'WIDE_RECEIVER'
     playerInfo = {}
     soup = soupifyURL(url)
     
@@ -208,7 +210,8 @@ def scrapePlayerStats(url, year, index, list_length, position):
     # Check to see if a player is no longer active (if so, handle differently)
     temp = list(soup.find('div', {'class':'player-info'}).find_all('p'))
     if len(temp) <= 5 or (len(temp)==6 and temp[5].text.split(':')[0] == 'Hall of Fame Induction'):
-        temp = list(soup.find('div', {'class':'player-info'}).find_all('p')[1])
+        temp = list(soup.find(
+                'div', {'class':'player-info'}).find_all('p')[1]).split(' ')[0]
         height = temp[2].split(': ')[1].strip()
         playerInfo['height'] = height
         playerInfo['heightInches'] = int(height.split('-')[0])*12 + int(height.split('-')[1])
@@ -475,7 +478,7 @@ def scrapeYearByPosition(startYear, stopYear, position):
 #    os.chdir(r'/home/ejreidelbach/projects/NFL/Data/PlayerStats')
 #    files = [f for f in os.listdir('.') if f.endswith(('.json'))]
 #    files = sorted(files)
-#    for file in files:
+#    for file in files: \u00a0 \n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\tDeceased
 #        with open(file, 'r') as f:
 #            jsonFile = json.load(f)   
 #            for row in jsonFile:
