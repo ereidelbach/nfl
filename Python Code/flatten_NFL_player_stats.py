@@ -138,7 +138,28 @@ def merge_combine_data(player_list):
     Output:
         final_list (list) - contains all player information to include newly
             merged combine data from mockdraftable.com
-    '''    
+    '''
+    # read in combine data
+    with open(r'/home/ejreidelbach/projects/NFL/Data/Combine/mockdraftable_data.json', 'r') as f:
+        combine_list = json.load(f)   
+    combine_vars = ['nameFirst', 'nameLast', 'draftYear', 'college', 
+                    'heightFeet', 'heightInches', 'heightInchesTotal', 
+                    'weight', 'wingspan', 'lengthArm', 'lengthHand', 
+                    'combine10split', 'combine20split', 'combine40dash', 
+                    'combineBench', 'combineVert', 'combineBroad', 
+                    'combineCone', 'combine20shuttle', 'combine60shuttle',
+                    'url', 'position']
+    
+    for player in player_list:
+        for info in combine_list:
+            if ((player['name_first'] == info['nameFirst']) and 
+                (player['name_last'] == info['nameLast']) and
+                (player['school'] == info['college'])):
+                player['combine_info]
+    nameFirst
+    nameLast
+    college
+    draftYear
 
 def combine_multiyear_stats(annual_list):
     '''

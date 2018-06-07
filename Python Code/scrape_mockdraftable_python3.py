@@ -81,13 +81,11 @@ Created on Mon Apr  2 14:26:57 2018
 # Package Import
 #==============================================================================
 import json
-import pandas as pd
 import os
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from bs4 import BeautifulSoup
 import requests
-import time
 
 #==============================================================================
 # Function Definitions / Reference Variable Declaration
@@ -107,28 +105,32 @@ def cleanUpData(player):
         else:
             if data in ['weight',
                         'combineBench']:
-                player[data] = player[data].decode("utf-8").split(' ')[0]
+                player[data] = player[data].split(' ')[0]
+#                player[data] = player[data].decode("utf-8").split(' ')[0]
             elif data in ['wingspan',
                           'lengthArm',
                           'lengthHand',
                           'combineBroad',
                           'combineVert']:
-                player[data] = player[data].decode("utf-8").split('"')[0]
+                player[data] = player[data].split('"')[0]
+#                player[data] = player[data].decode("utf-8").split('"')[0]
             elif data in ['combineCone',
                           'combine10split',
                           'combine20split',
                           'combine40dash',
                           'combine20shuttle',
                           'combine60shuttle']:
-                player[data] = player[data].decode("utf-8").split('s')[0]
+                player[data] = player[data].split('s')[0]
+#                player[data] = player[data].decode("utf-8").split('s')[0]
     return player    
 
 def createPlayerDict():
     varNames = ['nameFirst', 'nameLast', 'draftYear', 'college', 'heightFeet', 
-                'heightInches','weight', 'wingspan', 'lengthArm', 'lengthHand', 
-                'combine10split', 'combine20split', 'combine40dash', 
-                'combineBench', 'combineVert', 'combineBroad', 'combineCone', 
-                'combine20shuttle', 'combine60shuttle','url','position']
+                'heightInches', 'heightInchesTotal', 'weight', 'wingspan', 
+                'lengthArm', 'lengthHand', 'combine10split', 'combine20split', 
+                'combine40dash', 'combineBench', 'combineVert', 'combineBroad',
+                'combineCone', 'combine20shuttle', 'combine60shuttle','url',
+                'position']
     playerDict = {}
     for var in varNames:
         playerDict[var] = None
@@ -144,8 +146,10 @@ def fractionCheck(text):
     #for fraction in fractions:
     for a, b in zip(fractions, fraction_values):
         if a in text:
-            return text.replace(a, b).encode('ascii','ignore').strip()      
-    return text.encode('ascii','ignore').strip()
+            return text.replace(a,b)
+#            return text.replace(a, b).encode('ascii','ignore').strip()    
+    return text.strip()
+#    return text.encode('ascii','ignore').strip()
 
 def getVariableName(name):
     variableDict = {'Height':'height', 
@@ -179,8 +183,8 @@ def retrievePlayerInfo(soup,url):
     playerDict = createPlayerDict()
 
     # Set url and position
-    playerDict['url'] = url.encode()
-    playerDict['position'] = url.split('position=')[1].encode()
+    playerDict['url'] = url
+    playerDict['position'] = url.split('position=')[1]
 
     # Retrieve basic player information
     playerName = soup.find('div',{'class':'mb-0 mt-1 h3 align-bottom playerbar-name'}).text
@@ -202,13 +206,22 @@ def retrievePlayerInfo(soup,url):
         keyName = getVariableName(str(columns[0].text))
         if keyName == 'height':
             playerDict['heightFeet'] = columns[1].text.replace("\'","").split(' ')[0]
-            playerDict['heightInches'] = columns[1].text.replace("\'","").split(' ')[1]
+#            playerDict['heightInches'] = columns[1].text.replace("\'","").split(' ')[1]
+            heightInches = columns[1].text.replace(
+                    "\'","").split(' ')[1].replace('"','').replace('*','')
+            playerDict['heightInches'] = fractionCheck(heightInches)
+            playerDict['heightInchesTotal'] = (
+                    int(playerDict['heightFeet'])*12 
+                    + float(playerDict['heightInches']))
         else:
             value = fractionCheck(columns[1].text)
             playerDict[keyName] = value
 
     # remove unnecessary formatting from measurable values
     playerDict = cleanUpData(playerDict)
+    
+    # set the data type for each variable in the dictionary
+    playerDict = setDictVariableTypes(playerDict)
     
     return playerDict
 
@@ -217,6 +230,26 @@ def retrievePlayerURL(soup,linkList):
     for link in playerLinks:
         linkList.append('https://www.mockdraftable.com' +link['href'])
     return linkList
+
+def setDictVariableTypes(player):
+    for entry in player:
+        # don't do anything to NoneTypes
+        if type(player[entry]) == type(None):
+            pass
+        # string variables
+        elif entry in ['nameFirst', 'nameLast', 'college', 'url', 'position']:
+            pass
+        # int variables
+        elif entry in ['draftYear', 'heightFeet', 'weight']:
+            player[entry] = int(player[entry])
+        # float variables
+        elif entry in ['heightInches', 'heightInchesTotal', 'wingspan', 
+                     'lengthArm', 'lengthHand', 'combine10split', 
+                     'combine20split', 'combine40dash', 'combineBench', 
+                     'combineVert', 'combineBroad', 'combineCone', 
+                     'combine20shuttle', 'combine60shuttle']:
+            player[entry] = float(player[entry])
+    return player
 
 def soupifyURL(url):
     r = requests.get(url, headers=headers)
@@ -234,6 +267,10 @@ headers = {"User-agent":
 
 # create a list of all the positions we'll be scraping
 positionList = ['QB','FB','HB','WR','TE','OT','OG','OC','ST','DT','DE','EDGE','ILB','OLB','SS','FS','CB']
+
+# Set the project working directory
+os.chdir(r'/home/ejreidelbach/projects/NFL/Data/Combine')
+
 player_URL_List = []
 
 # Open a Headless Firefox browser
@@ -262,6 +299,9 @@ for position in positionList:
         # advance the page
         advancePage(browser)
         #time.sleep(3)
+        
+# Close the browser
+browser.quit()
 
 # Now that we have all the player links, proceed to scrape each player's data
 playerList = []
@@ -273,20 +313,20 @@ for url in player_URL_List:
     urlCount+=1  
 
 # Convert any byte objects to str
-playerCount = 0
-for player in playerList:
-    if (playerCount%100==0): print(playerCount)
-    playerCount+=1  
-    for var in player:
-        if (type(player[var]) == bytes):
-            player[var] = player[var].decode('utf-8')
-        if (var == 'heightInches'):
-            try:
-                player['heightInches'] = player['heightInches'].replace('"','')
-            except:
-                pass
+#playerCount = 0
+#for player in playerList:
+#    if (playerCount%100==0): print(playerCount)
+#    playerCount+=1  
+#    for var in player:
+#        if (type(player[var]) == bytes):
+#            player[var] = player[var].decode('utf-8')
+##        if (var == 'heightInches'):
+##            try:
+##                player['heightInches'] = player['heightInches'].replace('"','')
+##            except:
+##                pass
     
 # Write the contents of the playerList to a .json file
-filename = 'mockdraftable_data1.json'
+filename = 'mockdraftable_data.json'
 with open(filename, 'wt') as out:
-    json.dump(playerList, out, sort_keys=True, indent=4, separators=(',', ': ')) 
+    json.dump(playerList, out, sort_keys=True, indent=4, separators=(',', ': '))
