@@ -20,7 +20,6 @@ Created on Wed May 16 15:01:38 2018
 # Package Import
 #==============================================================================
 import json
-import pandas as pd
 import os
 from bs4 import BeautifulSoup
 import requests
@@ -194,9 +193,7 @@ def soupifyURL(url):
     soup = BeautifulSoup(r.content,'html5lib')
     return soup
 
-def scrapePlayerStats(url, year, index, list_length, position):   
-    url = 'http://www.nfl.com/player/jajuandawson/2504103/profile'
-    position = 'WIDE_RECEIVER'
+def scrapePlayerStats(url, year, index, list_length, position):
     playerInfo = {}
     soup = soupifyURL(url)
     
@@ -216,8 +213,7 @@ def scrapePlayerStats(url, year, index, list_length, position):
     temp = list(soup.find('div', {'class':'player-info'}).find_all('p'))
     if len(temp) <= 5 or (len(temp)==6 and temp[5].text.split(
             ':')[0] == 'Hall of Fame Induction'):
-        temp = list(soup.find(
-                'div', {'class':'player-info'}).find_all('p')[1]).split(' ')[0]
+        temp = list(soup.find('div', {'class':'player-info'}).find_all('p')[1])
         height = temp[2].split(': ')[1].strip()
         playerInfo['height'] = height
         playerInfo['heightInches'] = int(height.split('-')[0])*12 + int(
@@ -302,8 +298,7 @@ def scrapePlayerStats(url, year, index, list_length, position):
                 
                 # Find the stat tables for the specified split category
                 temp_table = soup.find('div',{'id':'game_split_tabs_'+str(
-                        stat_split_list.index(
-                                stat_split))}).find_all(
+                        stat_split_list.index(stat_split))}).find_all(
                                     'table', {'class':'data-table1'})
     
                 # If the returned tables are empty, skip to the next category
@@ -438,13 +433,17 @@ def scrapePlayerStats(url, year, index, list_length, position):
                                        + '_' + col.text.lower()] = dat.text.strip()
                         else:
                             try:
-                                yearPlayerInfo[year_stat.replace(' ','_').lower() \
+                                yearPlayerInfo[year_stat.replace(
+                                        ' ','_').lower() \
                                            + '_' + col.text.lower()] = int(
-                                           dat.text.replace('T','').replace(',',''))
+                                           dat.text.replace(
+                                                   'T','').replace(',',''))
                             except:
-                                yearPlayerInfo[year_stat.replace(' ','_').lower() \
+                                yearPlayerInfo[year_stat.replace(
+                                        ' ','_').lower() \
                                            + '_' + col.text.lower()] = float(
-                                           dat.text.replace('T','').replace(',',''))
+                                           dat.text.replace(
+                                                   'T','').replace(',',''))
             career_stats_list.append(yearPlayerInfo)
         playerInfo['stats_annual'] = career_stats_list
     
@@ -518,17 +517,20 @@ def scrapeYearByPosition(startYear, stopYear, position):
             if url not in url_history_list:
                 url_history_list.append(url)
                 playerList.append(scrapePlayerStats(
-                        url, year, url_list.index(url), len(url_list), position)) 
+                        url, year, url_list.index(url), len(
+                                url_list), position)) 
             else:
                 print('Year ' + str(year) + ', Already read in: ' + url.split(
                         'players/')[1].split('/')[0] + ' (Player ' + \
-                        str(url_list.index(url)) + ' out of ' + str(len(url_list)-1) + ')')
+                        str(url_list.index(url)) + ' out of ' + str(
+                                len(url_list)-1) + ')')
             
         # Export the data set as a JSON file
         #filename = '/' + position + '/' + year + '_' + position + '.json'
         filename = position + '/' + year + '_' + position + '.json'
         with open(filename, 'wt') as out:
-            json.dump(playerList, out, sort_keys=True, indent=4, separators=(',', ': '))
+            json.dump(playerList, out, sort_keys=True, indent=4, separators=(
+                    ',', ': '))
             
         # Convert the list to a Pandas dataframe, fill in missing values with 0, 
         #   and export the dataframe to a CSV file
@@ -546,9 +548,3 @@ os.chdir(r'/home/ejreidelbach/projects/NFL/Data/PlayerStats')
 
 # Scrape all wide receiver data from 2000 to 2017
 scrapeYearByPosition(2000, 2017, 'WIDE_RECEIVER')
-    
-# Scrape all positions from 2000 to 2017
-#for year in year_list:
-#    for position in position_list:
-#        os.chdir(r'/home/ejreidelbach/projects/NFL/Data/PlayerStats/' + position)
-#        scrapeYearByPosition(2000, 2017, position)
