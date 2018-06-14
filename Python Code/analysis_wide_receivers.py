@@ -158,9 +158,169 @@ def calculate_similarity_scores_by_age(devianceList):
             for every age of their playing caree
         
     Output: 
-       final_dict (dict) - contains deviance between every player in the 
-           position group (2 values between players: the mean deviance
-           and the median deviance)
+       finalDF_median (dataframe) - contains deviance between every player in 
+           the position group calculated by using the median of all shared
+           deviance scores between the two players across their careers
+    '''      
+    # unpack list
+    unpacked_list = []
+    for player in devianceList:
+        for season in player:
+            unpacked_list.append(season)
+    
+    # put the data in a DataFrame to make age extraction simpler
+    devianceDF = pd.DataFrame(unpacked_list)
+    
+    # for every age group, start calculating similarity scores between players
+    # scores for each player will be stored in age groups
+    deviance_dict_year = {}
+    for age in devianceDF['age'].value_counts().sort_index().index.tolist():
+        year_list = devianceDF[devianceDF['age'] == age].reset_index(
+                drop=True).to_dict(orient='records')
+        
+        key_list = list(year_list[0].keys())
+        deviance_dict_player = {}
+        for player in year_list:
+            deviance_dict_comp = {}
+            for player2 in year_list:
+                deviance = 0
+                for key in key_list:
+                    if key == 'age' or key == 'url':
+                        continue
+                    elif math.isnan(player[key]) or math.isnan(player2[key]):
+                        continue
+                    deviance = deviance + (player[key] - player2[key])**2
+                deviance_dict_comp[player2['url']] = (100-deviance)
+            deviance_dict_player[player['url']] = deviance_dict_comp
+        deviance_dict_year[str(age)] = deviance_dict_player
+        print('Done with computing scores for age: ' + str(age))
+        
+    # loop over all age groups and begin grouping scores by player instead
+    # for every player, loop over every age he played and collect their scores
+    url_list = devianceDF['url'].value_counts().sort_index().index.tolist()
+    similarity_scores_dict = {}
+    # step through every player in the data using their url as an identifier
+    for url in url_list:
+        #player_scores_list = []
+        sim_dict = {}
+        
+        # iterate through every age_group (i.e. 22, 23, 24, 25, etc.)
+        for ageGroup in deviance_dict_year.keys():     
+            
+            # if the player exists in the age group, grab their similarity
+            #   scores for every other player in that age group
+            if url in deviance_dict_year[ageGroup].keys():
+                #player_scores_list.append({ageGroup:deviance_dict_year[ageGroup][url]})
+                sim_dict[ageGroup] = deviance_dict_year[ageGroup][url]
+        similarity_scores_dict[url] = sim_dict
+        if url_list.index(url)%100 == 0:
+            print('Done collating scores for ' + 
+                  str(url_list.index(url)) + ' players')                
+                    
+    # collapse the data such that each player has a link to every other player
+    #   along with their respective deviance scores for every playing age/year
+    #   they have in common
+    # iterate across every player
+    scores_dict = {}
+    for player in similarity_scores_dict.keys():
+        comparison_dict = {}
+        # iterate across every year the player played
+        for year in similarity_scores_dict[player].keys():
+            # iterate across every player that has a similarity score
+            for key, value in similarity_scores_dict[player][year].items():
+                # don't include player's scores with self
+                if key == player:
+                    continue
+                # if the player already exists in the dictionary, add the score
+                elif key in comparison_dict.keys():
+                    if comparison_dict[key] is not None:
+                        tmp_list = comparison_dict[key]
+                        tmp_list.append(value)
+                        comparison_dict[key] = tmp_list
+                # otherwise add them to the dictionary, then add the score
+                else:
+                    tmp_list = []
+                    tmp_list.append(value)
+                    comparison_dict[key] = tmp_list
+        scores_dict[player] = comparison_dict
+        if list(similarity_scores_dict.keys()).index(player)%100 == 0:
+            print('Done collapsing scores for ' + 
+                  str(list(similarity_scores_dict.keys()).index(
+                          player)) + ' players')
+        
+    # average the scores of all lists in the scores_dict and output as a Dict
+    final_dict = {}
+    # iterate across every player
+    for player in scores_dict.keys():
+        comparison_dict = {}
+        # iterate across every comaprison player for that player
+        for key, value in scores_dict[player].items():
+            player_dict = {}
+            # extract the score list for that player and computer mean/median
+            score_mean = statistics.mean(value)
+            score_median = statistics.median(value)
+            player_dict['mean'] = score_mean
+            player_dict['median'] = score_median
+            comparison_dict[key] = player_dict
+        final_dict[player] = comparison_dict
+        if list(scores_dict.keys()).index(player)%100 == 0:
+            print('Done averaging scores for ' + 
+                  str(list(scores_dict.keys()).index(
+                          player)) + ' players')
+    
+    # convert the final stats into one dataframe
+        
+     # average the scores of all lists in the scores_dict and output as a DF
+    final_dict_mean = {}
+    final_dict_median = {}
+    # iterate across every player
+    for player in scores_dict.keys():
+        player_dict_mean = {}
+        player_dict_median = {}
+        # iterate across every comaprison player for that player
+        for key, value in scores_dict[player].items():
+
+            # extract the score list for that player and computer mean/median
+            player_dict_mean[key] = statistics.mean(value)
+            player_dict_median[key] = statistics.median(value)
+#        final_dict_mean[player] = pd.DataFrame(comparison_dict)
+        final_dict_mean[player] = player_dict_mean
+        final_dict_median[player] = player_dict_median
+        if list(scores_dict.keys()).index(player)%100 == 0:
+            print('Done averaging scores for ' + 
+                  str(list(scores_dict.keys()).index(
+                          player)) + ' players')
+            
+    finalDF_mean = pd.DataFrame(final_dict_mean)
+    finalDF_mean.to_csv('similarity_scores_mean.csv')
+    finalDF_median = pd.DataFrame(final_dict_median)
+    finalDF_median.to_csv('similarity_scores_median.csv')
+    return finalDF_median
+
+def calculate_similarity_scores_by_season(devianceList):
+    '''
+    Description:
+        This function will take deviance scores between every player in a
+            position group, across all seasons of a player's career, 
+            and condense them to one score (computed as the median/mean of 
+            all scores between two players across all played seasons
+            they have in common)
+        Note:  The term season, in this case, refers to years of experience
+            (i.e. 4 seasons for a player = 4 years of experience). As such,
+            seasons will start at 0 (rookie year) and work their way up over
+            the span of a player's career (0, 1, 2, 3 ... 8, 9, 10).  Thus,
+            the second year of a player's career would have an "experience" 
+            value of 1 while the 11th year of a player's career would result
+            in an experience value of 10
+    
+    Input:
+        devianceList (list) - contains deviance values for every player
+            for every age of their playing caree
+        
+    Output: 
+       finalDF_median (dataframe) - contains deviance between every player in 
+           the position group calculated by using the median of all shared
+           deviance scores between the two players across their careers
     '''      
     # unpack list
     unpacked_list = []

@@ -195,6 +195,8 @@ def soupifyURL(url):
 
 def scrapePlayerStats(url, year, index, list_length, position):
     playerInfo = {}
+    url = 'http://www.nfl.com/player/terryglenn/2500816/profile'
+    position = 'WIDE_RECEIVER'
     soup = soupifyURL(url)
     
     playerInfo['url'] = url
@@ -218,7 +220,7 @@ def scrapePlayerStats(url, year, index, list_length, position):
         playerInfo['height'] = height
         playerInfo['heightInches'] = int(height.split('-')[0])*12 + int(
                 height.split('-')[1])
-        playerInfo['weight'] = temp[4].split(': ')[1].strip()
+        playerInfo['weight'] = temp[4].split(': ')[1].split(' ')[0].strip()
         
         temp = list(soup.find('div', {'class':'player-info'}).find_all('p')[2])
         playerInfo['birthday'] = temp[2].split(' ')[1]
@@ -239,7 +241,7 @@ def scrapePlayerStats(url, year, index, list_length, position):
         playerInfo['height'] = height
         playerInfo['heightInches'] = int(height.split('-')[0])*12 + int(
                 height.split('-')[1])
-        playerInfo['weight'] = temp[4].split(': ')[1].strip()
+        playerInfo['weight'] = temp[4].split(': ')[1].split(' ')[0].strip()
         
         temp = list(soup.find('div', {'class':'player-info'}).find_all('p')[3])
         playerInfo['birthday'] = temp[2].split(' ')[1]

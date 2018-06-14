@@ -403,7 +403,7 @@ for position in position_list:
             d2 = datetime.strptime(d2, "%m/%d/%Y")
             days_between = math.floor(abs((d2-d1).days)/365)
             yearPlayer['age'] = days_between
-            
+                       
             stat_list_flattened.append(yearPlayer)
    
     # Standardize team (i.e. college/school) names for each player
@@ -416,7 +416,27 @@ for position in position_list:
     #   school name
     # NOTE:  It is a known error that this does not have a 100% success rate
     stat_list_flattened = merge_combine_data(stat_list_flattened)
-
+    
+    # Push the flattened list into a Pandas Dataframe
+    df = pd.DataFrame(stat_list_flattened)
+        
+    # calcualte the years of experience for each player
+    url_series = df['url']
+    year_count = []
+    temp_url = ''
+    count = 0
+    for url in url_series:
+        if temp_url == url:
+            count+=1
+        else:
+            temp_url = url
+            count = 0
+        year_count.append(count)
+    
+    # Insert this information back into the list
+    for player_yr, xp in zip(stat_list_flattened, year_count):
+        player_yr['years_exp'] = xp
+    
     # Output the flattened list to a CSV
     filename = r'/home/ejreidelbach/projects/NFL/Data/PlayerStats/' + position + '.json'
     with open(filename, 'wt') as out:
