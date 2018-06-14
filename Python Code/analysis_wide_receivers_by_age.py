@@ -24,7 +24,7 @@ import statistics
 #==============================================================================
 # Function Definitions / Reference Variable Declaration
 #==============================================================================
-def calculate_agg_historical_values(playersDF, stats_list):
+def calculate_agg_historical_values_by_age(playersDF, stats_list):
     '''
     Description:
         This function will calculate the standard deviation and mean of every
@@ -69,7 +69,7 @@ def calculate_agg_historical_values(playersDF, stats_list):
     histDict['mean'] = histMeanDict
     return histDict
 
-def calculate_player_deviations(playersDF, histDict, stats_list):
+def calculate_player_deviations_by_age(playersDF, histDict, stats_list):
     '''
     Description:
         This function will take historical mean and standard deviation data
@@ -352,10 +352,10 @@ for folder in position_folder_list:
             stats_list.append(col)
     
     # Calculate mean and standard deviation for all stats across all years
-    historicDict = calculate_agg_historical_values(df, stats_list)
+    historicDict = calculate_agg_historical_values_by_age(df, stats_list)
     
     # Calculate the "deviance" for each player across every year on record
-    devianceList = calculate_player_deviations(df, historicDict, stats_list)    
+    devianceList = calculate_player_deviations_by_age(df, historicDict, stats_list)    
     
     # Roll up all deviance scores, by player age,
     #   between all players into one final dictionary

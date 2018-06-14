@@ -126,7 +126,7 @@ def calculate_player_deviations_by_exp(playersDF, histDict, stats_list):
             playerDict['years_exp'] = season['years_exp']
             for stat in stats_list:
                 if np.isnan(season[stat]) or np.isnan(
-                        histDict['std'][str(season['age'])][stat]):
+                        histDict['std'][str(season['years_exp'])][stat]):
                     playerDict[stat] = float('nan')
                 else:
                     diff = (season[stat] - histDict['mean'][str(
@@ -213,14 +213,13 @@ def calculate_similarity_scores_by_exp(devianceList, position):
         #player_scores_list = []
         sim_dict = {}
         
-        # iterate through every age_group (i.e. 22, 23, 24, 25, etc.)
-        for ageGroup in deviance_dict_year.keys():     
+        # iterate through every years of experience group (i.e. 0, 1, 2, etc.)
+        for yearGroup in deviance_dict_year.keys():     
             
-            # if the player exists in the age group, grab their similarity
+            # if the player exists in the year group, grab their similarity
             #   scores for every other player in that age group
-            if url in deviance_dict_year[ageGroup].keys():
-                #player_scores_list.append({ageGroup:deviance_dict_year[ageGroup][url]})
-                sim_dict[ageGroup] = deviance_dict_year[ageGroup][url]
+            if url in deviance_dict_year[yearGroup].keys():
+                sim_dict[yearGroup] = deviance_dict_year[yearGroup][url]
         similarity_scores_dict[url] = sim_dict
         if url_list.index(url)%100 == 0:
             print('Done collating scores for ' + 
@@ -292,7 +291,7 @@ def calculate_similarity_scores_by_exp(devianceList, position):
             # extract the score list for that player and computer mean/median
             player_dict_mean[key] = statistics.mean(value)
             player_dict_median[key] = statistics.median(value)
-#        final_dict_mean[player] = pd.DataFrame(comparison_dict)
+            
         final_dict_mean[player] = player_dict_mean
         final_dict_median[player] = player_dict_median
         if list(scores_dict.keys()).index(player)%100 == 0:
