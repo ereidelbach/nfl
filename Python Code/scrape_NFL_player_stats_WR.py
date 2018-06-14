@@ -195,8 +195,6 @@ def soupifyURL(url):
 
 def scrapePlayerStats(url, year, index, list_length, position):
     playerInfo = {}
-    url = 'http://www.nfl.com/player/terryglenn/2500816/profile'
-    position = 'WIDE_RECEIVER'
     soup = soupifyURL(url)
     
     playerInfo['url'] = url
