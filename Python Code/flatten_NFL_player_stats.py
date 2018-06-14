@@ -323,12 +323,10 @@ def standardize_school_names(data):
 os.chdir(r'/home/ejreidelbach/projects/NFL/Data/PlayerStats')
 
 # Iterate over every position folder
-for position in position_list:
-    try:
-        os.chdir(r'/home/ejreidelbach/projects/NFL/Data/PlayerStats/' 
-                 + position)  
-    except:
-        continue
+position_folder_list = [f.path for f in os.scandir(os.getcwd()) if f.is_dir() ]
+for folder in position_folder_list:
+    os.chdir(folder)
+    position = folder.split('/')[-1]
 
     # Read in all player data from the available JSON files
     files = [f for f in os.listdir('.') if f.endswith(('.json'))]
