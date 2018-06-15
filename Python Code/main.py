@@ -53,26 +53,48 @@ def ensemble_scores_mean():
     for position in list_positions:
         # Identify all the mean score files in the `PlayerStats` folder
         list_file_median = [f for f in os.listdir(Path(path_stats, position))
+                                if 'scores_mean.csv' in str(f)]
+        
+        # Read in those files
+        list_df = []
+        for f in list_file_median:
+            list_df.append(pd.read_csv(Path(path_stats, position, f), 
+                                       index_col = 0))
+            
+        # Average the contents of every cell across all files
+        df_concat = pd.concat(list_df)
+        by_row_index = df_concat.groupby(df_concat.index)
+        df_means = by_row_index.mean()
+        
+        # Output the `average` df to a new csv file
+        df_means.to_csv(Path(path_stats, position, 
+                           f.replace('.csv', '_ensemble.csv')))        
+
+def ensemble_scores_median():
+    # find out what folders exist for the various positions
+    path_stats = Path('Data','PlayerStats')
+    list_positions = os.listdir(path_stats)
+    
+    # iterate over these existing position folders
+    for position in list_positions:
+        # Identify all the mean score files in the `PlayerStats` folder
+        list_file_median = [f for f in os.listdir(Path(path_stats, position))
                                 if 'scores_median.csv' in str(f)]
         
         # Read in those files
         list_df = []
         for f in list_file_median:
-            list_df.append(pd.read_csv(Path(path_stats, position, f)))
+            list_df.append(pd.read_csv(Path(path_stats, position, f), 
+                                       index_col = 0))
             
         # Average the contents of every cell across all files
-        df_avg = pd.DataFrame()
+        df_concat = pd.concat(list_df)
+        by_row_index = df_concat.groupby(df_concat.index)
+        df_means = by_row_index.mean()
         
         # Output the `average` df to a new csv file
-        df_avg.to_csv(Path(path_stats, position, 
-                           f.replace('.csv', '_ensemble.csv')))        
-
-def ensemble_scores_median():
-    # Identify all the median score files in the `PlayerStats` folder
-    file_list_mean = [str(f) for f in os.scandir(Path(
-        'Data','PlayerStats')) if 'scores_mean.csv' in str(f)]
-    for f in file_list_mean:
-        pass
+        df_means.to_csv(Path(path_stats, position, 
+                           f.replace('.csv', '_ensemble.csv')))     
 
 #==============================================================================
 # Working Code
