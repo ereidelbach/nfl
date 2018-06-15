@@ -29,26 +29,43 @@ import os
 # Function Definitions / Reference Variable Declaration
 #==============================================================================
 def ensemble_scores_mean():
+    '''
+    Description:
+        Function that calculates scores for all relevant readability metrics
+        utilizing the TEXTATISTIC Python package.  
+    
+        Details on the package can be found here:
+            - https://pypi.org/project/textatistic/
+        
+    Input:
+        document (string): string containing the document to be scored
+        
+    Output:
+        document_dict (dictionary): dictionary containing the resulting scores
+            for the document along with counts for total number of words, 
+            syllables, and sentences\
+    '''
+    # find out what folders exist for the various positions
     path_stats = Path('Data','PlayerStats')
-    list_positions = [os.listdir(path_stats)]
-    for file in list_positions:
-        file = file.split('_')
-
-    # Identify all the mean score files in the `PlayerStats` folder
-    list_file_median = [str(f) for f in os.listdir(Path('Data','PlayerStats'))
-                            if 'scores_median.csv' in str(f)]
+    list_positions = os.listdir(path_stats)
     
-    # Read in those files
-    list_df = []
-    for f in file_list_median:
-        list_df.append(pd.read_csv(f))        
+    # iterate over these existing position folders
+    for position in list_positions:
+        # Identify all the mean score files in the `PlayerStats` folder
+        list_file_median = [f for f in os.listdir(Path(path_stats, position))
+                                if 'scores_median.csv' in str(f)]
         
-    # Average the contents of every cell across all files
-    df_avg = pd.DataFrame()
-    
-    # Output the `average` df to a new csv file
-    df_avg.to_csv(')
+        # Read in those files
+        list_df = []
+        for f in list_file_median:
+            list_df.append(pd.read_csv(Path(path_stats, position, f)))
+            
+        # Average the contents of every cell across all files
+        df_avg = pd.DataFrame()
         
+        # Output the `average` df to a new csv file
+        df_avg.to_csv(Path(path_stats, position, 
+                           f.replace('.csv', '_ensemble.csv')))        
 
 def ensemble_scores_median():
     # Identify all the median score files in the `PlayerStats` folder
@@ -62,7 +79,7 @@ def ensemble_scores_median():
 #==============================================================================
 
 # Set the project working directory
-os.chdir(r'/home/ejreidelbach/projects/NFL/Data')
+os.chdir(r'/home/ejreidelbach/projects/NFL/')
 
 
 # Create similarity scores files which are ensembles (i.e. averages) of 
