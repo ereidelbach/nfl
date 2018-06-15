@@ -6,10 +6,26 @@ Created on Thu Jun 14 16:16:17 2018
 @author: ejreidelbach
 
 :DESCRIPTION:
-
+    This script will ingest the data for a position (right now it's focused
+    on Wide Receiver data) and then calculate the similarity score between
+    every player across all possible season groups.  By season groups, we're 
+    referring to how many years of experience a player has in a given season.  
+    So, all rookies are compared to each other while all 9th year veterans
+    are compared to each other.  This is done regardless of when these seasons
+    occurred, so a player's rookie season that happened in 2017 will be
+    compared to all other rookie seasons regardless of year (i.e. 1998, 2003,
+    etc.).
+    
 :REQUIRES:
+    - Pandas
+    - Numpy
    
 :TODO:
+    - functionalize the ability to specify what stats are desired for that
+        specific computational run
+    - specify default statistics fore each position
+    - consider weighting variables and/or weighting different seasons
+        (i.e. as you get older an the sample size decreases, lower the weight?)
 """
  
 #==============================================================================

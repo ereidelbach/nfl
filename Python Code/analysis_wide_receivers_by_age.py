@@ -6,10 +6,24 @@ Created on Tue May 29 08:30:17 2018
 @author: ejreidelbach
 
 :DESCRIPTION:
+    This script will ingest the data for a position (right now it's focused
+    on Wide Receiver data) and then calculate the similarity score between
+    every player across all possible age groups.  By age groups, we're 
+    referring to the age of a player in a given season.  So, 22 year olds
+    are compared to other 22 year olds, 23 year olds are compared to other
+    23 year olds, etc. regardless of what year those seasons occurred (i.e.
+    someone's 22 year old season could be 2008 and the other's could be 2017).
 
 :REQUIRES:
+    - Pandas
+    - Numpy
    
 :TODO:
+    - functionalize the ability to specify what stats are desired for that
+        specific computational run
+    - specify default statistics fore each position
+    - consider weighting variables and/or weighting different seasons
+        (i.e. as you get older an the sample size decreases, lower the weight?)
 """
  
 #==============================================================================
