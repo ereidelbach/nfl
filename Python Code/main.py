@@ -62,7 +62,7 @@ def ensemble_scores_median():
 #==============================================================================
 
 # Set the project working directory
-os.chdir(r'/home/ejreidelbach/projects/NFL/')
+os.chdir(r'/home/ejreidelbach/projects/NFL/Data')
 
 
 # Create similarity scores files which are ensembles (i.e. averages) of 

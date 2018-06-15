@@ -72,7 +72,7 @@ def update_draft_info(player_list):
             updated draft information
     '''
     # read in the historic draft data
-    with open(r'/home/ejreidelbach/projects/NFL/Data/Draft/historic_draft_data.json', 'r') as f:
+    with open(Path('Data', 'Draft', 'historic_draf_data.json'), 'r') as f:
         draft_list = json.load(f)
 
     # iterate over every player in the player list and update their information
@@ -110,7 +110,7 @@ def merge_combine_data(list_of_players):
             merged combine data from mockdraftable.com
     '''  
     # read in combine data
-    with open(r'/home/ejreidelbach/projects/NFL/Data/Combine/mockdraftable_data.json', 'r') as f:
+    with open(Path('Data', 'Combine', 'mockdraftable_data.json'), 'r') as f:
         combine_list = json.load(f)   
         
     # identify the variables we'll be working with
@@ -291,8 +291,7 @@ def standardize_school_names(data):
         data (list) - return the updated list of info
     '''
     # import the spreadsheet we will be using to standardize school names
-    schoolsDF = pd.read_csv(
-            r'/home/ejreidelbach/projects/NFL/Data/school_abbreviations.csv')
+    schoolsDF = pd.read_csv(Path('Data','school_abbreviations.csv')
     schoolsList = schoolsDF.to_dict(orient='records')
 
     # iterate over element in the input data, look up the school name, and
@@ -315,22 +314,21 @@ def standardize_school_names(data):
     # return the formatted data
     return data
 
-
 #==============================================================================
 # Working Code
 #==============================================================================
           
 # Set the project working directory
-os.chdir(r'/home/ejreidelbach/projects/NFL/Data/')
+os.chdir(r'/home/ejreidelbach/projects/NFL/')
 
 # Iterate over every position folder
-position_folder_list = [f for f in os.listdir(Path('PlayerStats'))]
+position_folder_list = [f for f in os.listdir(Path('Data','PlayerStats'))]
 for position in position_folder_list:
     # Identify all available .json files in the position folder
     
     
     # Read in all player data from the available JSON files
-    files = [f for f in os.listdir(Path('PlayerStats',position)) 
+    files = [f for f in os.listdir(Path('Data','PlayerStats',position)) 
                 if f.endswith('.json') and len(f) > len(position+'.json')]
     files = sorted(files)
     
@@ -448,4 +446,4 @@ for position in position_folder_list:
     df = pd.DataFrame(stat_list_flattened)
 #    filename = r'/home/ejreidelbach/projects/NFL/Data/PlayerStats/' + position + '.csv'
     filename = position + '.csv'
-    df.to_csv(Path(position, filename), index = False)
+    df.to_csv(Path('Data','PlayerStats',position, filename), index = False)

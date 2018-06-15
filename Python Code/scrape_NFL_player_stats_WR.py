@@ -530,7 +530,7 @@ def scrapeYearByPosition(startYear, stopYear, position):
         # Export the data set as a JSON file
         #filename = '/' + position + '/' + year + '_' + position + '.json'
         filename = year + '_' + position + '.json'
-        with open(Path(position, filename), 'wt') as out:
+        with open(Path('Data', 'PlayerStats', position, filename), 'wt') as out:
             json.dump(playerList, out, sort_keys=True, indent=4, separators=(
                     ',', ': '))
             
@@ -539,14 +539,14 @@ def scrapeYearByPosition(startYear, stopYear, position):
 #        df = pd.DataFrame(playerList)
 #        df.fillna(0, inplace=True)
 #        filename = year + '_' + position + '.csv'
-#        df.to_csv(Path(position, filename), sep='\t', index=False)
+#        df.to_csv(Path('Data', 'PlayerStats', position, filename), sep='\t', index=False)
     
 #==============================================================================
 # Working Code
 #==============================================================================
 
 # Set the project working directory
-os.chdir(r'/home/ejreidelbach/projects/NFL/Data/PlayerStats')
+os.chdir(r'/home/ejreidelbach/projects/NFL')
 
 # Scrape all wide receiver data from 2000 to 2017
 scrapeYearByPosition(2000, 2017, 'WIDE_RECEIVER')

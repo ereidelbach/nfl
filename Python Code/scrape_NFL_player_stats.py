@@ -19,9 +19,10 @@ Created on Thu Jun  7 16:15:31 2018
 #==============================================================================
 # Package Import
 #==============================================================================
+from bs4 import BeautifulSoup
 import json
 import os
-from bs4 import BeautifulSoup
+from pathlib import Path
 import requests
 
 #==============================================================================
@@ -528,31 +529,29 @@ def scrapeYearByPosition(startYear, stopYear, position):
             
         # Export the data set as a JSON file
         #filename = '/' + position + '/' + year + '_' + position + '.json'
-        filename = position + '/' + year + '_' + position + '.json'
-        with open(filename, 'wt') as out:
+        filename = year + '_' + position + '.json'
+        with open(Path('Data', 'PlayerStats', position, filename), 'wt') as out:
             json.dump(playerList, out, sort_keys=True, indent=4, separators=(
                     ',', ': '))
             
         # Convert the list to a Pandas dataframe, fill in missing values with 0, 
         #   and export the dataframe to a CSV file
-        os.chdir(direc)
 #        df = pd.DataFrame(playerList)
 #        df.fillna(0, inplace=True)
-#        filename = '/' + position + '/' + year + '_' + position + '.csv'
-#        df.to_csv(filename, sep='\t', index=False)
+#        filename = year + '_' + position + '.csv'
+#        df.to_csv(Path('Data', 'PlayerStats', position, filename), sep='\t', index=False)
     
 #==============================================================================
 # Working Code
 #==============================================================================
 
 # Set the project working directory
-os.chdir(r'/home/ejreidelbach/projects/NFL/Data/PlayerStats')
+os.chdir(r'/home/ejreidelbach/projects/NFL')
     
 # Scrape all positions for 2017
 for position in position_list:
-    direc = r'/home/ejreidelbach/projects/NFL/Data/PlayerStats/' + position
     try:
-        os.chdir(direc)
+        os.chdir(Path('Data','PlayerStats',position))
     except:
-        os.makedirs(direc)
+        os.makedirs(Path('Data','PlayerStats',position))
     scrapeYearByPosition(2017, 2017, position)

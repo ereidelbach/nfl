@@ -331,12 +331,13 @@ def calculate_similarity_scores_by_exp(devianceList, position, folder):
 #==============================================================================
 
 # Set the project working directory
-os.chdir(r'/home/ejreidelbach/projects/NFL/Data/PlayerStats')
+os.chdir(r'/home/ejreidelbach/projects/NFL')
 
 # Iterate over every position folder
-position_folder_list = [f.path for f in os.scandir(os.getcwd()) if f.is_dir()]
+position_folder_list = [f.path for f in os.scandir(Path(
+                                        'Data','PlayerStats')) if f.is_dir()]
 for folder in position_folder_list:
-    position = folder.split('/')[-1]
+    position = folder.split('Data/PlayerStats/')[-1]
     filename = Path(folder, position + '.csv')
 
     # Specify dtypes for specific columns that will give warnings without it
