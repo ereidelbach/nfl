@@ -34,6 +34,7 @@ Created on Thu Jun 14 16:16:17 2018
 import math
 import os  
 import pandas as pd
+from pathlib import Path
 import numpy as np
 import statistics
 
@@ -160,7 +161,7 @@ def calculate_player_deviations_by_exp(playersDF, histDict, stats_list):
     
     return devianceList
 
-def calculate_similarity_scores_by_exp(devianceList, position):
+def calculate_similarity_scores_by_exp(devianceList, position, folder):
     '''
     Description:
         This function will take deviance scores between every player in a
@@ -181,6 +182,8 @@ def calculate_similarity_scores_by_exp(devianceList, position):
             for every age of their playing caree
         position (string) - string which contains the position group
             for the data being procssed
+        folder (string) - string representation of Path where file should be
+            output
         
     Output: 
        finalDF_median (dataframe) - contains deviance between every player in 
@@ -316,10 +319,12 @@ def calculate_similarity_scores_by_exp(devianceList, position):
                           player)) + ' players')
             
     finalDF_mean = pd.DataFrame(final_dict_mean)
-    finalDF_mean.to_csv(position + '_exp_similarity_scores_mean.csv')
+    finalDF_mean.to_csv(Path(folder, 
+                             position + '_exp_similarity_scores_mean.csv'))
     finalDF_median = pd.DataFrame(final_dict_median)
-    finalDF_median.to_csv(position + '_exp_similarity_scores_median.csv')
-    return final_dict
+    finalDF_median.to_csv(Path(folder, 
+                               position + '_exp_similarity_scores_median.csv'))
+    return finalDF_median
 
 #==============================================================================
 # Working Code
@@ -332,7 +337,7 @@ os.chdir(r'/home/ejreidelbach/projects/NFL/Data/PlayerStats')
 position_folder_list = [f.path for f in os.scandir(os.getcwd()) if f.is_dir()]
 for folder in position_folder_list:
     position = folder.split('/')[-1]
-    filename = position + '.csv'
+    filename = Path(folder, position + '.csv')
 
     # Specify dtypes for specific columns that will give warnings without it
     df = pd.read_csv(filename, dtype = {
@@ -381,4 +386,4 @@ for folder in position_folder_list:
     
     # Roll up all deviance scores, by years of experience,
     #   between all players into one final dictionary
-    devianceDict = calculate_similarity_scores_by_exp(devianceList, position)    
+    devianceDict = calculate_similarity_scores_by_exp(devianceList, position, folder)    

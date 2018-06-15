@@ -33,12 +33,13 @@ Created on Thu May 24 12:54:49 2018
 #==============================================================================
 # Package Import
 #==============================================================================
-import json
-import pandas as pd
-import os
 import copy
 from datetime import datetime
+import json
 import math
+import os
+from pathlib import Path
+import pandas as pd
 
 #==============================================================================
 # Function Definitions / Reference Variable Declaration
@@ -320,16 +321,17 @@ def standardize_school_names(data):
 #==============================================================================
           
 # Set the project working directory
-os.chdir(r'/home/ejreidelbach/projects/NFL/Data/PlayerStats')
+os.chdir(r'/home/ejreidelbach/projects/NFL/Data/')
 
 # Iterate over every position folder
-position_folder_list = [f.path for f in os.scandir(os.getcwd()) if f.is_dir() ]
-for folder in position_folder_list:
-    os.chdir(folder)
-    position = folder.split('/')[-1]
-
+position_folder_list = [f for f in os.listdir(Path('PlayerStats'))]
+for position in position_folder_list:
+    # Identify all available .json files in the position folder
+    
+    
     # Read in all player data from the available JSON files
-    files = [f for f in os.listdir('.') if f.endswith(('.json'))]
+    files = [f for f in os.listdir(Path('PlayerStats',position)) 
+                if f.endswith('.json') and len(f) > len(position+'.json')]
     files = sorted(files)
     
     stat_list = []
@@ -436,12 +438,14 @@ for folder in position_folder_list:
         player_yr['years_exp'] = xp
     
     # Output the flattened list to a CSV
-    filename = r'/home/ejreidelbach/projects/NFL/Data/PlayerStats/' + position + '.json'
-    with open(filename, 'wt') as out:
+#    filename = r'/home/ejreidelbach/projects/NFL/Data/PlayerStats/' + position + '.json'
+    filename = position + '.json'
+    with open(Path(position, filename), 'wt') as out:
         json.dump(stat_list_flattened, out, sort_keys=True, 
                   indent=4, separators=(',', ': '))
     
     # Push the flattened list into a Pandas Dataframe and output it to a CSV
     df = pd.DataFrame(stat_list_flattened)
-    filename = r'/home/ejreidelbach/projects/NFL/Data/PlayerStats/' + position + '.csv'
-    df.to_csv(filename, index = False)
+#    filename = r'/home/ejreidelbach/projects/NFL/Data/PlayerStats/' + position + '.csv'
+    filename = position + '.csv'
+    df.to_csv(Path(position, filename), index = False)

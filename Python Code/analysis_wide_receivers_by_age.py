@@ -32,6 +32,7 @@ Created on Tue May 29 08:30:17 2018
 import math
 import os  
 import pandas as pd
+from pathlib import Path
 import numpy as np
 import statistics
 
@@ -159,7 +160,7 @@ def calculate_player_deviations_by_age(playersDF, histDict, stats_list):
     
     return devianceList
         
-def calculate_similarity_scores_by_age(devianceList, position):
+def calculate_similarity_scores_by_age(devianceList, position, folder):
     '''
     Description:
         This function will take deviance scores between every player in a
@@ -172,6 +173,8 @@ def calculate_similarity_scores_by_age(devianceList, position):
             for every age of their playing caree
         position (string) - string which contains the position group
             for the data being procssed
+        folder (string) - string representation of Path where file should be
+            output
         
     Output: 
        finalDF_median (dataframe) - contains deviance between every player in 
@@ -308,9 +311,11 @@ def calculate_similarity_scores_by_age(devianceList, position):
                           player)) + ' players')
             
     finalDF_mean = pd.DataFrame(final_dict_mean)
-    finalDF_mean.to_csv(position + '_age_similarity_scores_mean.csv')
+    finalDF_mean.to_csv(Path(folder, 
+                             position + '_age_similarity_scores_mean.csv'))
     finalDF_median = pd.DataFrame(final_dict_median)
-    finalDF_median.to_csv(position + '_age_similarity_scores_median.csv')
+    finalDF_median.to_csv(Path(folder, 
+                               position + '_age_similarity_scores_median.csv'))
     return finalDF_median
 
 #==============================================================================
@@ -324,7 +329,7 @@ os.chdir(r'/home/ejreidelbach/projects/NFL/Data/PlayerStats')
 position_folder_list = [f.path for f in os.scandir(os.getcwd()) if f.is_dir()]
 for folder in position_folder_list:
     position = folder.split('/')[-1]
-    filename = position + '.csv'
+    filename = Path(folder, position + '.csv')
 
     # Specify dtypes for specific columns that will give warnings without it
     df = pd.read_csv(filename, dtype = {
@@ -373,4 +378,4 @@ for folder in position_folder_list:
     
     # Roll up all deviance scores, by player age,
     #   between all players into one final dictionary
-    devianceDict = calculate_similarity_scores_by_age(devianceList, position) 
+    devianceDict = calculate_similarity_scores_by_age(devianceList, position, folder) 
