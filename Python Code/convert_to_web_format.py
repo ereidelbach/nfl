@@ -95,17 +95,26 @@ for position in position_folder_list:
         # if this is a new player, add the old player to the list and start
         #   a new player dictionary
         if player_url != season['url']:
-            player_url = season['url']
+            # check to make sure it's not the very first row before adding
+            #   the player to the dictionary
             if stat_list.index(season) != 0:
                 player_list.append(player_dict)
+            # iterate the player count because it's a new player
+            player_count+=1
+            # update the player_url to match the new player
+            player_url = season['url']
+            # create a dictionary for the new player
             player_dict = {}
             player_dict['id'] = player_count
+            # create a list for storing all the player data
             season_list = []
+        # add the season to the player list
         season_list.append(season)
+        # update the player's stats to include everything that's in the current
+        #   version of the season list
         player_dict['stats'] = season_list
         # if it's the end of our list, add the player dict to the master list
         if stat_list.index(season) == (len(stat_list)-1):
-            print('test')
             player_list.append(player_dict)
                 
     # write the updated file to a new json file

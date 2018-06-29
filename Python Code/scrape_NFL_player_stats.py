@@ -148,8 +148,10 @@ position_dict = {'QUARTERBACK':'QB',
 # create a dictionary that determines stats to scrape for each position
 scrape_dict = {'QB':['Passing Splits','Rushing Splits'],
                'RB':['Receiving Splits','Rushing Splits'],
+               'FB':['Receiving Splits','Rushing Splits'],
                'WR':['Receiving Splits','Rushing Splits'],
                'TE':['Receiving Splits'],
+               'DL':['Defensive Splits'],
                'DE':['Defensive Splits'],
                'DT':['Defensive Splits'],
                'NT':['Defensive Splits'],
@@ -170,10 +172,13 @@ scrape_dict = {'QB':['Passing Splits','Rushing Splits'],
 scrape_dict_year = {'QB':['PASSING','RUSHING','FUMBLES'],
                     'RB':['RECEIVING','RUSHING','PUNT RETURN',
                           'KICK RETURN','FUMBLES'],
+                    'FB':['RECEIVING','RUSHING','PUNT RETURN',
+                          'KICK RETURN','FUMBLES'],
                     'WR':['RECEIVING','RUSHING','PUNT RETURN',
                           'KICK RETURN','FUMBLES'],
                     'TE':['RECEIVING','FUMBLES'],
                     'DE':['DEFENSIVE'],
+                    'DL':['DEFENSIVE'],
                     'DT':['DEFENSIVE'],
                     'NT':['DEFENSIVE'],
                     'ILB':['DEFENSIVE'],
@@ -190,16 +195,24 @@ scrape_dict_year = {'QB':['PASSING','RUSHING','FUMBLES'],
                     } 
 
 def soupifyURL(url):
+    '''
+    '''
     r = requests.get(url, headers=headers)
     soup = BeautifulSoup(r.content,'html5lib')
     return soup
 
-def scrapePlayerStats(url, year, index, list_length, position):   
+def scrapePlayerStats(player, year, index, list_length, position):
+    '''
+    '''
+#for player in player_url_list:
+#    year = 2001
+#    index = player_url_list.index(player)
+#    list_length = len(player_url_list)
     playerInfo = {}
-    soup = soupifyURL(url)
+    soup = soupifyURL(player['url'])
     
-    playerInfo['url'] = url
-    playerInfo['position'] = position_dict[position]
+    playerInfo['url'] = player['url']
+    playerInfo['position'] = player['position']
     
     # Find player ID and all remaining URLs we'll need
     url = soup.find('link', {'rel':'canonical'})['href'].split('profile')[0]
@@ -209,6 +222,7 @@ def scrapePlayerStats(url, year, index, list_length, position):
             'span', {'class':'player-name'}).text.split(' ')[0].strip()
     playerInfo['name_last'] = soup.find(
             'span', {'class':'player-name'}).text.split(' ')[1].strip()
+        
     
     # Check to see if a player is no longer active (if so, handle differently)
     temp = list(soup.find('div', {'class':'player-info'}).find_all('p'))
@@ -473,31 +487,58 @@ def scrapePlayerStats(url, year, index, list_length, position):
     return playerInfo
 
 def scrapePlayerURL(soup, url_list):
+    '''
+    '''
     playerTable = soup.find('table', {'class':'data-table1'})
     # skip the table header info and go right to player info
     playerTbody = playerTable.find_all('tbody')[1]
     playerRows = playerTbody.find_all('tr')
     for row in playerRows:
-        playerURL = row.find_all('td')[1].find('a', href=True)['href']
-        url_list.append('http://www.nfl.com' + playerURL)  
+        player = {}
+        # set the URL for the player and their position
+        player['url'] = ('http://www.nfl.com' + 
+              row.find_all('td')[1].find('a', href=True)['href'])
+        player['position'] = row.find_all('td')[3].text
+        url_list.append(player)  
     return url_list
 
-def scrapeYearByPosition(startYear, stopYear, position):
+def compileExistingPlayers(path_position):
+    '''
+        Create a list of player urls for all .json files in the specified
+        player folder. This reduces the need to players that are already on file
+    '''
+    path_position = Path(path_root, 'Data', 'PlayerStats', position)
+    # Read in all player data from the available JSON files
+    files = [f for f in os.listdir(path_position) 
+                if f.endswith('.json') and len(f) > len(position+'.json')]
+    files = sorted(files)
     
-    # A master list of every player scraped to prevent needless duplication
-    url_history_list = []
-            
+    player_list = []
+    for file in files:
+        with open(file, 'r') as f:
+            jsonFile = json.load(f)
+            for player in jsonFile:
+                if player['url'] not in player_list:
+                    player_list.append(player['url'])
+    return player_list
+    
+def scrapeNewYearByPosition(startYear, stopYear, position):
+    '''
+        Ingest 
+    '''
+
+def scrapeYearByPosition(startYear, stopYear, position, url_history_list):
+    '''
+    '''            
     years_to_scrape_list = list(range(stopYear,startYear-1,-1))
     # for every year specified, scrape the desired statistics
     for year in years_to_scrape_list:
-        
         # convert the year from int to str for ease of reference     
         year = str(year)
-
         # Extract the original page information
-        url = ('http://www.nfl.com/stats/categorystats?tabSeq=1&season=' 
-           + year + '&seasonType=REG&d-447263-p=1&statisticPositionCategory=' 
-           + position)
+        url = ('http://www.nfl.com/stats/categorystats?tabSeq=1&' +
+               'statisticPositionCategory=' + position + '&season=' + year +
+               '&seasonType=REG')
         soup = soupifyURL(url)
            
         # Extract the number of remaining pages for that position
@@ -506,31 +547,34 @@ def scrapeYearByPosition(startYear, stopYear, position):
         for page in pages_html.find_all('a', href=True)[:-1]:
             page_url_list.append('http://www.nfl.com' + page['href'])
         
-        # Extract the links for every player within the given year
-        url_list = []
-        url_list = scrapePlayerURL(soup, url_list)
+        # Extract the links for every player within the given year by iterating
+        #   across every page in the year
+        # grab the first page
+        player_url_list = []
+        player_url_list = scrapePlayerURL(soup, player_url_list)
+        # grab every subsequent page
         for url in page_url_list:
             soup = soupifyURL(url)
-            url_list = scrapePlayerURL(soup, url_list)
+            player_url_list = scrapePlayerURL(soup, player_url_list)
            
         # Extract player information for every player within a year
         playerList = []
-        for url in url_list:
-            if url not in url_history_list:
-                url_history_list.append(url)
+        for player in player_url_list:
+            if player['url'] not in url_history_list:
+                url_history_list.append(player['url'])
                 playerList.append(scrapePlayerStats(
-                        url, year, url_list.index(url), len(
-                                url_list), position)) 
+                        player, year, player_url_list.index(player), len(
+                                player_url_list), position)) 
             else:
-                print('Year ' + str(year) + ', Already read in: ' + url.split(
-                        'players/')[1].split('/')[0] + ' (Player ' + \
-                        str(url_list.index(url)) + ' out of ' + str(
-                                len(url_list)-1) + ')')
+                print('Year ' + str(year) + ', Already read in: ' + 
+                      player['url'].split('players/')[1].split('/')[0] + 
+                      ' (Player ' +  str(player_url_list.index(player)) + 
+                      ' out of ' + str(len(player_url_list)-1) + ')')
             
         # Export the data set as a JSON file
         #filename = '/' + position + '/' + year + '_' + position + '.json'
         filename = year + '_' + position + '.json'
-        with open(Path('Data', 'PlayerStats', position, filename), 'wt') as out:
+        with open(filename, 'wt') as out:
             json.dump(playerList, out, sort_keys=True, indent=4, separators=(
                     ',', ': '))
             
@@ -546,12 +590,16 @@ def scrapeYearByPosition(startYear, stopYear, position):
 #==============================================================================
 
 # Set the project working directory
-os.chdir(r'/home/ejreidelbach/projects/NFL')
+path_root = '/home/ejreidelbach/projects/NFL'
+os.chdir(path_root)
     
 # Scrape all positions for 2017
 for position in position_list:
+#    position = 'RUNNING_BACK'
     try:
-        os.chdir(Path('Data','PlayerStats',position))
+        os.chdir(Path(path_root, 'Data', 'PlayerStats', position))
     except:
-        os.makedirs(Path('Data','PlayerStats',position))
-    scrapeYearByPosition(2017, 2017, position)
+        os.makedirs(Path(path_root, 'Data', 'PlayerStats', position))
+    existing_players_list = compileExistingPlayers(
+            Path(path_root, 'Data', 'PlayerStats', position))
+    scrapeYearByPosition(2000, 2017, position, existing_players_list)
