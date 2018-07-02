@@ -72,7 +72,7 @@ def update_draft_info(player_list):
             updated draft information
     '''
     # read in the historic draft data
-    with open(Path('Data', 'Draft', 'historic_draf_data.json'), 'r') as f:
+    with open(Path('Data', 'Draft', 'historic_draft_data.json'), 'r') as f:
         draft_list = json.load(f)
 
     # iterate over every player in the player list and update their information
@@ -160,6 +160,7 @@ def combine_multiyear_stats(annual_list):
     '''
 #   Edge case for checking data in multiple years
 #   annual_list = stat_list[469]['stats_annual']
+    annual_list = stats_annual
     annualDF = pd.DataFrame(annual_list)
     try:
         year_count = annualDF['year'].value_counts()
@@ -201,13 +202,20 @@ def combine_multiyear_stats(annual_list):
                 att = ''         
                 g = category + '_g'
                 first = category + '_1st'
-                yds = category + '_yds'                
+                yds = category + '_yds'
+                comp = category + '_comp'   
+                INT = '_int'
+                td = '_td'
                 if 'return' in category:
                     att = category + '_ret'
                 elif category == 'receiving': 
                     att = category + '_rec'
                 elif category == 'rushing':
                     att = category + '_att'
+                elif category == 'passing':
+                    att = category + '_att'
+                    INT = category + '_int'
+                    td = category + '_td'
 
                 # punt returns are unique in that their yards are stored as
                 #   the substring `_rety` so they require their own `if`
@@ -251,14 +259,29 @@ def combine_multiyear_stats(annual_list):
                         temp_dict[entry] = sum(
                             list(map(int, years_dict[first].values())))/sum(
                                     list(map(int, years_dict[att].values())))
-#                elif 'pct' in entry:
-#                    pass
-#                elif 'td%' in entry:
-#                    pass
-#                elif 'int%' in entry:
-#                    pass
-#                elif 'rate' in entry:
-#                    pass
+                elif 'pct' in entry:
+                    if sum(list(map(int, years_dict[comp].values()))) == 0:
+                        temp_dict[entry] = 0
+                    else:
+                        temp_dict[entry] = sum(
+                            list(map(int, years_dict[att].values())))/sum(
+                                    list(map(int, years_dict[comp].values())))
+                elif 'td%' in entry:
+                    if sum(list(map(int, years_dict[td].values()))) == 0:
+                        temp_dict[entry] = 0
+                    else:
+                        temp_dict[entry] = sum(
+                            list(map(int, years_dict[td].values())))/sum(
+                                    list(map(int, years_dict[att].values())))
+                elif 'int%' in entry:
+                    if sum(list(map(int, years_dict[INT].values()))) == 0:
+                        temp_dict[entry] = 0
+                    else:
+                        temp_dict[entry] = sum(
+                            list(map(int, years_dict[INT].values())))/sum(
+                                    list(map(int, years_dict[att].values())))
+                elif 'rate' in entry:
+                    pass
                 # if the variable is `year` or `team` take the values from the
                 #   "newest" entry (i.e. first in order)
                 elif entry == 'year' or entry == 'team':
@@ -291,7 +314,7 @@ def standardize_school_names(data):
         data (list) - return the updated list of info
     '''
     # import the spreadsheet we will be using to standardize school names
-    schoolsDF = pd.read_csv(Path('Data','school_abbreviations.csv')
+    schoolsDF = pd.read_csv(Path('Data','school_abbreviations.csv'))
     schoolsList = schoolsDF.to_dict(orient='records')
 
     # iterate over element in the input data, look up the school name, and
@@ -305,9 +328,9 @@ def standardize_school_names(data):
                           school['Abbreviation3'],
                           school['Abbreviation4'],
                           school['Abbreviation5']]:
-                if info['college'] != school['Team']:
-                    print('Changing: ' + info['college'] + ' to ' +
-                          school['Team'])
+#                if info['college'] != school['Team']:
+#                    print('Changing: ' + info['college'] + ' to ' +
+#                          school['Team'])
                 info['college'] = school['Team']
                 break
     
@@ -328,13 +351,13 @@ for position in position_folder_list:
     
     
     # Read in all player data from the available JSON files
-    files = [f for f in os.listdir(Path('Data','PlayerStats',position)) 
+    files = [f for f in os.listdir(Path('Data', 'PlayerStats', position)) 
                 if f.endswith('.json') and len(f) > len(position+'.json')]
     files = sorted(files)
     
     stat_list = []
     for file in files:
-        with open(file, 'r') as f:
+        with open(Path('Data', 'PlayerStats', position, file), 'r') as f:
             jsonFile = json.load(f)   
             for player in jsonFile:
                 stat_list.append(player)
@@ -342,6 +365,15 @@ for position in position_folder_list:
     # Unpack nested career data and situational data for each player
     stat_list_flattened = []
     for row in stat_list:
+        # running counter for status
+        if stat_list.index(row)%25 == 0:
+            print('Processing ' + position + ': ' + str(stat_list.index(row)) + 
+                  ' out of ' + str(len(stat_list)) + '.')
+            
+        # skip the player if NoneType detected
+        if type(row) == type(None):
+            continue
+        
         # create a deep copy of the row
         player = copy.deepcopy(row)
         
@@ -350,10 +382,16 @@ for position in position_folder_list:
         try:
             stats_annual = player.pop('stats_annual')
         except:
-            print('No Annaul stats found for Player #: ' + 
+            print('No Annual stats found for Player #: ' + 
                   str(stat_list.index(row)) + ' - ' + 
                   player['name_first'] + ' ' + player['name_last'])
-        stats_situational = player.pop('stats_situational')
+        try:
+            stats_situational = player.pop('stats_situational')
+        except:
+            print('No Situational stats found for Player #: ' + 
+                  str(stat_list.index(row)) + ' - ' + 
+                  player['name_first'] + ' ' + player['name_last'])            
+            stats_situation = []
         
         # check to see if any years have multiple stat entries
         # if they do, compress `stats_annual` such that there is only one row
@@ -438,7 +476,7 @@ for position in position_folder_list:
     # Output the flattened list to a CSV
 #    filename = r'/home/ejreidelbach/projects/NFL/Data/PlayerStats/' + position + '.json'
     filename = position + '.json'
-    with open(Path(position, filename), 'wt') as out:
+    with open(Path('Data', 'PlayerStats', position, filename), 'wt') as out:
         json.dump(stat_list_flattened, out, sort_keys=True, 
                   indent=4, separators=(',', ': '))
     
@@ -446,4 +484,5 @@ for position in position_folder_list:
     df = pd.DataFrame(stat_list_flattened)
 #    filename = r'/home/ejreidelbach/projects/NFL/Data/PlayerStats/' + position + '.csv'
     filename = position + '.csv'
-    df.to_csv(Path('Data','PlayerStats',position, filename), index = False)
+    df.to_csv(Path('Data','PlayerStats', position, filename), index = False)
+    print('Done with: ' + position)
