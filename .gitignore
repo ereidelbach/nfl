@@ -3,3 +3,7 @@
 
 # ignore any files ending in .log
 *.log
+
+# ignore any files ending in .json in the /PlayerStats folder
+/Data/PlayerStats/*.json
+/Data/PlayerStats/**/*.json

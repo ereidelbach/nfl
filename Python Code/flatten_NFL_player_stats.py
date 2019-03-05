@@ -342,17 +342,17 @@ def standardize_school_names(data):
 #==============================================================================
           
 # Set the project working directory
-os.chdir(r'/home/ejreidelbach/projects/NFL/')
+os.chdir(r'/home/ejreidelbach/Projects/NFL/')
 
 # Iterate over every position folder
 position_folder_list = [f for f in os.listdir(Path('Data','PlayerStats'))]
 for position in position_folder_list:
     # Identify all available .json files in the position folder
     
-    
     # Read in all player data from the available JSON files
     files = [f for f in os.listdir(Path('Data', 'PlayerStats', position)) 
-                if f.endswith('.json') and len(f) > len(position+'.json')]
+                if f.endswith('_' + position + '.json') 
+                and len(f) > len(position+'.json')]
     files = sorted(files)
     
     stat_list = []
@@ -376,6 +376,9 @@ for position in position_folder_list:
         
         # create a deep copy of the row
         player = copy.deepcopy(row)
+        
+        # insert a full player name variable
+        player['name_full'] = player['name_first'] + ' ' + player['name_last']
         
         # pop off the stats_annual and stats_situational elements then iterate 
         #    over them and add their contents back to the basic player info
@@ -453,30 +456,30 @@ for position in position_folder_list:
     # NOTE:  It is a known error that this does not have a 100% success rate
     stat_list_flattened = merge_combine_data(stat_list_flattened)
     
-    # Push the flattened list into a Pandas Dataframe
-    df = pd.DataFrame(stat_list_flattened)
-        
-    # calcualte the years of experience for each player
-    url_series = df['url']
-    year_count = []
-    temp_url = ''
-    count = 0
-    for url in url_series:
-        if temp_url == url:
-            count+=1
-        else:
-            temp_url = url
-            count = 0
-        year_count.append(count)
-    
-    # Insert this information back into the list
-    for player_yr, xp in zip(stat_list_flattened, year_count):
-        player_yr['years_exp'] = xp
+#    # Push the flattened list into a Pandas Dataframe
+#    df = pd.DataFrame(stat_list_flattened)
+#        
+#    # calcualte the years of experience for each player
+#    url_series = df['url']
+#    year_count = []
+#    temp_url = ''
+#    count = 0
+#    for url in url_series:
+#        if temp_url == url:
+#            count+=1
+#        else:
+#            temp_url = url
+#            count = 0
+#        year_count.append(count)
+#    
+#    # Insert this information back into the list
+#    for player_yr, xp in zip(stat_list_flattened, year_count):
+#        player_yr['years_exp'] = xp
     
     # Output the flattened list to a CSV
 #    filename = r'/home/ejreidelbach/projects/NFL/Data/PlayerStats/' + position + '.json'
     filename = position + '.json'
-    with open(Path('Data', 'PlayerStats', position, filename), 'wt') as out:
+    with open(Path('Data', 'PlayerStats', filename), 'wt') as out:
         json.dump(stat_list_flattened, out, sort_keys=True, 
                   indent=4, separators=(',', ': '))
     
@@ -484,5 +487,5 @@ for position in position_folder_list:
     df = pd.DataFrame(stat_list_flattened)
 #    filename = r'/home/ejreidelbach/projects/NFL/Data/PlayerStats/' + position + '.csv'
     filename = position + '.csv'
-    df.to_csv(Path('Data','PlayerStats', position, filename), index = False)
+    df.to_csv(Path('Data','PlayerStats', filename), index = False)
     print('Done with: ' + position)

@@ -19,11 +19,13 @@ Created on Thu Jun  7 16:15:31 2018
 #==============================================================================
 # Package Import
 #==============================================================================
-from bs4 import BeautifulSoup
 import json
 import os
-from pathlib import Path
 import requests
+import tqdm
+
+from bs4 import BeautifulSoup
+from pathlib import Path
 
 #==============================================================================
 # Reference Variable Declaration
@@ -204,7 +206,7 @@ def soupifyURL(url):
     '''
     '''
     r = requests.get(url, headers=headers)
-    soup = BeautifulSoup(r.content,'html5lib')
+    soup = BeautifulSoup(r.content,'html.parser')
     return soup
 
 def scrapePlayerStats(player, year, index, list_length, position):
@@ -502,7 +504,8 @@ def scrapePlayerURL(soup, url_list):
     '''
     playerTable = soup.find('table', {'class':'data-table1'})
     # skip the table header info and go right to player info
-    playerTbody = playerTable.find_all('tbody')[1]
+    playerTbody = playerTable.find('tbody')
+    #playerTbody = playerTable.find_all('tbody')[1]
     playerRows = playerTbody.find_all('tr')
     for row in playerRows:
         player = {}
@@ -601,16 +604,16 @@ def scrapeYearByPosition(startYear, stopYear, position, url_history_list):
 #==============================================================================
 
 # Set the project working directory
-path_root = '/home/ejreidelbach/projects/NFL'
+path_root = '/home/ejreidelbach/Projects/NFL'
 os.chdir(path_root)
     
 # Scrape all positions for 2017
 #for position in position_list:
-for position in position_list:
+for position in tqdm.tqdm(position_list):
     try:
         os.chdir(Path(path_root, 'Data', 'PlayerStats', position))
     except:
         os.makedirs(Path(path_root, 'Data', 'PlayerStats', position))
     existing_players_list = compileExistingPlayers(
             Path(path_root, 'Data', 'PlayerStats', position))
-    scrapeYearByPosition(2001, 2017, position, existing_players_list)
+    scrapeYearByPosition(2018, 2018, position, existing_players_list)
