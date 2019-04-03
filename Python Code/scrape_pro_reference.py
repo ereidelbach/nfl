@@ -34,34 +34,61 @@ list_stats_rb = ['Rushing & Receiving', 'Defense & Fumbles']
 list_stats_wr = ['Receiving & Rushing', 'Defense & Fumbles']
 list_stats_def = ['Defense & Fumbles']
 
-dict_column_names = {
-        'passing':['Year', 'Age', 'Tm', 'Pos', 'No.', 'G', 'GS', 'QBrec', 
-                  'Pass_Cmp', 'Pass_Att', 'Pass_Cmp%', 'Pass_Yds', 'Pass_TD', 
-                  'Pass_TD%', 'Pass_Int', 'Pass_Int%', 'Pass_Lng', 'Pass_Y/A', 
-                  'Pass_AY/A', 'Pass_Y/C', 'Pass_Y/G', 'Pass_Rate', 'Pass_QBR', 
-                  'Pass_Sk', 'Pass_Yds.1', 'Pass_NY/A', 'Pass_ANY/A', 
-                  'Pass_Sk%', 'Pass_4QC', 'Pass_GWD'
-                  ],
-        'rushing':['Year', 'Age', 'Tm', 'Pos', 'No.', 'G', 'GS', 'Rush_Rush', 
-                  'Rush_Yds', 'Rush_TD', 'Rush_Lng', 'Rush_Y/A', 'Rush_Y/G', 
-                  'Rush_A/G', 'Rec_Tgt','Rec_Rec', 'Rec_Yds', 'Rec_Y/R', 
-                  'Rec_TD', 'Rec_Lng', 'Rec_R/G', 'Rec_Y/G', 'Rec_Ctch%', 
-                  'Total_Touch', 'Total_Y/Tch', 'Total_YScm', 'Total_RRTD', 
-                  'Fmb'
-                  ],
-        'receiving':['Year', 'Age', 'Tm', 'Pos', 'No.', 'G', 'GS', 'Rec_Tgt', 
-                     'Rec_Rec', 'Rec_Yds', 'Rec_Y/R', 'Rec_TD', 'Rec_Lng', 
-                     'Rec_R/G', 'Rec_Y/G', 'Rec_Ctch%', 'Rush_Rush', 'Rush_Yds',
-                     'Rush_TD', 'Rush_Lng', 'Rush_Y/A', 'Rush_Y/G', 'Rush_A/G',
-                     'Total_Touch', 'Total_Y/Tch', 'Total_YScm', 'Total_RRTD',
-                     'Fmb'
-                     ],
-        'defense':['Year', 'Age', 'Tm', 'Pos', 'No.', 'G', 'GS', 'Int',
-                   'Int_Yds', 'Int_TD', 'Int_Lng', 'PD', 'FF', 'Fmb', 'FR', 
-                   'Fmb_Yds', 'Fmb_TD', 'Sk', 'Tkl_Comb', 'Tkl_Solo', 
-                   'Tkl_Ast', 'TFL', 'QBHits', 'Sfty'
-                  ]
-        }
+#dict_column_names = {
+#        'passing':['Year', 'Age', 'Tm', 'Pos', 'No.', 'G', 'GS', 'QBrec', 
+#                  'Pass_Cmp', 'Pass_Att', 'Pass_Cmp%', 'Pass_Yds', 'Pass_TD', 
+#                  'Pass_TD%', 'Pass_Int', 'Pass_Int%', 'Pass_Lng', 'Pass_Y/A', 
+#                  'Pass_AY/A', 'Pass_Y/C', 'Pass_Y/G', 'Pass_Rate', 'Pass_QBR', 
+#                  'Pass_Sk', 'Pass_Yds.1', 'Pass_NY/A', 'Pass_ANY/A', 
+#                  'Pass_Sk%', 'Pass_4QC', 'Pass_GWD'
+#                  ],
+#        'rushing':['Year', 'Age', 'Tm', 'Pos', 'No.', 'G', 'GS', 'Rush_Rush', 
+#                  'Rush_Yds', 'Rush_TD', 'Rush_Lng', 'Rush_Y/A', 'Rush_Y/G', 
+#                  'Rush_A/G', 'Rec_Tgt','Rec_Rec', 'Rec_Yds', 'Rec_Y/R', 
+#                  'Rec_TD', 'Rec_Lng', 'Rec_R/G', 'Rec_Y/G', 'Rec_Ctch%', 
+#                  'Total_Touch', 'Total_Y/Tch', 'Total_YScm', 'Total_RRTD', 
+#                  'Fmb'
+#                  ],
+#        'receiving':['Year', 'Age', 'Tm', 'Pos', 'No.', 'G', 'GS', 'Rec_Tgt', 
+#                     'Rec_Rec', 'Rec_Yds', 'Rec_Y/R', 'Rec_TD', 'Rec_Lng', 
+#                     'Rec_R/G', 'Rec_Y/G', 'Rec_Ctch%', 'Rush_Rush', 'Rush_Yds',
+#                     'Rush_TD', 'Rush_Lng', 'Rush_Y/A', 'Rush_Y/G', 'Rush_A/G',
+#                     'Total_Touch', 'Total_Y/Tch', 'Total_YScm', 'Total_RRTD',
+#                     'Fmb'
+#                     ],
+#        'defense':['Year', 'Age', 'Tm', 'Pos', 'No.', 'G', 'GS', 'Int',
+#                   'Int_Yds', 'Int_TD', 'Int_Lng', 'PD', 'FF', 'Fmb', 'FR', 
+#                   'Fmb_Yds', 'Fmb_TD', 'Sk', 'Tkl_Comb', 'Tkl_Solo', 
+#                   'Tkl_Ast', 'TFL', 'QBHits', 'Sfty'
+#                  ]
+#        }
+list_columns = ['Year','Age','position','Player','nameFirst','nameLast','Tm',
+                'No.','birthday','hometownCity','hometownState','heightInches',
+                'weight','School','ID_SportsRef_ncaa','ID_SportsRef_nfl','AV',
+                'ProBowl','AllPro','G','GS',
+                
+                'Pass_Cmp','Pass_Att','Pass_Cmp_Pct','Pass_Yds','Pass_TD',
+                'Pass_TD_Pct','Pass_Int','Pass_Int_Pct','Pass_Lng',
+                'Pass_Yds_Att','Pass_Adj_Yds_Att','Pass_Yds_Cmp','Pass_Yds_G',
+                'Pass_Yds_G','Pass_Rate','Pass_Sacked','Pass_Yds_Lost_Sacks',
+                'Pass_Net_Yds_Att','Pass_Adj_Net_Yds_Att','Pass_Sacked_Pct',
+                'Pass_4QC','Pass_GWD','Pass_QBR','GS_Win','GS_Loss','GS_Tie',
+                'GS_Win_Pct','Rush_Att','Rush_Yds',
+                
+                'Rush_TD','Rush_Lng','Rush_Yds_Att','Rush_Yds_G','Rush_Att_G',
+                
+                'Rec_Tgt','Rec_Catches','Rec_Yds','Rec_Yds_Catch','Rec_TD',
+                'Rec_Lng','Rec_Catches_G','Rec_Yds_G','Rec_Catch_Pct',
+                'Tot_Touch','Tot_Y/Tch','Tot_YScm','Fumbles',
+                
+                'INT_Int','INT_Ret_Yds','INT_Ret_TD','INT_Ret_Lng','INT_PD',
+                'Fum_Forced','Fum_Recovered','Fum_Ret_Yds','Fum_Ret_Yds',
+                'Tkl_Sacks','Tkl_Comb','Tkl_Solo','Tkl_Ast','Tkl_TFL',
+                'Tkl_QBHits','Tkl_Sfty',
+                
+                'urlSportsRefNCAA','urlSportsRefNFL','picturePlayerURL',
+                'pictureNflURL','pictureSchoolURL'
+                ]
 
 #==============================================================================
 # Function Definitions
@@ -268,7 +295,7 @@ def renameNFL(df, name_var):
             dict_school_names[name_alternate] = name_standardized
             
     def swapSchoolName(name_old):
-        if name_old == 'nan':
+        if (name_old == 'nan') or (pd.isna(name_old)):
             return ''
         try:
             return dict_school_names[name_old]
@@ -335,11 +362,12 @@ def standardizeLogoNFL(df):
         try:
             return dict_pictures[team]
         except:
-            print('Logo not found for %s' % (team))
+            if team != '':
+                print('Logo not found for %s' % (team))
             return ''
     
     # create the variable 'pictureSchoolNFL' to store each team's logo URL
-    df['pictureSchoolNFL'] = df['Tm'].apply(lambda x: standardizeName(x))
+    df['pictureNflURL'] = df['Tm'].apply(lambda x: standardizeName(x))
     
     return df
 
@@ -527,7 +555,7 @@ def scrapePlayerHistory(player):
         df_player['hometownState'] = ''
         print(birthplace)
     df_player['heightInches'] = height
-    df_player['Weight'] = weight
+    df_player['weight'] = weight
     df_player['School'] = college
     df_player['urlSportsRefNFL'] = url_player
     df_player['picturePlayerURL'] = pictureURL
@@ -558,7 +586,9 @@ os.chdir(path_dir)
 # Iterate over four different statistical categories
 for category in ['passing', 'rushing', 'receiving', 'defense']:
 
-    list_players_category = []
+    list_players_category = []trish4:24 PM
+i know both groups would probably be appalled by this statement
+but i think they are similar
     
     # Iterate over all years from 2005 to 2018
     for year in list(map(str, range(2005,2019))):
@@ -577,11 +607,27 @@ for category in ['passing', 'rushing', 'receiving', 'defense']:
     list_player_stats = []
     
     # Use the list of all players to scrape player historical stats
-    for dict_player in list_players_flattened:
+    for dict_player in tqdm.tqdm(list_players_flattened):
         list_player_stats.append(scrapePlayerHistory(dict_player))
         
     # convert the list of dataframes into a single dataframe
     df_category = pd.concat(list_player_stats, sort = False)
+    
+    # reset the dataframe index
+    df_category = df_category.reset_index(drop = True)
+    
+    # correct issues where a player plays for multiple teams in one year
+    #   only keep the total and make the last team played for the year's team
+    list_df_rows = []
+    for index, row in df_category.iterrows():
+        if row['Tm'] == '2TM':
+            row['Tm'] = df_category.iloc[index+2]['Tm']
+            row['No.'] = df_category.iloc[index+2]['No.']
+        elif row['Tm'] == '3TM':
+            row['Tm'] = df_category.iloc[index+3]['Tm']
+            row['No.'] = df_category.iloc[index+3]['No.']
+        list_df_rows.append(row)
+    df_category = pd.DataFrame(list_df_rows)
     
     # standardize all college names
     df_category = renameSchool(df_category, 'School')
@@ -597,17 +643,57 @@ for category in ['passing', 'rushing', 'receiving', 'defense']:
     
     # for quarterback data, break out the win/loss record when starting games
     if category == 'passing':
-        df_category['GS_W'] = df_category['QBrec'].apply(
+        df_category['GS_Win'] = df_category['QBrec'].apply(
                 lambda x: int(x.split('-')[0]) if not pd.isna(x) else 0)
-        df_category['GS_L'] = df_category['QBrec'].apply(
+        df_category['GS_Loss'] = df_category['QBrec'].apply(
                 lambda x: int(x.split('-')[1]) if not pd.isna(x) else 0)
-        df_category['GS_T'] = df_category['QBrec'].apply(
+        df_category['GS_Tie'] = df_category['QBrec'].apply(
                 lambda x: int(x.split('-')[2]) if not pd.isna(x) else 0)
-        df_category['GS_W%'] = df_category.apply(lambda row:
-                round((row['GS_W'] / row['GS'])*100, 1) 
+        df_category['GS_Win_Pct'] = df_category.apply(lambda row:
+                round((row['GS_Win'] / row['GS'])*100, 1) 
                 if row['GS'] != 0 else np.nan, axis =1)
-        df_category.drop(columns = ['QBrec'], axis = 1, inplace = True)
+            
+    # delete the following variables: 'Pos', 'QBrec', 'Fum_Fmb', 'RRTD'
+    df_category.drop(['Pos', 'QBrec', 'Fum_Fmb', 'RRTD'], axis = 1, inplace = True)
         
+    # rename certain variables
+    df_category = df_category.rename({'Pass_Yds.1':'Pass_Yds_Lost_Sacks',
+                                      'Pass_Cmp%':'Pass_Cmp_Pct',
+                                      'Pass_TD%':'Pass_TD_Pct',
+                                      'Pass_Int%':'Pass_Int_Pct',
+                                      'Pass_Y/A':'Pass_Yds_Att',
+                                      'Pass_AY/A':'Pass_Adj_Yds_Att',
+                                      'Pass_Y/C'	:'Pass_Yds_Cmp',
+                                      'Pass_Y/G'	:'Pass_Yds_G',
+                                      'Pass_NY/A':'Pass_Net_Yds_Att',
+                                      'Pass_ANY/A':'Pass_Adj_Net_Yds_Att',                                      
+                                      'Pass_Sk':'Pass_Sacked',
+                                      'Pass_Sk%':'Pass_Sacked_Pct',
+                                      'Rush_Rush':'Rush_Att',
+                                      'Rush_Y/A':'Rush_Yds_Att',
+                                      'Rush_Y/G'	:'Rush_Yds_G',
+                                      'Rush_A/G'	:'Rush_Att_G',
+                                      'Rec_Rec':'Rec_Catches',
+                                      'Rec_Y/R':'Rec_Yds_Catch',
+                                      'Rec_R/G':'Rec_Catches_G',
+                                      'Rec_Y/G':'Rec_Yds_G',
+                                      'Rec_Ctch%':'Rec_Catch_Pct',
+                                      'Tot_Y/Tch':'Tot_Y/Tch',
+                                      'Fmb':'Fumbles',
+                                      'INT_Yds':'INT_Ret_Yds',
+                                      'INT_TD':'INT_Ret_TD',
+                                      'INT_Lng':'INT_Ret_Lng',
+                                      'Fum_FF':'Fum_Forced',
+                                      'Fum_FR':'Fum_Recovered',
+                                      'Fum_Yds':'Fum_Ret_Yds',
+                                      'Fum_TD':'Fum_Ret_Yds',
+                                      'Sk':'Tkl_Sacks',
+                                      'Sfty':'Tkl_Sfty'
+                                      }, axis = 1)
+    
     # reorder column variables as desired
+    df_final = df_category[list_columns]
             
     # Export the dataframe to disk
+    df_category.to_csv('Data/SportsReference/%s-2005-2018.csv' % (category), 
+                       index = False)
