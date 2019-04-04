@@ -34,35 +34,15 @@ list_stats_rb = ['Rushing & Receiving', 'Defense & Fumbles']
 list_stats_wr = ['Receiving & Rushing', 'Defense & Fumbles']
 list_stats_def = ['Defense & Fumbles']
 
-#dict_column_names = {
-#        'passing':['Year', 'Age', 'Tm', 'Pos', 'No.', 'G', 'GS', 'QBrec', 
-#                  'Pass_Cmp', 'Pass_Att', 'Pass_Cmp%', 'Pass_Yds', 'Pass_TD', 
-#                  'Pass_TD%', 'Pass_Int', 'Pass_Int%', 'Pass_Lng', 'Pass_Y/A', 
-#                  'Pass_AY/A', 'Pass_Y/C', 'Pass_Y/G', 'Pass_Rate', 'Pass_QBR', 
-#                  'Pass_Sk', 'Pass_Yds.1', 'Pass_NY/A', 'Pass_ANY/A', 
-#                  'Pass_Sk%', 'Pass_4QC', 'Pass_GWD'
-#                  ],
-#        'rushing':['Year', 'Age', 'Tm', 'Pos', 'No.', 'G', 'GS', 'Rush_Rush', 
-#                  'Rush_Yds', 'Rush_TD', 'Rush_Lng', 'Rush_Y/A', 'Rush_Y/G', 
-#                  'Rush_A/G', 'Rec_Tgt','Rec_Rec', 'Rec_Yds', 'Rec_Y/R', 
-#                  'Rec_TD', 'Rec_Lng', 'Rec_R/G', 'Rec_Y/G', 'Rec_Ctch%', 
-#                  'Total_Touch', 'Total_Y/Tch', 'Total_YScm', 'Total_RRTD', 
-#                  'Fmb'
-#                  ],
-#        'receiving':['Year', 'Age', 'Tm', 'Pos', 'No.', 'G', 'GS', 'Rec_Tgt', 
-#                     'Rec_Rec', 'Rec_Yds', 'Rec_Y/R', 'Rec_TD', 'Rec_Lng', 
-#                     'Rec_R/G', 'Rec_Y/G', 'Rec_Ctch%', 'Rush_Rush', 'Rush_Yds',
-#                     'Rush_TD', 'Rush_Lng', 'Rush_Y/A', 'Rush_Y/G', 'Rush_A/G',
-#                     'Total_Touch', 'Total_Y/Tch', 'Total_YScm', 'Total_RRTD',
-#                     'Fmb'
-#                     ],
-#        'defense':['Year', 'Age', 'Tm', 'Pos', 'No.', 'G', 'GS', 'Int',
-#                   'Int_Yds', 'Int_TD', 'Int_Lng', 'PD', 'FF', 'Fmb', 'FR', 
-#                   'Fmb_Yds', 'Fmb_TD', 'Sk', 'Tkl_Comb', 'Tkl_Solo', 
-#                   'Tkl_Ast', 'TFL', 'QBHits', 'Sfty'
-#                  ]
-#        }
-list_columns = ['Year','Age','position','Player','nameFirst','nameLast','Tm',
+list_columns_passing = ['Year', 'Age', 'Tm', 'Pos', 'No.', 'G', 'GS', 'QBrec', 
+                  'Pass_Cmp', 'Pass_Att', 'Pass_Cmp%', 'Pass_Yds', 'Pass_TD', 
+                  'Pass_TD%', 'Pass_Int', 'Pass_Int%', 'Pass_Lng', 'Pass_Y/A', 
+                  'Pass_AY/A', 'Pass_Y/C', 'Pass_Y/G', 'Pass_Rate', 'Pass_QBR', 
+                  'Pass_Sk', 'Pass_Yds.1', 'Pass_NY/A', 'Pass_ANY/A', 
+                  'Pass_Sk%', 'Pass_4QC', 'Pass_GWD'
+                  ]
+
+list_columns = ['Year','Age','position_nfl','Player','nameFirst','nameLast','Team',
                 'No.','birthday','hometownCity','hometownState','heightInches',
                 'weight','School','ID_SportsRef_ncaa','ID_SportsRef_nfl','AV',
                 'ProBowl','AllPro','G','GS',
@@ -119,26 +99,38 @@ def soupifyURL(url):
     soup = BeautifulSoup(r.content,'html.parser')   
     return soup
 
-def extractColumnNames(list_columns):
+def extractColumnNames(list_columns, category):
     '''
     Extract column names given a multi-tiered column list (i.e. tuples)
     '''
     list_columns_new = []
-    for pair in list_columns:
-        if any(x in pair[0] for x in ['Unnamed', 'Games']):
-            list_columns_new.append(pair[1])
-        elif 'Rushing' in pair[0]:
-            list_columns_new.append('Rush_' + pair[1])
-        elif 'Receiving' in pair[0]:
-            list_columns_new.append('Rec_' + pair[1])
-        elif 'Total Yds' in pair[0]:
-            list_columns_new.append('Tot_' + pair[1])         
-        elif 'Def Interceptions' in pair[0]:
-            list_columns_new.append('INT_' + pair[1])
-        elif 'Fumbles' in pair[0]:
-            list_columns_new.append('Fum_' + pair[1])
-        elif 'Tackles' in pair[0]:
-            list_columns_new.append('Tkl_' + pair[1])       
+    
+    # handle passing statistics
+    if category == 'passing':
+        for column in list_columns:
+            if column not in ['Year','Age','Tm','Pos','No.','G','GS','QBrec', 'AV']:
+                list_columns_new.append('Pass_' + column)
+            else:
+                list_columns_new.append(column)
+        
+    # handle rushing, receiving or defensive statistics (multi-tiered names)
+    else:  
+        for pair in list_columns:
+            if any(x in pair[0] for x in ['Unnamed', 'Games']):
+                list_columns_new.append(pair[1])
+            elif 'Rushing' in pair[0]:
+                list_columns_new.append('Rush_' + pair[1])
+            elif 'Receiving' in pair[0]:
+                list_columns_new.append('Rec_' + pair[1])
+            elif 'Total Yds' in pair[0]:
+                list_columns_new.append('Tot_' + pair[1])         
+            elif 'Def Interceptions' in pair[0]:
+                list_columns_new.append('INT_' + pair[1])
+            elif 'Fumbles' in pair[0]:
+                list_columns_new.append('Fum_' + pair[1])
+            elif 'Tackles' in pair[0]:
+                list_columns_new.append('Tkl_' + pair[1])    
+                
     return list_columns_new
 
 def retrievePlayerList(category, year):
@@ -466,14 +458,15 @@ def scrapePlayerHistory(player):
                                 + ['Pass_' + x for x in df_temp.columns[8:]])
             df_temp['AV'] = av
         else:
-            df_temp.columns = dict_column_names['passing']
+            df_temp.columns = list_columns_passing
         # add to list
         list_player_data.append(df_temp)
     except:
         pass  
     
-    # rushing data    
-    for cat_id in ['rushing_and_receiving', 'receiving_and_rushing', 'defense']:
+    # search for data the is plainly visible on the player's page (not commented) 
+    for cat_id in ['passing', 'rushing_and_receiving', 
+                   'receiving_and_rushing', 'defense']:
         try:
             table = soup.find('div', {'id':'div_'+cat_id}).find('table')
             df_temp = pd.read_html(str(table))[0]
@@ -483,12 +476,13 @@ def scrapePlayerHistory(player):
             list_player_data.append(df_temp)
         except:
             pass      
-    # search for data that is commented out
+        
+    # search for data that is commented out by the site
     commented_data = soup.find_all(string=lambda text:isinstance(text,Comment))
     for comment in commented_data:
         soup_comment = BeautifulSoup(str(comment), 'lxml')
-        # test for rushing, receiving or defense data and add it if found
-        for cat_id in ['rushing_and_receiving', 'receiving_and_rushing', 'defense']:
+        for cat_id in ['passing', 'rushing_and_receiving', 
+                       'receiving_and_rushing', 'defense']:
             try:
                 #create a dataframe of the data
                 df_temp = pd.read_html(str(
@@ -542,7 +536,7 @@ def scrapePlayerHistory(player):
     df_player['Player'] = player['name']
     df_player['nameFirst'] = nameFirst
     df_player['nameLast'] = nameLast
-    df_player['position'] = position
+    df_player['position_nfl'] = position
     df_player['birthday'] = birthday
     try:
         df_player['hometownCity'] = birthplace.split(', ')[0]
@@ -586,9 +580,7 @@ os.chdir(path_dir)
 # Iterate over four different statistical categories
 for category in ['passing', 'rushing', 'receiving', 'defense']:
 
-    list_players_category = []trish4:24 PM
-i know both groups would probably be appalled by this statement
-but i think they are similar
+    list_players_category = []
     
     # Iterate over all years from 2005 to 2018
     for year in list(map(str, range(2005,2019))):
@@ -629,6 +621,12 @@ but i think they are similar
         list_df_rows.append(row)
     df_category = pd.DataFrame(list_df_rows)
     
+    # drop unneeded rows that remain after the previously completed step
+    df_category = df_category[~pd.isna(df_category['Year'])]
+    
+    # reset the dataframe index due to dropped rows
+    df_category = df_category.reset_index(drop = True)
+    
     # standardize all college names
     df_category = renameSchool(df_category, 'School')
     
@@ -657,7 +655,8 @@ but i think they are similar
     df_category.drop(['Pos', 'QBrec', 'Fum_Fmb', 'RRTD'], axis = 1, inplace = True)
         
     # rename certain variables
-    df_category = df_category.rename({'Pass_Yds.1':'Pass_Yds_Lost_Sacks',
+    df_category = df_category.rename({'Tm':'Team',
+                                      'Pass_Yds.1':'Pass_Yds_Lost_Sacks',
                                       'Pass_Cmp%':'Pass_Cmp_Pct',
                                       'Pass_TD%':'Pass_TD_Pct',
                                       'Pass_Int%':'Pass_Int_Pct',
