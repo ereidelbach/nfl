@@ -17,6 +17,7 @@ Created on Fri Mar  1 11:58:43 2019
 #==============================================================================
 # Package Import
 #==============================================================================
+#%%
 import datetime
 import os  
 import pandas as pd
@@ -28,7 +29,6 @@ import time
 from bs4 import BeautifulSoup
 from requests.packages.urllib3.util.retry import Retry
 from string import digits
-
 #==============================================================================
 # Reference Variable Declaration
 #==============================================================================
@@ -155,6 +155,17 @@ def scrapeCombineAllYears():
         # Convert the table to a dataframe
         df_year = pd.read_html(str(table))[0]
         df_year['Year'] = year
+
+        # Grab the links to the player's NFL page and their NCAA page
+        #-------------------------------------------------------------------------------------#
+        # NEED TO FINISH THIS SECTION -- GRAB DATA FROM URL's embedded in table to facilitate
+        #  easy matching with existing data
+        #-------------------------------------------------------------------------------------#
+        df_year['']
+        df_year['urlSportsRefNFL'] = url_player
+        df_year['urlSportsRefNCAA'] = collegeURL
+        df_year['ID_SportsRef_ncaa'] = collegeID
+        df_year['ID_SportsRef_nfl'] = player['ID']
         
         # Add the data for the year to the list
         list_dfs.append(df_year)
@@ -191,6 +202,7 @@ def scrapeCombineSpecificYear(year):
             contains combine information for all players from all scraped years
     '''  
     # scrape data for requested year
+    year = '2019'
     url = ('https://www.pro-football-reference.com/draft/' 
            + str(year) + '-combine.htm')
     soup = soupifyURL(url)
