@@ -15,6 +15,7 @@ Created on Fri Mar 29 13:00:45 2019
 #==============================================================================
 # Package Import
 #==============================================================================
+import json
 import numpy as np
 import os  
 import pandas as pd
@@ -42,9 +43,9 @@ list_columns_passing = ['Year', 'Age', 'Tm', 'Pos', 'No.', 'G', 'GS', 'QBrec',
                   'Pass_Sk%', 'Pass_4QC', 'Pass_GWD'
                   ]
 
-list_columns = ['Year','Age','position_nfl','Player','nameFirst','nameLast','Team',
-                'No.','birthday','hometownCity','hometownState','heightInches',
-                'weight','School','ID_SportsRef_ncaa','ID_SportsRef_nfl','AV',
+list_columns_qb = ['Year','Age','position_nfl','Player','nameFirst','nameLast','Team',
+                'No.','birthday','hometownCity','hometownState','heightInches_nfl',
+                'weight_nfl','School','ID_SportsRef_ncaa','ID_SportsRef_nfl','AV',
                 'ProBowl','AllPro','G','GS',
                 
                 'Pass_Cmp','Pass_Att','Pass_Cmp_Pct','Pass_Yds','Pass_TD',
@@ -69,6 +70,33 @@ list_columns = ['Year','Age','position_nfl','Player','nameFirst','nameLast','Tea
                 'urlSportsRefNCAA','urlSportsRefNFL','picturePlayerURL',
                 'pictureNflURL','pictureSchoolURL'
                 ]
+list_columns_other = ['Year','Age','position_nfl','Player','nameFirst','nameLast','Team',
+                'No.','birthday','hometownCity','hometownState','heightInches_nfl',
+                'weight_nfl','School','ID_SportsRef_ncaa','ID_SportsRef_nfl','AV',
+                'ProBowl','AllPro','G','GS',
+                
+                'Pass_Cmp','Pass_Att','Pass_Cmp_Pct','Pass_Yds','Pass_TD',
+                'Pass_TD_Pct','Pass_Int','Pass_Int_Pct','Pass_Lng',
+                'Pass_Yds_Att','Pass_Adj_Yds_Att','Pass_Yds_Cmp','Pass_Yds_G',
+                'Pass_Yds_G','Pass_Rate','Pass_Sacked','Pass_Yds_Lost_Sacks',
+                'Pass_Net_Yds_Att','Pass_Adj_Net_Yds_Att','Pass_Sacked_Pct',
+                'Pass_4QC','Pass_GWD','Pass_QBR','Rush_Att','Rush_Yds',
+                
+                'Rush_TD','Rush_Lng','Rush_Yds_Att','Rush_Yds_G','Rush_Att_G',
+                
+                'Rec_Tgt','Rec_Catches','Rec_Yds','Rec_Yds_Catch','Rec_TD',
+                'Rec_Lng','Rec_Catches_G','Rec_Yds_G','Rec_Catch_Pct',
+                'Tot_Touch','Tot_Y/Tch','Tot_YScm','Fumbles',
+                
+                'INT_Int','INT_Ret_Yds','INT_Ret_TD','INT_Ret_Lng','INT_PD',
+                'Fum_Forced','Fum_Recovered','Fum_Ret_Yds','Fum_Ret_Yds',
+                'Tkl_Sacks','Tkl_Comb','Tkl_Solo','Tkl_Ast','Tkl_TFL',
+                'Tkl_QBHits','Tkl_Sfty',
+                
+                'urlSportsRefNCAA','urlSportsRefNFL','picturePlayerURL',
+                'pictureNflURL','pictureSchoolURL'
+                ]
+
 
 #==============================================================================
 # Function Definitions
@@ -186,7 +214,7 @@ def retrievePlayerList(category, year):
 def renameSchool(df, name_var):
     '''
     Purpose: Rename a school/university to a standard name as specified in 
-        the file `school_names_pictures.csv`
+        the file `names_pictures_ncaa.csv`
 
     Inputs
     ------
@@ -202,7 +230,7 @@ def renameSchool(df, name_var):
     '''  
     # read in school name information
     df_school_names = pd.read_csv(path_dir.joinpath(
-            'Data/school_names_pictures.csv'))    
+            'Data/names_pictures_ncaa.csv'))    
      
     # convert the dataframe to a dictionary such that the keys are the
     #   optional spelling of each school and the value is the standardized
@@ -213,14 +241,14 @@ def renameSchool(df, name_var):
         # isolate the alternative name columns
         names = row[[x for x in row.index if 'Name' in x]]
         # convert the row to a list that doesn't include NaN values
-        list_names = [x for x in names.values.tolist() if str(x) != 'nan']
+        list_names = [x.strip() for x in names.values.tolist() if str(x) != 'nan']
         # add the nickname to the team names as an alternative name
-        nickname = row['Nickname']
+        nickname = row['Nickname'].strip()
         list_names_nicknames = list_names.copy()
         for name in list_names:
             list_names_nicknames.append(name + ' ' + nickname)
         # extract the standardized team name
-        name_standardized = row['Team']
+        name_standardized = row['Team'].strip()
         # add the standardized name
         list_names_nicknames.append(name_standardized)
         # add the nickname to the standardized name
@@ -231,7 +259,8 @@ def renameSchool(df, name_var):
             dict_school_names[name_alternate] = name_standardized
             
     def swapSchoolName(name_old):
-        if name_old == 'nan':
+        if ((name_old == 'nan') or (pd.isna(name_old)) or 
+             (name_old == 'none') or (name_old == '')):
             return ''
         try:
             return dict_school_names[name_old]
@@ -248,7 +277,7 @@ def renameSchool(df, name_var):
 def renameNFL(df, name_var):
     '''
     Purpose: Rename an NFL team to a standardized name as specified in 
-        the file `nfl_names_pictures.csv`
+        the file `names_pictures_nfl.csv`
 
     Inputs
     ------
@@ -264,7 +293,7 @@ def renameNFL(df, name_var):
     '''  
     # read in school name information
     df_school_names = pd.read_csv(path_dir.joinpath(
-            'Data/nfl_names_pictures.csv'))    
+            'Data/names_pictures_nfl.csv'))    
      
     # convert the dataframe to a dictionary such that the keys are the
     #   optional spelling of each school and the value is the standardized
@@ -287,7 +316,8 @@ def renameNFL(df, name_var):
             dict_school_names[name_alternate] = name_standardized
             
     def swapSchoolName(name_old):
-        if (name_old == 'nan') or (pd.isna(name_old)):
+        if ((name_old == 'nan') or (pd.isna(name_old)) or 
+             (name_old == 'none') or (name_old == '')):
             return ''
         try:
             return dict_school_names[name_old]
@@ -314,7 +344,7 @@ def standardizeLogoNCAA(df):
             Standardized version of all school logo URLs
     '''    
     # ingest the school names and URLs from a flat file    
-    df_pictures = pd.read_csv('Data/school_names_pictures.csv')
+    df_pictures = pd.read_csv('Data/names_pictures_ncaa.csv')
 
     # create a dictionary where the team name is the key and the url is the value
     df_pictures.set_index('Team', drop=True, inplace=True)
@@ -323,7 +353,8 @@ def standardizeLogoNCAA(df):
         dict_pictures[key] = value['urlSchool']
     
     # create the variable 'pictureSchoolURL' to store each team's logo URL
-    df['pictureSchoolURL'] = df['School'].apply(lambda x: dict_pictures[x])
+    df['pictureSchoolURL'] = df['School'].apply(
+            lambda x: dict_pictures[x] if x != '' else '')
     
     return df
 
@@ -342,7 +373,7 @@ def standardizeLogoNFL(df):
             Standardized version of all school logo URLs
     '''    
     # ingest the school names and URLs from a flat file    
-    df_pictures = pd.read_csv('Data/nfl_names_pictures.csv')
+    df_pictures = pd.read_csv('Data/names_pictures_nfl.csv')
 
     # create a dictionary where the team name is the key and the url is the value
     df_pictures.set_index('Team', drop=True, inplace=True)
@@ -436,8 +467,7 @@ def scrapePlayerHistory(player):
     except:
         college = ''
     try:
-        collegeURL = (info.find('strong', text='College').next_sibling.
-                      next_sibling.next_sibling.next_sibling['href'])
+        collegeURL = info.find('a', text='College Stats')['href']
         collegeID = collegeURL.split('/')[-1].replace('.html','')
     except:
         collegeURL = ''
@@ -448,21 +478,21 @@ def scrapePlayerHistory(player):
     
     #--- obtain player historical statistics ---------------------------------#
     # passing data (EASY)
-    try:
-        df_temp = pd.read_html(str(soup.find('table', {'id':'passing'})))[0]
-        # rename columns (requires special code as AV not always present)
-        if 'AV' in df_temp.columns:
-            av = df_temp['AV']
-            df_temp.drop(columns = ['AV'], axis = 1, inplace = True)
-            df_temp.columns = (['Year','Age','Tm','Pos','No.','G','GS','QBrec'] 
-                                + ['Pass_' + x for x in df_temp.columns[8:]])
-            df_temp['AV'] = av
-        else:
-            df_temp.columns = list_columns_passing
-        # add to list
-        list_player_data.append(df_temp)
-    except:
-        pass  
+#    try:
+#        df_temp = pd.read_html(str(soup.find('table', {'id':'passing'})))[0]
+#        # rename columns (requires special code as AV not always present)
+#        if 'AV' in df_temp.columns:
+#            av = df_temp['AV']
+#            df_temp.drop(columns = ['AV'], axis = 1, inplace = True)
+#            df_temp.columns = (['Year','Age','Tm','Pos','No.','G','GS','QBrec'] 
+#                                + ['Pass_' + x for x in df_temp.columns[8:]])
+#            df_temp['AV'] = av
+#        else:
+#            df_temp.columns = list_columns_passing
+#        # add to list
+#        list_player_data.append(df_temp)
+#    except:
+#        pass  
     
     # search for data the is plainly visible on the player's page (not commented) 
     for cat_id in ['passing', 'rushing_and_receiving', 
@@ -471,7 +501,7 @@ def scrapePlayerHistory(player):
             table = soup.find('div', {'id':'div_'+cat_id}).find('table')
             df_temp = pd.read_html(str(table))[0]
             # rename columns (requires special code as AV not always present)
-            df_temp.columns = extractColumnNames(df_temp.columns.tolist())
+            df_temp.columns = extractColumnNames(df_temp.columns.tolist(), cat_id)
             # add to list
             list_player_data.append(df_temp)
         except:
@@ -488,7 +518,7 @@ def scrapePlayerHistory(player):
                 df_temp = pd.read_html(str(
                         soup_comment.find('table', {'id':cat_id})))[0]
                 # rename columns (requires special code as AV not always present)
-                df_temp.columns = extractColumnNames(df_temp.columns.tolist())
+                df_temp.columns = extractColumnNames(df_temp.columns.tolist(), cat_id)
                 # add to list of player's historical data
                 list_player_data.append(df_temp)
             except:
@@ -548,8 +578,8 @@ def scrapePlayerHistory(player):
     except:
         df_player['hometownState'] = ''
         print(birthplace)
-    df_player['heightInches'] = height
-    df_player['weight'] = weight
+    df_player['heightInches_nfl'] = height
+    df_player['weight_nfl'] = weight
     df_player['School'] = college
     df_player['urlSportsRefNFL'] = url_player
     df_player['picturePlayerURL'] = pictureURL
@@ -618,44 +648,55 @@ for category in ['passing', 'rushing', 'receiving', 'defense']:
         elif row['Tm'] == '3TM':
             row['Tm'] = df_category.iloc[index+3]['Tm']
             row['No.'] = df_category.iloc[index+3]['No.']
+        elif row['Tm'] == '4TM':
+            row['Tm'] = df_category.iloc[index+4]['Tm']
+            row['No.'] = df_category.iloc[index+4]['No.']
         list_df_rows.append(row)
-    df_category = pd.DataFrame(list_df_rows)
+    df_categoryV2 = pd.DataFrame(list_df_rows)
+    
+    # replace missing values for Year with NaNs to facilitate their removal
+    df_categoryV2['Year'] = df_categoryV2['Year'].apply(
+            lambda x: np.nan if x == '' else int(x))
     
     # drop unneeded rows that remain after the previously completed step
-    df_category = df_category[~pd.isna(df_category['Year'])]
+    df_categoryV2 = df_categoryV2[~pd.isna(df_categoryV2['Year'])]
     
     # reset the dataframe index due to dropped rows
-    df_category = df_category.reset_index(drop = True)
+    df_categoryV2 = df_categoryV2.reset_index(drop = True)
     
     # standardize all college names
-    df_category = renameSchool(df_category, 'School')
+    df_categoryV2 = renameSchool(df_categoryV2, 'School')
     
     # standardize all NFL names
-    df_category = renameNFL(df_category, 'Tm')
+    df_categoryV2 = renameNFL(df_categoryV2, 'Tm')
+    
+#    df_categoryV2[df_categoryV2['Tm'] == '2TM']
+#    df_categoryV2[df_categoryV2['Tm'] == '3TM']
+#    df_categoryV2[df_categoryV2['Tm'] == '4TM']
         
     # create a variable for NCAA logos ('pictureSchoolURL')
-    df_category = standardizeLogoNCAA(df_category)
+    df_categoryV2 = standardizeLogoNCAA(df_categoryV2)
     
     # create a variable for NFL logos ('pictureNflURL')
-    df_category = standardizeLogoNFL(df_category)
+    df_categoryV2 = standardizeLogoNFL(df_categoryV2)
     
     # for quarterback data, break out the win/loss record when starting games
     if category == 'passing':
-        df_category['GS_Win'] = df_category['QBrec'].apply(
+        df_categoryV2['GS_Win'] = df_categoryV2['QBrec'].apply(
                 lambda x: int(x.split('-')[0]) if not pd.isna(x) else 0)
-        df_category['GS_Loss'] = df_category['QBrec'].apply(
+        df_categoryV2['GS_Loss'] = df_categoryV2['QBrec'].apply(
                 lambda x: int(x.split('-')[1]) if not pd.isna(x) else 0)
-        df_category['GS_Tie'] = df_category['QBrec'].apply(
+        df_categoryV2['GS_Tie'] = df_categoryV2['QBrec'].apply(
                 lambda x: int(x.split('-')[2]) if not pd.isna(x) else 0)
-        df_category['GS_Win_Pct'] = df_category.apply(lambda row:
+        df_categoryV2['GS_Win_Pct'] = df_categoryV2.apply(lambda row:
                 round((row['GS_Win'] / row['GS'])*100, 1) 
                 if row['GS'] != 0 else np.nan, axis =1)
             
     # delete the following variables: 'Pos', 'QBrec', 'Fum_Fmb', 'RRTD'
-    df_category.drop(['Pos', 'QBrec', 'Fum_Fmb', 'RRTD'], axis = 1, inplace = True)
+    df_categoryV2.drop(['Pos', 'QBrec', 'Fum_Fmb', 'RRTD'], axis = 1, inplace = True)
         
     # rename certain variables
-    df_category = df_category.rename({'Tm':'Team',
+    df_categoryV2 = df_categoryV2.rename({'Tm':'Team',
                                       'Pass_Yds.1':'Pass_Yds_Lost_Sacks',
                                       'Pass_Cmp%':'Pass_Cmp_Pct',
                                       'Pass_TD%':'Pass_TD_Pct',
@@ -691,8 +732,11 @@ for category in ['passing', 'rushing', 'receiving', 'defense']:
                                       }, axis = 1)
     
     # reorder column variables as desired
-    df_final = df_category[list_columns]
+    if category == 'passing':
+        df_final = df_categoryV2[list_columns_qb]
+    else:
+        df_final = df_categoryV2[list_columns_other]
             
     # Export the dataframe to disk
-    df_category.to_csv('Data/SportsReference/%s-2005-2018.csv' % (category), 
+    df_final.to_csv('Data/SportsReference/%s-2005-2018.csv' % (category), 
                        index = False)
