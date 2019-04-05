@@ -56,3 +56,16 @@ def function_name(var1, var2):
 # Set the project working directory
 path_dir = pathlib.Path('/home/ejreidelbach/Projects/')
 os.chdir(path_dir)
+
+   
+#------------------------------------------------------------------------------
+# fill in missing values with blanks rather than float NaNs
+df_final = df_final.fillna('')
+    
+# Convert the dataframe to a dictionary
+dict_final = df_final.to_dict('records')    
+
+# Write updated data (with paths to pictures vice URLs) to a .json file 
+#   ('pos_POSITION_final_pics.json')
+with open('Data/SportsReference/qb_lookup.json', 'wt') as out:
+    json.dump(dict_final, out, sort_keys=True) 

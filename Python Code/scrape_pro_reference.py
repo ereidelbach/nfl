@@ -590,12 +590,13 @@ def scrapePlayerHistory(player):
     # account for pro bowl years
     #   * == Pro Bowl
     #   + == First-Team All-Pro
-    df_player['ProBowl'] = df_player['Year'].apply(
-            lambda x: 1 if '*' in str(x) else 0) 
-    df_player['AllPro'] = df_player['Year'].apply(
-            lambda x: 1 if '+' in str(x) else 0)
-    df_player['Year'] = df_player['Year'].apply(
-            lambda x: ''.join(c for c in str(x) if c in digits))     
+    if len(list_player_data) > 0:
+        df_player['ProBowl'] = df_player['Year'].apply(
+                lambda x: 1 if '*' in str(x) else 0) 
+        df_player['AllPro'] = df_player['Year'].apply(
+                lambda x: 1 if '+' in str(x) else 0)
+        df_player['Year'] = df_player['Year'].apply(
+                lambda x: ''.join(c for c in str(x) if c in digits))     
     
     return df_player    
 
@@ -669,7 +670,7 @@ for category in ['passing', 'rushing', 'receiving', 'defense']:
     
     # standardize all NFL names
     df_categoryV2 = renameNFL(df_categoryV2, 'Tm')
-    
+
 #    df_categoryV2[df_categoryV2['Tm'] == '2TM']
 #    df_categoryV2[df_categoryV2['Tm'] == '3TM']
 #    df_categoryV2[df_categoryV2['Tm'] == '4TM']
