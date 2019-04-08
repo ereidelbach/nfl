@@ -160,23 +160,37 @@ def scrapeCombineAllYears():
         # Drop Rows that contain header information (i.e. 'Player' == 'Player')
         df_year = df_year[df_year['Player'] != 'Player']
         
-        # Retrieve player's ncaa ID and ncaa profile URL
-        list_player_urls = []
-        list_player_ids = []
+        # Retrieve player's nfl/ncaa ID and profile URL
+        list_player_urls_nfl = []
+        list_player_ids_nfl = []
+        list_player_urls_ncaa = []
+        list_player_ids_ncaa = []
         for row in table.find_all('tr'):
-            # the first column of each row has what we need
+            # the first column of each row contains the nfl data
             col = row.find('th')
             if col.text != 'Player':
                 if col.find('a') is not None:
-                    list_player_urls.append(col.a['href'])
-                    list_player_ids.append(col['data-append-csv'])
+                    list_player_urls_nfl.append(col.a['href'])
+                    list_player_ids_nfl.append(col['data-append-csv'])
                 else:
-                    list_player_urls.append('')
-                    list_player_ids.append('')
+                    list_player_urls_nfl.append('')
+                    list_player_ids_nfl.append('')
+            # after that, the 3rd column over has the ncaa data
+            col = row.find_all('td')
+            if col != []:
+                if col[2].find('a') is not None:
+                    list_player_urls_ncaa.append(col[2].a['href'])
+                    list_player_ids_ncaa.append(
+                            col[2].a['href'].split('/')[-1].split('.html')[0])
+                else:
+                    list_player_urls_ncaa.append('')
+                    list_player_ids_ncaa.append('')           
                     
-        # Create the variables: 'id_sr_ncaa' and 'url_sr_ncaa'
-        df_year['url_sr_ncaa'] = list_player_urls
-        df_year['id_sr_ncaa'] = list_player_ids
+        # Create the variables: 'id_sr_ncaa', 'url_sr_ncaa', 'id_sr_nfl', 'url_sr_nfl'
+        df_year['id_sr_ncaa'] = list_player_ids_ncaa
+        df_year['url_sr_ncaa'] = list_player_urls_ncaa
+        df_year['id_sr_nfl'] = list_player_ids_nfl
+        df_year['url_sr_nfl'] = list_player_urls_nfl
         
         # Add the data for the year to the list
         list_dfs.append(df_year)
@@ -197,7 +211,7 @@ def scrapeCombineAllYears():
     
     # Write the file to csv
     df_final.to_csv('positionData/Combine/combine_%s_to_%s.csv' % 
-                    (year_start, year_end))
+                    (year_start, year_end), index = False)
         
     return df_final
 
@@ -232,24 +246,38 @@ def scrapeCombineSpecificYear(year):
     # Drop Rows that contain header information (i.e. 'Player' == 'Player')
     df_year = df_year[df_year['Player'] != 'Player']
     
-    # Retrieve player's ncaa ID and ncaa profile URL
-    list_player_urls = []
-    list_player_ids = []
+    # Retrieve player's nfl/ncaa ID and profile URL
+    list_player_urls_nfl = []
+    list_player_ids_nfl = []
+    list_player_urls_ncaa = []
+    list_player_ids_ncaa = []
     for row in table.find_all('tr'):
-        # the first column of each row has what we need
+        # the first column of each row contains the nfl data
         col = row.find('th')
         if col.text != 'Player':
             if col.find('a') is not None:
-                list_player_urls.append(col.a['href'])
-                list_player_ids.append(col['data-append-csv'])
+                list_player_urls_nfl.append(col.a['href'])
+                list_player_ids_nfl.append(col['data-append-csv'])
             else:
-                list_player_urls.append('')
-                list_player_ids.append('')
+                list_player_urls_nfl.append('')
+                list_player_ids_nfl.append('')
+        # after that, the 3rd column over has the ncaa data
+        col = row.find_all('td')
+        if col != []:
+            if col[2].find('a') is not None:
+                list_player_urls_ncaa.append(col[2].a['href'])
+                list_player_ids_ncaa.append(
+                        col[2].a['href'].split('/')[-1].split('.html')[0])
+            else:
+                list_player_urls_ncaa.append('')
+                list_player_ids_ncaa.append('')           
                 
-    # Create the variables: 'id_sr_ncaa' and 'url_sr_ncaa'
-    df_year['url_sr_ncaa'] = list_player_urls
-    df_year['id_sr_ncaa'] = list_player_ids
-    
+    # Create the variables: 'id_sr_ncaa', 'url_sr_ncaa', 'id_sr_nfl', 'url_sr_nfl'
+    df_year['id_sr_ncaa'] = list_player_ids_ncaa
+    df_year['url_sr_ncaa'] = list_player_urls_ncaa
+    df_year['id_sr_nfl'] = list_player_ids_nfl
+    df_year['url_sr_nfl'] = list_player_urls_nfl
+
     # Standardize Variables and Formatting of dataframe
     df_final = fixCombineInfo(df_year)
     
@@ -307,7 +335,8 @@ def fixCombineInfo(df_input):
     df = df[['Year', 'Player', 'nameFirst', 'nameLast', 'Pos', 'School', 'Ht', 
              'HtInches', 'Wt', '40yd', 'Vertical', 'Bench', 'Broad Jump',
              '3Cone', 'Shuttle', 'DraftTeam', 'DraftRound',
-             'DraftPick', 'DraftYear', 'id_sr_ncaa', 'url_sr_ncaa']]
+             'DraftPick', 'DraftYear', 'id_sr_ncaa', 'id_sr_nfl',
+             'url_sr_ncaa', 'url_sr_nfl']]
         
     return df
 

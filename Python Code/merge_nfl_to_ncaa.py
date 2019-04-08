@@ -246,94 +246,87 @@ def merge_nfl_ncaa_metadata(category):
     df_merged = df_merged.sort_values(by = 'name_last')
     
     # export the dataframe to a csv file
-    df_merged.to_csv('positionData/MetaData/merged_%s.csv' % category, 
+    df_merged.to_csv('positionData/Metadata/merged_%s.csv' % category, 
                      index = False)
     
     return df_merged
 
-def subsetDataByPosition(df_pos, position):
+def merge_combine_data(category):
     '''
-    Purpose: Given a DataFrame of players for a specific category of football
-        data (i.e. Passing, Rushing, Receiving or Defense), subset that data
-        such that individual files are created for specific positions.
+    Purpose: Merges NFL combine data with pre-existing metadata already
+        scraped from sports-reference.com for NFL and college players
         
-        For example, given Passing data, subset the data such that only players
-        who played quarterback are in the data and save it as 'pos_QB.csv'
-
     Inputs
     ------
-        df_pos : Pandas Dataframe
-            DataFrame containing player information for a specific stat group
-                (i.e. Passing, Rushing, Receiving or Defensive)
-        position : string
-            Position group for which data exists and must be merged
-            (options are 'DEF', 'QB', RB', and 'WR')
+        category : string
+            Category of statistics to be merging -- offense or defense
     
     Outputs
     -------
-        The subset dataframe is written to a .json and .csv file in /public
-    '''    
+        df_merge : Pandas DataFrame
+            The data resulting from the merge of the original, player metadata
+            with any relevant combine information obtained by matching on 
+            the 'id_sr_ncaa' variable
+    '''
+    # ingest the data to be merged
+    df_combine = pd.read_csv('positionData/Combine/combine_2000_to_2020.csv')
+    df_position = pd.read_csv('positionData/Metadata/merged_%s.csv' % category)
+    
+    # subset the combine data to only what we need for merging
+    df_combine = df_combine[['Ht', 'HtInches', 'Wt', '40yd', 'Vertical', 
+                             'Bench', 'Broad Jump', '3Cone', 'Shuttle',
+                             'DraftTeam', 'DraftRound', 'DraftPick',
+                             'DraftYear', 'id_sr_ncaa', 'id_sr_nfl']]
+    
+    # rename combine variables
+    df_combine = df_combine.rename({'DraftPick':'draft_overall',
+                                    'DraftRound':'draft_round',
+                                    'DraftTeam':'draft_team',
+                                    'DraftYear':'draft_year',
+                                    'Ht':'combine_height',
+                                    'HtInches':'combine_height_inches',
+                                    'Wt':'combine_weight',
+                                    '40yd':'combine_40yd',
+                                    'Vertical':'combine_vertical',
+                                    'Bench':'combine_bench',
+                                    'Broad Jump':'combine_broad_jump',
+                                    '3Cone':'combine_3cone',
+                                    'Shuttle':'combine_shuttle'}, axis = 1)
+    # merge the datasets
+    # first on ncaa id
+    df_merge = pd.merge(df_position, df_combine[pd.notnull(
+            df_combine.id_sr_ncaa)], how = 'left', on = 'id_sr_ncaa')
+    
+    # clean up duplicate variables
+    for variable in ['draft_overall', 'draft_round', 'draft_team', 
+                     'draft_year', 'id_sr_nfl']:
+        # keep the _x version of the variable unless it is missing, then go with _y
+        df_merge[variable] = df_merge.apply(lambda row:
+            row['%s_x' % variable] if pd.isna(row['%s_y' % variable]) 
+            else row['%s_y' % variable], axis = 1)
+        # drop _x and _y variables once merged variable is created
+        df_merge = df_merge.drop(
+                ['%s_x' % variable, '%s_y' % variable], axis = 1)
 
-    # reduce the dataset to contain only players of specific positions'
-    list_cols_pos = [x for x in df_pos.columns.tolist() if 'position' in x]
-    df_subset = pd.DataFrame()
-    # iterate over every position column and add players if they played that pos
-    for col in list_cols_pos:
-        players = df_pos[df_pos[col].isin(dict_positions[position])]
-        if len(df_subset) == 0:
-            df_subset = players.copy()
-        else:
-            df_subset = pd.concat([df_subset, players] , sort = False)
-            
-    # remove any duplicate rows created in this process
-    df_subset = df_subset.drop_duplicates()
+    # second on nfl id
+    df_merge = pd.merge(df_position, df_combine[pd.notnull(
+            df_combine.id_sr_nfl)], how = 'left', on = 'id_sr_nfl')
     
-    # sort the reduced dataset by the desired variable for the position group
-    df_subset = df_subset.sort_values(by = [dict_sort_variable[position]], 
-                                      ascending = False)
-    
-    # reset index
-    df_subset = df_subset.reset_index(drop = True)
-    
-    # create the `Index` variable
-    df_subset['Index'] = df_subset.index
+    # clean up duplicate variables
+    for variable in ['draft_overall', 'draft_round', 'draft_team', 
+                     'draft_year', 'id_sr_ncaa']:
+        # keep the _x version of the variable unless it is missing, then go with _y
+        df_merge[variable] = df_merge.apply(lambda row:
+            row['%s_x' % variable] if pd.isna(row['%s_y' % variable]) 
+            else row['%s_y' % variable], axis = 1)
+        # drop _x and _y variables once merged variable is created
+        df_merge = df_merge.drop(
+                ['%s_x' % variable, '%s_y' % variable], axis = 1)
         
-    #------ Make sure columns with ELO data are stored as lists  of ints -----#
-    # obtain a list of all elo variables
-    list_elo = [x for x in list(df_subset.columns) if 'elo' in x.lower()]
-    # iterate through each elo variable and eval it so that it's a list
-    for elo in list_elo:
-        df_subset[elo] = df_subset[elo].apply(lambda x: literal_eval(x))
-        
-    #-------- Make sure opponent ids are stored as list of ints --------------#
-    list_temp = []
-    for row in df_subset['opp']:
-        try:
-            list_temp.append([int(x) for x in row.split(',')])
-        except:
-            list_temp.append('')
-            print(row)
-    df_subset['opp'] = list_temp
+    # write it to a csv
+    df_merge.to_csv('positionData/Metadata/merged_with_combine_%s.csv' % category)
     
-    #-------- Make sure the date column is stored as a list of string --------#
-    list_temp = []
-    for row in df_subset['date']:
-        list_temp.append([str(x) for x in row.split(',')])
-    df_subset['date'] = list_temp
-    #df_subset['date'] = df_subset['date'].apply(lambda x: literal_eval(x))
-    
-    # fill in missing values with blanks rather than float NaNs
-    df_subset = df_subset.fillna('')
-    
-    # make a new position variable and drop others
-    df_subset['position'] = position
-    df_subset = df_subset.drop(list_cols_pos[:-1], axis = 1)
-    list_cols_new = df_subset.columns.tolist()
-    list_cols_new.insert(6, list_cols_new.pop(len(list_cols_new)-1))
-    df_subset = df_subset[list_cols_new]
-    
-    return df_subset
-
+    return df_merge
 #==============================================================================
 # Working Code
 #==============================================================================
@@ -343,10 +336,19 @@ path_dir = pathlib.Path('/home/ejreidelbach/Projects/draft-gem/src/static/')
 os.chdir(path_dir)
 
 #------------------------------------------------------------------------------
-# Step 1. Combine NFL data with it's collegiate counterpart
+# Step 1. Combine NFL data with it's collegiate counterpart's metadata
 #------------------------------------------------------------------------------
 # OFFENSE 
 df_off = merge_nfl_ncaa_metadata('offense')
  
 # DEFENSE      
 df_def = merge_nfl_ncaa_metadata('defense')
+
+#------------------------------------------------------------------------------
+# Step 2. Combine merged data with combine data
+#------------------------------------------------------------------------------
+# OFFENSE 
+df_off = merge_combine_data('offense')
+ 
+# DEFENSE      
+df_def = merge_combine_data('defense')
