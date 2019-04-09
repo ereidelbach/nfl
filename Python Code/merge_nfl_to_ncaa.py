@@ -206,9 +206,18 @@ def merge_nfl_ncaa_metadata(category):
         df_merged[variable] = df_merged.apply(lambda row:
             row['%s_x' % variable] if pd.isna(row['%s_y' % variable]) 
             else row['%s_y' % variable], axis = 1) 
-        # drop _x and _y variables once merged variable is created
+        
+    # drop _x and _y variables once merged variable is created
+    for variable in ['Player', 'School', 'nameFirst', 'nameLast', 'hometownCity',
+                     'hometownState', 'picturePlayerURL', 'pictureSchoolURL',
+                     'birthday']:
         df_merged = df_merged.drop(
                 ['%s_x' % variable, '%s_y' % variable], axis = 1)
+        
+    # merge the contents of 'unique_id' and 'ID_SportsRef_ncaa'
+    df_merged['ID_SportsRef_ncaa'] = df_merged.apply(lambda row:
+        row['ID_SportsRef_ncaa'] if pd.isna(row['unique_id']) 
+        else row['unique_id'], axis = 1)     
         
     # create a new variable for NFL height (format: Ft - Inches)
     df_merged['heightNFL'] = df_merged['heightInches_nfl'].apply(
@@ -324,9 +333,75 @@ def merge_combine_data(category):
                 ['%s_x' % variable, '%s_y' % variable], axis = 1)
         
     # write it to a csv
-    df_merge.to_csv('positionData/Metadata/merged_with_combine_%s.csv' % category)
+    df_merge.to_csv('positionData/Metadata/merged_with_combine_%s.csv' % category, index = False)
     
     return df_merge
+
+def output_to_json(df, category):
+    '''
+    Purpose: Output a metadata file to JSON format for use in the draft-gem
+        ecosystem (will serve as a player lookup table for all desired metadata).
+    
+    Inputs
+    ------
+        df : Pandas DataFrame
+            Metadata for all players in a given category (offense or defense)
+        category : string
+            Category of statistics to be merging -- offense or defense
+            
+    Outputs
+    -------
+        dict_meta : JSON file
+            JSON formatted Metadata that is written to a file in the 
+            'positionData/Metadata' folder    
+    '''
+    # keep only the desired variables for lookup table purposes
+    df = df[['player',
+             'school',
+             'team_nfl',
+             'pos_nfl',
+             'pos_sr_0',
+             'pos_sr_1',
+             'pos_sr_2',
+             'id_sr_nfl',
+             'id_sr_ncaa',
+             'height_nfl',
+             'weight_nfl',
+             'height_ncaa',
+             'weight_ncaa',
+             'combine_height',
+             'combine_weight',
+             'combine_40yd',
+             'combine_vertical',
+             'combine_bench',
+             'combine_broad_jump',
+             'combine_3cone',
+             'combine_shuttle',
+             'draft_overall',
+             'draft_round',
+             'draft_team',
+             'draft_year',
+             'url_pic_player'
+             ]]
+    
+    # rename variables to a simpler format
+    df = df.rename({'id_sr_nfl':'id_nfl', 
+                    'id_sr_ncaa':'id_ncaa',
+                    'pos_sr_0':'pos_ncaa0',
+                    'pos_sr_1':'pos_ncaa1',
+                    'pos_sr_2':'pos_ncaa2',
+                    }, axis = 1)
+
+    # fill in missing values with blanks rather than float NaNs
+    df = df.fillna('')
+    
+    # Convert the dataframe to a dictionary
+    dict_meta = df.to_dict('records')    
+    
+    # Write dictionary to a .json file
+    with open('positionData/Metadata/meta_%s.json' % (category), 'wt') as out:
+            json.dump(dict_meta, out, sort_keys=True) 
+    
 #==============================================================================
 # Working Code
 #==============================================================================
@@ -352,3 +427,12 @@ df_off = merge_combine_data('offense')
  
 # DEFENSE      
 df_def = merge_combine_data('defense')
+
+#------------------------------------------------------------------------------
+# Step 3. Write metadata to JSON file for upload to draft-gem current version
+#------------------------------------------------------------------------------
+# OFFENSE 
+output_to_json(df_off, 'offense')
+ 
+# DEFENSE      
+output_to_json(df_def, 'defense')
