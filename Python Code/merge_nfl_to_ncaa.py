@@ -337,17 +337,17 @@ def merge_combine_data(category):
     
     return df_merge
 
-def output_to_json(df, category):
+def output_to_json(df_off, df_def):
     '''
     Purpose: Output a metadata file to JSON format for use in the draft-gem
         ecosystem (will serve as a player lookup table for all desired metadata).
     
     Inputs
     ------
-        df : Pandas DataFrame
-            Metadata for all players in a given category (offense or defense)
-        category : string
-            Category of statistics to be merging -- offense or defense
+        df_off : Pandas DataFrame
+            Metadata for all offensive players
+        df_def : Pandas DataFrame
+            Metadata for all defensive players
             
     Outputs
     -------
@@ -355,51 +355,60 @@ def output_to_json(df, category):
             JSON formatted Metadata that is written to a file in the 
             'positionData/Metadata' folder    
     '''
+    # merge offense and defensive tables together
+    df_merge = pd.concat([df_off, df_def])
+    
+    # drop duplicate players
+    df_merge = df_merge.drop_duplicates()
+    
+    # reset table index
+    df_merge = df_merge.reset_index(drop = True)
+    
     # keep only the desired variables for lookup table purposes
-    df = df[['player',
-             'school',
-             'team_nfl',
-             'pos_nfl',
-             'pos_sr_0',
-             'pos_sr_1',
-             'pos_sr_2',
-             'id_sr_nfl',
-             'id_sr_ncaa',
-             'height_nfl',
-             'weight_nfl',
-             'height_ncaa',
-             'weight_ncaa',
-             'combine_height',
-             'combine_weight',
-             'combine_40yd',
-             'combine_vertical',
-             'combine_bench',
-             'combine_broad_jump',
-             'combine_3cone',
-             'combine_shuttle',
-             'draft_overall',
-             'draft_round',
-             'draft_team',
-             'draft_year',
-             'url_pic_player'
-             ]]
+    df_merge = df_merge[['player',
+                         'school',
+                         'team_nfl',
+                         'pos_nfl',
+                         'pos_sr_0',
+                         'pos_sr_1',
+                         'pos_sr_2',
+                         'id_sr_nfl',
+                         'id_sr_ncaa',
+                         'height_nfl',
+                         'weight_nfl',
+                         'height_ncaa',
+                         'weight_ncaa',
+                         'combine_height',
+                         'combine_weight',
+                         'combine_40yd',
+                         'combine_vertical',
+                         'combine_bench',
+                         'combine_broad_jump',
+                         'combine_3cone',
+                         'combine_shuttle',
+                         'draft_overall',
+                         'draft_round',
+                         'draft_team',
+                         'draft_year',
+                         'url_pic_player'
+                         ]]
     
     # rename variables to a simpler format
-    df = df.rename({'id_sr_nfl':'id_nfl', 
-                    'id_sr_ncaa':'id_ncaa',
-                    'pos_sr_0':'pos_ncaa0',
-                    'pos_sr_1':'pos_ncaa1',
-                    'pos_sr_2':'pos_ncaa2',
-                    }, axis = 1)
+    df_merge = df_merge.rename({'id_sr_nfl':'id_nfl', 
+                                'id_sr_ncaa':'id_ncaa',
+                                'pos_sr_0':'pos_ncaa0',
+                                'pos_sr_1':'pos_ncaa1',
+                                'pos_sr_2':'pos_ncaa2',
+                                }, axis = 1)
 
     # fill in missing values with blanks rather than float NaNs
-    df = df.fillna('')
+    df_merge = df_merge.fillna('')
     
     # Convert the dataframe to a dictionary
-    dict_meta = df.to_dict('records')    
+    dict_meta = df_merge.to_dict('records')    
     
     # Write dictionary to a .json file
-    with open('positionData/Metadata/meta_%s.json' % (category), 'wt') as out:
+    with open('positionData/Metadata/metadata_final.json', 'wt') as out:
             json.dump(dict_meta, out, sort_keys=True) 
     
 #==============================================================================
