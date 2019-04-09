@@ -81,9 +81,7 @@ def renameSchool(df, name_var):
             in the row in the file `school_abbreviations.csv`
     '''  
     # read in school name information
-    df_school_names = pd.read_csv('/home/ejreidelbach/Projects/draft-gem/' +
-                                  'src/static/positionData/' +
-                                  'pics.csv')
+    df_school_names = pd.read_csv('positionData/names_pictures_ncaa.csv')
      
     # convert the dataframe to a dictionary such that the keys are the
     #   optional spelling of each school and the value is the standardized
@@ -94,14 +92,14 @@ def renameSchool(df, name_var):
         # isolate the alternative name columns
         names = row[[x for x in row.index if 'Name' in x]]
         # convert the row to a list that doesn't include NaN values
-        list_names = [x for x in names.values.tolist() if str(x) != 'nan']
+        list_names = [x.strip() for x in names.values.tolist() if str(x) != 'nan']
         # add the nickname to the team names as an alternative name
-        nickname = row['Nickname']
+        nickname = row['Nickname'].strip()
         list_names_nicknames = list_names.copy()
         for name in list_names:
             list_names_nicknames.append(name + ' ' + nickname)
         # extract the standardized team name
-        name_standardized = row['Team']
+        name_standardized = row['Team'].strip()
         # add the standardized name
         list_names_nicknames.append(name_standardized)
         # add the nickname to the standardized name
@@ -111,10 +109,76 @@ def renameSchool(df, name_var):
         for name_alternate in list_names_nicknames:
             dict_school_names[name_alternate] = name_standardized
             
-    df[name_var] = df[name_var].apply(
-            lambda x: dict_school_names[x] if str(x) != 'nan' else '')
+    def swapSchoolName(name_old):
+        if ((name_old == 'nan') or (pd.isna(name_old)) or 
+             (name_old == 'none') or (name_old == '')):
+            return ''
+        try:
+            return dict_school_names[name_old]
+        except:
+            print('Did not find: %s' % (name_old))
+            return name_old
+            
+#    df[name_var] = df[name_var].apply(
+#            lambda x: dict_school_names[x] if str(x) != 'nan' else '')
+    df[name_var] = df[name_var].apply(lambda x: swapSchoolName(x))
         
-    return df    
+    return df
+
+def renameNFL(df, name_var):
+    '''
+    Purpose: Rename an NFL team to a standardized name as specified in 
+        the file `names_pictures_nfl.csv`
+
+    Inputs
+    ------
+        df : Pandas Dataframe
+            DataFrame containing an NFL-name variable
+        name_var : string
+            Name of the variable which is to be renamed/standardized
+    
+    Outputs
+    -------
+        df : Pandas Dataframe
+            DataFrame containing the standardized team name
+    '''  
+    # read in school name information
+    df_team_names = pd.read_csv(path_dir.joinpath(
+            'positionData/names_pictures_nfl.csv'))    
+     
+    # convert the dataframe to a dictionary such that the keys are the
+    #   optional spelling of each team and the value is the standardized
+    #   name of the team
+    dict_team_names = {}
+    
+    for index, row in df_team_names.iterrows():
+        # isolate the alternative name columns
+        names = row[[x for x in row.index if 'name' in x.lower()]]
+        # convert the row to a list that doesn't include NaN values
+        list_names_nicknames = [
+                x for x in names.values.tolist() if str(x) != 'nan']
+        # extract the standardized team name
+        name_standardized = row['Team']
+        # add the standardized name
+        list_names_nicknames.append(name_standardized)
+        # for every alternative spelling of the team, set the value to be
+        #   the standardized name
+        for name_alternate in list_names_nicknames:
+            dict_team_names[name_alternate] = name_standardized
+            
+    def swapteamName(name_old):
+        if ((name_old == 'nan') or (pd.isna(name_old)) or 
+             (name_old == 'none') or (name_old == '')):
+            return ''
+        try:
+            return dict_team_names[name_old]
+        except:
+            print('Did not find: %s' % (name_old))
+            return name_old
+            
+    df[name_var] = df[name_var].apply(lambda x: swapteamName(x))
+    
+    return df      
 
 def scrapeCombineAllYears():
     '''
@@ -319,7 +383,7 @@ def fixCombineInfo(df_input):
             ''.join(x for x in pick if x in digits))
     df['DraftYear'] = df['Drafted (tm/rnd/yr)'].apply(
             lambda x: x.split('/')[-1].strip() if not pd.isna(x) else '')
-        
+    
     # remove the old `Drafted (tm/rnd/yr)` variable
     df.drop(columns = ('Drafted (tm/rnd/yr)'), inplace = True)
     
@@ -337,7 +401,16 @@ def fixCombineInfo(df_input):
              '3Cone', 'Shuttle', 'DraftTeam', 'DraftRound',
              'DraftPick', 'DraftYear', 'id_sr_ncaa', 'id_sr_nfl',
              'url_sr_ncaa', 'url_sr_nfl']]
+    
+    # reset the index
+    df = df.reset_index(drop = True)
         
+    # standardize the names of 'School'
+    df = renameSchool(df, 'School')
+    
+    # standardize the names of 'DraftTeam'
+    df = renameNFL(df, 'DraftTeam')
+    
     return df
 
 #=============================================================================
